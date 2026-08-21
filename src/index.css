@@ -1,0 +1,643 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GRCP DESIGN SYSTEM — Typography Foundation
+   ───────────────────────────────────────────────────────────────────────────
+   Font families
+     font-display → DM Sans  (headings, labels, nav, UI chrome)
+     font-body    → Hind     (body copy, descriptions, paragraphs)
+
+   Scale (px reference)
+     Headings  : h1 48, h2 40, h3 32, h4 24, h5 20, h6 18
+     Body      : lg 18, base 16, sm 14, xs 13
+     UI/Chrome : sub 20, ui 14, ui-sm 13, cap 12, label 11
+
+   Weights
+     Headings  : 700 (bold) for hero / section titles
+                 600 (semibold) for card titles
+     Body      : 400 (regular)
+     Labels    : 700 (bold), uppercase + tracking
+     Buttons   : 600 (semibold)
+     Nav links : 500 (medium)
+
+   Responsive strategy
+     Mobile-first. Base = mobile size. Override at lg: with desktop token.
+     Pattern: text-type-h2-mob lg:text-type-h2
+
+   Usage rules
+     1. Always use font-display / font-body (not the legacy font-hind / font-dm-sans).
+     2. Always use scale tokens (text-type-*) not arbitrary px values.
+     3. Use @layer components classes (.t-*) for repeating patterns.
+     4. Colors: headings → text-[#1A1A2E] | body → text-[#444] | muted → text-[#666]
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Brand CSS custom properties ─────────────────────────────────────────── */
+:root {
+  --brand-primary:   #2D7A50;
+  --brand-highlight: #C72235;
+  --brand-dark:      #222222;
+  --brand-neutral:   #BFBFBF;
+  --brand-soft:      #F3DAB2;
+
+  /* Text color tokens */
+  --text-heading:  #1A1A2E;   /* near-black for all headings */
+  --text-body:     #444444;   /* comfortable dark-grey for body */
+  --text-muted:    #666666;   /* secondary / supporting text */
+  --text-caption:  #888888;   /* captions, metadata */
+  --text-accent:   #C72235;   /* highlight / accent */
+  --text-brand:    #2D7A50;   /* brand green links */
+
+  /* Typography size tokens (mirror tailwind.config.js) */
+  --type-h1:       3rem / 3.5rem;       /* 48 / 56 */
+  --type-h2:       2.5rem / 3rem;       /* 40 / 48 */
+  --type-h3:       2rem / 2.5rem;       /* 32 / 40 */
+  --type-h4:       1.5rem / 2rem;       /* 24 / 32 */
+  --type-h5:       1.25rem / 1.75rem;   /* 20 / 28 */
+  --type-h6:       1.125rem / 1.625rem; /* 18 / 26 */
+  --type-body-lg:  1.125rem / 1.75rem;  /* 18 / 28 */
+  --type-body:     1.0625rem / 1.75rem;  /* 17 / 28 */
+  --type-body-sm:  1.0625rem / 1.75rem;  /* 17 / 28 — body floor */
+  --type-body-xs:  0.9375rem / 1.5rem;   /* 15 / 24 — supporting/secondary */
+  --type-sub:      1.25rem / 1.75rem;   /* 20 / 28 */
+  --type-ui:       0.9375rem / 1.5rem;  /* 15 / 24 */
+  --type-ui-sm:    0.875rem / 1.375rem; /* 14 / 22 */
+  --type-cap:      0.75rem / 1.125rem;  /* 12 / 18 */
+  --type-label:    0.6875rem / 1rem;    /* 11 / 16 */
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   VERSION 2 — HOME PAGE PALETTE (scoped to the home page only)
+   ───────────────────────────────────────────────────────────────────────────
+   These 10 tokens exist ONLY under [data-theme-version="v2"] — Version 1 never
+   defines them, so every home-page color that references one of them falls
+   back to its current literal value (the exact hex already in that file) and
+   renders pixel-identical to today. This block is the one unavoidable "shared
+   file" touch for this change: CSS custom properties must live somewhere
+   globally loaded for the version-attribute selector to work. Nothing else in
+   this stylesheet was changed, and no page outside the home route (GrcpPage.jsx
+   and its home-only child components) reads these tokens.
+   ═══════════════════════════════════════════════════════════════════════════ */
+[data-theme-version="v2"] {
+  --maroon:      #8E1B2E; /* primary — headings, primary buttons, featured cards */
+  --maroon-deep: #6E1523; /* hover states, dark text on cream */
+  --cream:       #FAF6EF; /* base background, replaces the green section washes */
+  --cream-dim:   #F1EADC; /* card borders, subtle section dividers */
+  --ink:         #211B17; /* primary text on cream/white */
+  --ink-soft:    #5B534B; /* secondary/body text on cream/white */
+  --green:       #2F6B3C; /* accent only — tags, links, icons, outline borders */
+  --green-soft:  #E7EFE6; /* light green — pills/badges only, never full sections */
+  --gold:        #C79A3B; /* sparing use — existing badges/credibility markers */
+  --white:       #FFFFFF;
+
+  /* One extra, home-page-only helper: replaces the flat black placeholder
+     fill behind the campus video embed with a subtle dark gradient in the
+     new palette's ink tones (rule 4 — same size/position, fill only). */
+  --home-video-fallback-bg: linear-gradient(135deg, #2B2320 0%, #1A1512 100%);
+}
+
+/* ── Premium text rendering ──────────────────────────────────────────────── */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Hind', Tahoma, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.75rem;
+  color: var(--text-body);
+}
+
+/* ── Base semantic element defaults ─────────────────────────────────────────
+   Applied when no Tailwind utility overrides. Headings → DM Sans.          */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    color: var(--text-heading);
+  }
+  h1 { font-size: 2rem;     line-height: 2.5rem;   font-weight: 700; }
+  h2 { font-size: 1.75rem;  line-height: 2.25rem;  font-weight: 700; }
+  h3 { font-size: 1.5rem;   line-height: 2rem;     font-weight: 600; }
+  h4 { font-size: 1.25rem;  line-height: 1.75rem;  font-weight: 600; }
+  h5 { font-size: 1.125rem; line-height: 1.625rem; font-weight: 600; }
+  h6 { font-size: 1rem;     line-height: 1.5rem;   font-weight: 600; }
+  @media (min-width: 1024px) {
+    h1 { font-size: 3rem;   line-height: 3.5rem;  }
+    h2 { font-size: 2.5rem; line-height: 3rem;    }
+    h3 { font-size: 2rem;   line-height: 2.5rem;  }
+    h4 { font-size: 1.5rem; line-height: 2rem;    }
+    h5 { font-size: 1.25rem;line-height: 1.75rem; }
+  }
+  p {
+    font-family: 'Hind', Tahoma, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+    color: var(--text-body);
+  }
+  a {
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SEMANTIC TYPOGRAPHY COMPONENT CLASSES  (.t-*)
+   Use these in JSX instead of ad-hoc font/size/weight combinations.
+   ══════════════════════════════════════════════════════════════════════════ */
+@layer components {
+
+  /* ── Heading roles ──────────────────────────────────────────────────────── */
+
+  /* Page / hero title  — 32px mob → 48px desk */
+  .t-hero {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 2rem;         /* 32px */
+    line-height: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-heading);
+  }
+  @media (min-width: 1024px) {
+    .t-hero { font-size: 3rem; line-height: 3.5rem; }
+  }
+
+  /* Section heading — 28px mob → 40px desk */
+  .t-section {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 1.75rem;      /* 28px */
+    line-height: 2.25rem;
+    font-weight: 700;
+    color: var(--text-heading);
+  }
+  @media (min-width: 1024px) {
+    .t-section { font-size: 2.5rem; line-height: 3rem; }
+  }
+
+  /* Card / sub-section heading — 24px mob → 32px desk */
+  .t-card-title {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 1.5rem;       /* 24px */
+    line-height: 2rem;
+    font-weight: 600;
+    color: var(--text-heading);
+  }
+  @media (min-width: 1024px) {
+    .t-card-title { font-size: 2rem; line-height: 2.5rem; }
+  }
+
+  /* Item heading — static 20px */
+  .t-item-title {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 1.25rem;      /* 20px */
+    line-height: 1.75rem;
+    font-weight: 600;
+    color: var(--text-heading);
+  }
+
+  /* Small heading — static 18px */
+  .t-heading-sm {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 1.125rem;     /* 18px */
+    line-height: 1.625rem;
+    font-weight: 600;
+    color: var(--text-heading);
+  }
+
+  /* ── Body text roles ────────────────────────────────────────────────────── */
+
+  /* Lead body — 18px */
+  .t-body-lg {
+    font-family: 'Hind', Tahoma, sans-serif;
+    font-size: 1.125rem;     /* 18px */
+    line-height: 1.75rem;
+    font-weight: 400;
+    color: var(--text-body);
+  }
+
+  /* Standard body — 17px */
+  .t-body {
+    font-family: 'Hind', Tahoma, sans-serif;
+    font-size: 1.0625rem;    /* 17px */
+    line-height: 1.75rem;
+    font-weight: 400;
+    color: var(--text-body);
+  }
+
+  /* Small body — 17px (body floor) */
+  .t-body-sm {
+    font-family: 'Hind', Tahoma, sans-serif;
+    font-size: 1.0625rem;    /* 17px */
+    line-height: 1.75rem;
+    font-weight: 400;
+    color: var(--text-body);
+  }
+
+  /* Supporting text — 14px */
+  .t-body-xs {
+    font-family: 'Hind', Tahoma, sans-serif;
+    font-size: 0.875rem;     /* 14px */
+    line-height: 1.375rem;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  /* ── UI / chrome roles ──────────────────────────────────────────────────── */
+
+  /* Nav link — 13px DM Sans medium */
+  .t-nav {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 0.8125rem;    /* 13px */
+    line-height: 1.25rem;
+    font-weight: 500;
+  }
+
+  /* UI default — 14px DM Sans medium */
+  .t-ui {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 0.875rem;     /* 14px */
+    line-height: 1.375rem;
+    font-weight: 500;
+  }
+
+  /* Button — 14px DM Sans semibold */
+  .t-btn {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 0.875rem;     /* 14px */
+    line-height: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  /* Large button — 16px DM Sans semibold */
+  .t-btn-lg {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 1rem;         /* 16px */
+    line-height: 1.375rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  /* Caption — 12px DM Sans regular */
+  .t-cap {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 0.75rem;      /* 12px */
+    line-height: 1.125rem;
+    font-weight: 400;
+    color: var(--text-caption);
+  }
+
+  /* ── Section label (eyebrow) ────────────────────────────────────────────── */
+  /* The small ALL-CAPS label above section headings */
+  .t-eyebrow {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 0.75rem;      /* 12px */
+    line-height: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-highlight);
+  }
+
+  /* ── Badge / tag ────────────────────────────────────────────────────────── */
+  .t-badge {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 0.6875rem;    /* 11px */
+    line-height: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── Stat number (large display figure) ────────────────────────────────── */
+  .t-stat {
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 2.5rem;       /* 40px */
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-heading);
+  }
+  @media (min-width: 1024px) {
+    .t-stat { font-size: 3rem; }
+  }
+
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   LAYOUT & UTILITY CLASSES
+   ══════════════════════════════════════════════════════════════════════════ */
+@layer utilities {
+
+  /* Global section padding
+     Mobile  : 24px H  / 48px V
+     Tablet  : 60px H  / 60px V
+     Desktop : 120px H / 80px V  ← source of truth */
+  .section-pad {
+    padding-left:   1.5rem;    /* 24px */
+    padding-right:  1.5rem;
+    padding-top:    3rem;      /* 48px */
+    padding-bottom: 3rem;
+  }
+  @media (min-width: 768px) {
+    .section-pad {
+      padding-left:   60px;
+      padding-right:  60px;
+      padding-top:    60px;
+      padding-bottom: 60px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .section-pad {
+      padding-left:   120px;
+      padding-right:  120px;
+      padding-top:    80px;
+      padding-bottom: 80px;
+    }
+  }
+
+  /* Sidebar scrollbar */
+  .sidebar-scroll {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.25s ease;
+  }
+  .sidebar-scroll:hover { scrollbar-color: #C72235 transparent; }
+  .sidebar-scroll::-webkit-scrollbar { width: 4px; }
+  .sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+  .sidebar-scroll::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 4px;
+    transition: background-color 0.25s ease;
+  }
+  .sidebar-scroll:hover::-webkit-scrollbar-thumb { background-color: #C72235; }
+
+  /* Card hover lift */
+  .premium-card {
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+  .premium-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px -10px rgba(45,122,80,0.18), 0 4px 12px -4px rgba(0,0,0,0.08);
+  }
+
+  /* Section backgrounds */
+  .section-soft       { background-color: #F8FAF8; }
+  .section-green-tint { background-color: #EEF7F1; }
+  .section-cream      { background-color: #FAF4EE; }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     UNIFIED BUTTON SYSTEM
+     ───────────────────────────────────────────────────────────────────────
+     Base token — shared by ALL button variants
+     ─────────────────────────────────────────────────────────────────────── */
+  .btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 0.875rem;      /* 14px */
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease,
+      box-shadow 0.18s ease,
+      transform 0.15s ease,
+      opacity 0.18s ease;
+    -webkit-font-smoothing: antialiased;
+  }
+  .btn-base:focus-visible {
+    outline: 2px solid #C72235;
+    outline-offset: 3px;
+  }
+  .btn-base:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+
+  /* ── PRIMARY — red solid ────────────────────────────────────────────────── */
+  .btn-red,
+  .btn-highlight,
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 8px;
+    border: 1.5px solid transparent;
+    background-color: #C72235;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(199,34,53,0.20), 0 1px 2px rgba(0,0,0,0.04);
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.18s ease, box-shadow 0.18s ease, transform 0.15s ease;
+    -webkit-font-smoothing: antialiased;
+  }
+  .btn-red:hover,
+  .btn-highlight:hover,
+  .btn-primary:hover {
+    background-color: #B01E2D;
+    box-shadow: 0 4px 12px rgba(199,34,53,0.28), 0 2px 4px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+  }
+  .btn-red:active,
+  .btn-highlight:active,
+  .btn-primary:active {
+    background-color: #9E1A28;
+    box-shadow: 0 1px 2px rgba(199,34,53,0.15);
+    transform: translateY(0);
+  }
+  .btn-red:focus-visible,
+  .btn-primary:focus-visible {
+    outline: 2px solid #C72235;
+    outline-offset: 3px;
+  }
+  .btn-red:disabled,
+  .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+  /* Size modifiers for primary */
+  /* Size modifiers — must come after variant definitions to win specificity */
+  .btn-sm,
+  .btn-red.btn-sm, .btn-ghost.btn-sm, .btn-ghost-white.btn-sm, .btn-brand.btn-sm, .btn-green.btn-sm {
+    height: 32px !important; padding: 0 14px; font-size: 0.8125rem; border-radius: 6px;
+  }
+  .btn-lg,
+  .btn-red.btn-lg, .btn-ghost.btn-lg, .btn-ghost-white.btn-lg, .btn-brand.btn-lg, .btn-green.btn-lg {
+    height: 48px !important; padding: 0 32px; font-size: 1rem; border-radius: 10px;
+  }
+  /* Legacy aliases */
+  .btn-red-sm { height: 32px; padding: 0 14px; font-size: 0.8125rem; border-radius: 6px; }
+  .btn-red-lg { height: 48px; padding: 0 32px; font-size: 1rem;      border-radius: 10px; }
+
+  /* ── SECONDARY — ghost / outline ────────────────────────────────────────── */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 8px;
+    border: 1.5px solid #C72235;
+    background-color: transparent;
+    color: #C72235;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.15s ease;
+    -webkit-font-smoothing: antialiased;
+  }
+  .btn-ghost:hover {
+    background-color: rgba(199,34,53,0.06);
+    box-shadow: 0 2px 8px rgba(199,34,53,0.14);
+    transform: translateY(-1px);
+  }
+  .btn-ghost:active  { background-color: rgba(199,34,53,0.10); transform: translateY(0); }
+  .btn-ghost:focus-visible { outline: 2px solid #C72235; outline-offset: 3px; }
+
+  /* Ghost on dark background (hero, green sections) */
+  .btn-ghost-white {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(255,255,255,0.55);
+    background-color: rgba(255,255,255,0.10);
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
+  }
+  .btn-ghost-white:hover {
+    background-color: rgba(255,255,255,0.20);
+    border-color: rgba(255,255,255,0.80);
+    transform: translateY(-1px);
+  }
+  .btn-ghost-white:active { background-color: rgba(255,255,255,0.12); transform: translateY(0); }
+
+  /* ── BRAND GREEN ─────────────────────────────────────────────────────────── */
+  .btn-brand,
+  .btn-green {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 8px;
+    border: 1.5px solid transparent;
+    background-color: #2D7A50;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(45,122,80,0.20);
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.18s ease, box-shadow 0.18s ease, transform 0.15s ease;
+    -webkit-font-smoothing: antialiased;
+  }
+  .btn-brand:hover,
+  .btn-green:hover {
+    background-color: #236040;
+    box-shadow: 0 4px 12px rgba(45,122,80,0.28);
+    transform: translateY(-1px);
+  }
+  .btn-brand:active,
+  .btn-green:active  { background-color: #1E5235; transform: translateY(0); }
+  .btn-brand:focus-visible,
+  .btn-green:focus-visible { outline: 2px solid #2D7A50; outline-offset: 3px; }
+
+  /* ── DOWNLOAD — compact accent ───────────────────────────────────────────── */
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'DM Sans', Tahoma, sans-serif;
+    font-size: 0.75rem;       /* 12px */
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 6px;
+    border: none;
+    background-color: #C72235;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.18s ease, opacity 0.15s ease, transform 0.15s ease;
+    flex-shrink: 0;
+  }
+  .btn-download:hover  { background-color: #B01E2D; transform: translateY(-1px); }
+  .btn-download:active { background-color: #9E1A28; transform: translateY(0); }
+
+  /* ── ICON ONLY ───────────────────────────────────────────────────────────── */
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(45,122,80,0.18);
+    background-color: transparent;
+    color: #444;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+    flex-shrink: 0;
+  }
+  .btn-icon:hover {
+    background-color: rgba(199,34,53,0.06);
+    border-color: #C72235;
+    color: #C72235;
+  }
+  .btn-icon:focus-visible { outline: 2px solid #C72235; outline-offset: 2px; }
+
+}
