@@ -1,8 +1,8 @@
 export default function AdmissionsCTA({ college }) {
   return (
     <section className="w-full section-pad" style={{ background: 'var(--cream, linear-gradient(135deg, #1E5C3A 0%, #2D7A50 60%, #1A4D33 100%))' }}>
-      <div className="max-w-[1200px] mx-auto flex flex-col items-center">
-        <h2 className="font-display font-semibold text-type-h2-mob lg:text-type-h2 text-center mb-6" style={{ color: 'var(--maroon, #ffffff)' }}>
+      <div className="flex flex-col items-center">
+        <h2 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 text-center mb-6" style={{ color: 'var(--maroon, #ffffff)' }}>
           {college.ctaHeading}
         </h2>
         <p className="font-body font-normal text-type-body sm:text-type-body-lg lg:text-type-sub text-center max-w-[672px] mb-10" style={{ color: 'var(--ink-soft, rgba(255,255,255,0.90))' }}>

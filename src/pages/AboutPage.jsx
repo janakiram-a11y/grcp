@@ -10,7 +10,7 @@ function SectionHeader({ label, title }) {
   return (
     <div className="mb-6">
       <h2
-        className="font-display font-semibold text-type-h2-mob pb-3"
+        className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 pb-3"
         style={{
           color: college.greenAccent,
           borderBottom: `3px solid ${college.greenAccent}`,
@@ -114,7 +114,7 @@ function AboutSection() {
       label: 'Our Vision',
       title: 'Vision',
       content: (
-        <p className="font-body font-normal text-type-body-xs text-[#474747]">{college.vision}</p>
+        <p className="font-body font-normal text-type-body text-[#474747]">{college.vision}</p>
       ),
     },
     {
@@ -128,7 +128,7 @@ function AboutSection() {
                 className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-[9px]"
                 style={{ backgroundColor: college.greenAccent }}
               />
-              <span className="font-body font-normal text-type-body-xs text-[#474747]">{item}</span>
+              <span className="font-body font-normal text-type-body text-[#474747]">{item}</span>
             </li>
           ))}
         </ul>
@@ -138,7 +138,7 @@ function AboutSection() {
       label: 'Our Standard',
       title: 'Quality Policy',
       content: (
-        <p className="font-body font-normal text-type-body-xs text-[#474747]">{college.qualityPolicy}</p>
+        <p className="font-body font-normal text-type-body text-[#474747]">{college.qualityPolicy}</p>
       ),
     },
     {
@@ -152,7 +152,7 @@ function AboutSection() {
                 className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-[9px]"
                 style={{ backgroundColor: college.greenAccent }}
               />
-              <span className="font-body font-normal text-type-body-xs text-[#474747]">{item}</span>
+              <span className="font-body font-normal text-type-body text-[#474747]">{item}</span>
             </li>
           ))}
         </ul>
@@ -258,7 +258,7 @@ function AboutSection() {
                   style={{ border: '1px solid rgba(0,90,40,0.10)', borderLeftWidth: '4px', borderLeftColor: college.primaryColor }}
                 >
                   <h4 className="font-display font-medium text-type-body-xs mb-1.5" style={{ color: college.primaryColor }}>{value.name}</h4>
-                  <p className="font-body text-type-ui-sm text-[#474747]">{value.desc}</p>
+                  <p className="font-body text-type-body text-[#474747]">{value.desc}</p>
                 </div>
               ))}
             </div>
@@ -398,7 +398,7 @@ export default function AboutPage({ section = 'about' }) {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -408,7 +408,7 @@ export default function AboutPage({ section = 'about' }) {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto">
+        <div>
           {sectionContent[section] || sectionContent.about}
         </div>
       </main>

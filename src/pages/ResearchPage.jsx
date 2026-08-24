@@ -15,7 +15,7 @@ function SectionHeader({ label, title }) {
   return (
     <div className="mb-6">
       <h2
-        className="font-display font-semibold text-type-h2-mob pb-3"
+        className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 pb-3"
         style={{
           color: accent,
           borderBottom: `3px solid ${accent}`,
@@ -57,7 +57,7 @@ function InfoCallout({ children }) {
           clipRule="evenodd"
         />
       </svg>
-      <p className="font-body text-type-body-xs text-[#4B5563]">{children}</p>
+      <p className="font-body text-type-body text-[#4B5563]">{children}</p>
     </div>
   );
 }
@@ -204,7 +204,7 @@ function OverviewSection() {
 
             {/* Intro paragraph */}
             {activeDept.intro && (
-              <p className="font-body text-type-body-xs text-[#374151]">
+              <p className="font-body text-type-body text-[#374151]">
                 {activeDept.intro}
               </p>
             )}
@@ -469,7 +469,7 @@ function PublicationsSection() {
                 className="rounded-xl p-4 text-center"
                 style={{ backgroundColor: `${primary}08`, border: `1px solid ${primary}14` }}
               >
-                <span className="font-display font-bold text-type-h2-mob block" style={{ color: primary }}>{s.value}</span>
+                <span className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 block" style={{ color: primary }}>{s.value}</span>
                 <span className="font-display text-type-cap uppercase tracking-wide" style={{ color: accent }}>{s.label}</span>
               </div>
             ))}
@@ -748,7 +748,7 @@ export default function ResearchPage() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -758,7 +758,7 @@ export default function ResearchPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto">
+        <div>
           {config.content}
         </div>
       </main>

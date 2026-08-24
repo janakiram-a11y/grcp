@@ -21,9 +21,9 @@ const programIcons = [BookIcon, MortarIcon]
 export default function AcademicPrograms({ college }) {
   return (
     <section className="w-full section-pad" style={{ background: 'var(--cream, linear-gradient(135deg, #1E5C3A 0%, #2D7A50 60%, #1A4D33 100%))' }}>
-      <div className="max-w-[1200px] mx-auto flex items-center gap-0">
-        <div className="flex flex-col gap-6 w-[600px]">
-          <h2 className="font-display font-semibold text-type-h2-mob lg:text-type-h2" style={{ color: 'var(--maroon, #ffffff)' }}>
+      <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-10">
+        <div className="flex flex-col gap-6 w-full lg:max-w-xl">
+          <h2 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2" style={{ color: 'var(--maroon, #ffffff)' }}>
             {college.academicProgramsHeading}
           </h2>
           <p className="font-body font-normal text-type-body-lg" style={{ color: 'var(--ink-soft, rgba(205,240,220,0.82))' }}>
@@ -32,7 +32,7 @@ export default function AcademicPrograms({ college }) {
           <div className="flex items-center gap-4 mt-2">
             <a
               href="/programmes"
-              className="btn-red btn-red-lg"
+              className="btn-red btn-lg"
               style={{ backgroundColor: 'var(--maroon, #C72235)' }}
               onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--maroon-deep, #B01E2D)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--maroon, #C72235)'; }}
@@ -42,13 +42,13 @@ export default function AcademicPrograms({ college }) {
           </div>
         </div>
 
-        <div className="flex-1 flex justify-end gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full lg:flex-1">
           {college.academicPrograms.map(({ count, title, desc }, i) => {
             const Icon = programIcons[i % programIcons.length]
             return (
               <div
                 key={title}
-                className="w-[288px] h-[320px] rounded-3xl p-6 flex flex-col justify-center gap-3 transition-all duration-200"
+                className="rounded-3xl p-6 min-h-[240px] flex flex-col justify-center gap-3 transition-all duration-200"
                 style={{
                   backgroundColor: 'var(--white, rgba(255,255,255,0.10))',
                   border: '1px solid var(--cream-dim, rgba(255,255,255,0.20))',

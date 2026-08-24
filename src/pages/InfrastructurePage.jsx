@@ -186,7 +186,7 @@ function SectionHeader({ title }) {
   return (
     <div className="mb-6">
       <h2
-        className="font-display font-bold text-type-h2-mob pb-3"
+        className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 pb-3"
         style={{
           color: accent,
           borderBottom: `3px solid ${accent}`,
@@ -214,7 +214,7 @@ export default function InfrastructurePage() {
   const nextImage     = () => setLightbox((lb) => ({ ...lb, index: (lb.index + 1) % lb.images.length }));
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -225,7 +225,7 @@ export default function InfrastructurePage() {
       />
 
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto space-y-16">
+        <div className="space-y-16">
 
           {/* Section nav pills */}
           <nav className="flex flex-wrap gap-2">

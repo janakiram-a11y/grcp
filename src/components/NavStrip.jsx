@@ -13,7 +13,7 @@ function ChevronRight() {
 function FlyoutSubMenu({ items, college, visible }) {
   return (
     <div
-      className={`absolute left-full top-0 ml-0.5 z-50 min-w-[240px] transition-all duration-150 ease-out ${visible ? 'opacity-100 translate-x-0 visible' : 'opacity-0 translate-x-1 invisible pointer-events-none'}`}
+      className={`absolute left-full top-0 ml-0.5 z-50 min-w-[240px] max-w-[420px] transition-all duration-150 ease-out ${visible ? 'opacity-100 translate-x-0 visible' : 'opacity-0 translate-x-1 invisible pointer-events-none max-sm:hidden'}`}
     >
       <div
         className="bg-white shadow-xl py-2"
@@ -29,7 +29,7 @@ function FlyoutSubMenu({ items, college, visible }) {
             href={sub.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center px-4 py-2 text-type-ui font-display font-medium transition-colors whitespace-nowrap"
+            className="flex items-center px-4 py-3 text-type-nav-dropdown font-display font-medium transition-colors whitespace-nowrap"
             style={{
               color: college.primaryColor,
               borderBottom: `1px solid ${withAlpha(college.primaryColor, 0.08)}`,
@@ -43,7 +43,7 @@ function FlyoutSubMenu({ items, college, visible }) {
           <Link
             key={sub.href}
             to={sub.href}
-            className="flex items-center px-4 py-2 text-type-ui font-display font-medium transition-colors whitespace-nowrap"
+            className="flex items-center px-4 py-3 text-type-nav-dropdown font-display font-medium transition-colors whitespace-nowrap"
             style={{
               color: college.primaryColor,
               borderBottom: `1px solid ${withAlpha(college.primaryColor, 0.08)}`,
@@ -84,7 +84,7 @@ function DropdownItem({ item, college }) {
       >
         <Link
           to={item.href}
-          className="flex items-center gap-1 px-4 py-2 text-type-ui font-display font-medium transition-colors whitespace-nowrap"
+          className="flex items-center gap-1 px-4 py-3 text-type-nav-dropdown font-display font-medium transition-colors whitespace-nowrap"
           style={{
             color: college.primaryColor,
             borderBottom: `1px solid ${withAlpha(college.primaryColor, 0.1)}`,
@@ -106,7 +106,7 @@ function DropdownItem({ item, college }) {
         href={item.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="block px-4 py-2 text-type-ui font-display font-medium transition-colors whitespace-nowrap"
+        className="block px-4 py-3 text-type-nav-dropdown font-display font-medium transition-colors whitespace-nowrap"
         style={{
           color: college.primaryColor,
           borderBottom: `1px solid ${withAlpha(college.primaryColor, 0.1)}`,
@@ -122,7 +122,7 @@ function DropdownItem({ item, college }) {
   return (
     <Link
       to={item.href}
-      className="block px-4 py-2 text-type-ui font-display font-medium transition-colors whitespace-nowrap"
+      className="block px-4 py-3 text-type-nav-dropdown font-display font-medium transition-colors whitespace-nowrap"
       style={{
         color: college.primaryColor,
         borderBottom: `1px solid ${withAlpha(college.primaryColor, 0.1)}`,
@@ -170,7 +170,7 @@ function NavItem({ name, href, active, dropdown, college }) {
     return (
       <Link
         to={href || '/'}
-        className="font-display font-semibold text-type-body transition-colors"
+        className="inline-flex items-center min-h-[44px] font-display font-medium text-type-nav transition-colors"
         style={isActive ? activeStyle : inactiveStyle}
         onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.color = '#F3DAB2'; }}
         onMouseLeave={(e) => { if (!isActive) e.currentTarget.style.color = '#ffffff'; }}
@@ -191,7 +191,7 @@ function NavItem({ name, href, active, dropdown, college }) {
         <div className="flex items-center">
           <Link
             to={href}
-            className="font-display font-semibold text-type-body transition-colors py-2"
+            className="inline-flex items-center min-h-[44px] font-display font-medium text-type-nav transition-colors"
             style={open || isActive ? activeStyle : inactiveStyle}
             onMouseEnter={(e) => { if (!open && !isActive) e.currentTarget.style.color = '#F3DAB2'; }}
             onMouseLeave={(e) => { if (!open && !isActive) e.currentTarget.style.color = '#ffffff'; }}
@@ -200,7 +200,7 @@ function NavItem({ name, href, active, dropdown, college }) {
           </Link>
           <button
             onClick={() => setOpen((v) => !v)}
-            className="flex items-center pl-1 py-2 transition-colors"
+            className="flex items-center min-h-[44px] pl-1 transition-colors"
             style={open || isActive ? activeStyle : inactiveStyle}
             onMouseEnter={(e) => { if (!open && !isActive) e.currentTarget.style.color = '#F3DAB2'; }}
             onMouseLeave={(e) => { if (!open && !isActive) e.currentTarget.style.color = '#ffffff'; }}
@@ -217,7 +217,7 @@ function NavItem({ name, href, active, dropdown, college }) {
       ) : (
         <button
           onClick={() => setOpen((v) => !v)}
-          className="flex items-center gap-1 font-display font-semibold text-type-body transition-colors py-2"
+          className="flex items-center gap-1 min-h-[44px] font-display font-medium text-type-nav transition-colors"
           style={open || isActive ? activeStyle : inactiveStyle}
           onMouseEnter={(e) => { if (!open && !isActive) e.currentTarget.style.color = '#F3DAB2'; }}
           onMouseLeave={(e) => { if (!open && !isActive) e.currentTarget.style.color = '#ffffff'; }}
@@ -234,7 +234,7 @@ function NavItem({ name, href, active, dropdown, college }) {
       )}
 
       <div
-        className={`absolute top-full left-0 pt-2 z-50 min-w-[240px] transition-all duration-200 ease-out ${open ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-1 invisible pointer-events-none'}`}
+        className={`absolute top-full left-0 pt-2 z-50 min-w-[240px] max-w-[420px] transition-all duration-200 ease-out ${open ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-1 invisible pointer-events-none max-sm:hidden'}`}
       >
         <div
           className="bg-white shadow-xl py-2"
@@ -254,16 +254,16 @@ function NavItem({ name, href, active, dropdown, college }) {
   );
 }
 
-export default function NavStrip({ college }) {
+export default function NavStrip({ college, scrolled = false }) {
   return (
     <div
-      className="w-full py-3 sticky top-0 z-40"
+      className={`w-full transition-all duration-300 ${scrolled ? 'py-1.5' : 'py-3'}`}
       style={{
         backgroundColor: college.primaryColor,
         borderBottom: `1px solid ${withAlpha('#000000', 0.1)}`,
       }}
     >
-      <div className="flex justify-center items-center gap-[30px] overflow-visible flex-wrap px-4">
+      <div className="flex justify-center items-center gap-[38px] overflow-visible flex-wrap container-px">
         {college.navLinks.map((link) => (
           <NavItem key={link.name} {...link} college={college} />
         ))}

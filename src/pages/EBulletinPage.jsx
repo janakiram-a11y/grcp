@@ -83,14 +83,14 @@ function EditionCard({ edition }) {
           )}
         </div>
 
-        <h3 className="font-display font-bold text-type-h2-mob text-white">{edition.title}</h3>
+        <h3 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 text-white">{edition.title}</h3>
         <p className="font-display text-type-ui-sm italic text-white/80">"{edition.theme}"</p>
         <p className="font-display font-semibold text-type-cap text-white/65">{edition.period}</p>
       </div>
 
       {/* Body */}
       <div className="flex flex-col gap-5 p-7 bg-white flex-1">
-        <p className="font-body text-type-body-xs text-[#474747] flex-1">
+        <p className="font-body text-type-body text-[#474747] flex-1">
           {edition.description}
         </p>
         <a
@@ -115,7 +115,7 @@ export default function EBulletinPage() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -125,11 +125,11 @@ export default function EBulletinPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto">
+        <div>
 
           {/* About */}
           <div className="mb-10">
-            <h2 className="font-display font-bold text-type-h2-mob lg:text-type-h2 mb-2" style={{ color: accent }}>
+            <h2 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 mb-2" style={{ color: accent }}>
               About the E-Bulletin
             </h2>
             <div className="w-14 h-[3px] rounded-full mb-6" style={{ backgroundColor: accent }} />
@@ -164,7 +164,7 @@ export default function EBulletinPage() {
             <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke={accent} strokeWidth="1.5" viewBox="0 0 24 24">
               <path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <p className="font-body text-type-body-xs text-[#474747]">
+            <p className="font-body text-type-body text-[#474747]">
               For editorial queries or to contribute to the next edition of the GRCP E-Bulletin, contact us at{' '}
               <a
                 href="mailto:info@grcp.ac.in"

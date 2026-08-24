@@ -15,7 +15,7 @@ function SectionHeader({ label, title }) {
   return (
     <div className="mb-6">
       <h2
-        className="font-display font-semibold text-type-h2-mob pb-3"
+        className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 pb-3"
         style={{
           color: greenAccent,
           borderBottom: `3px solid ${greenAccent}`,
@@ -211,7 +211,7 @@ function MPharmacyOverview() {
                 >
                   {spec.name}
                 </h3>
-                <p className="font-body text-type-body-xs text-[#474747] mb-4">
+                <p className="font-body text-type-body text-[#474747] mb-4">
                   {spec.desc}
                 </p>
                 <div className="flex gap-4 text-type-ui-sm text-[#888] font-display">
@@ -452,7 +452,7 @@ export default function ProgrammesPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -462,7 +462,7 @@ export default function ProgrammesPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto">{content}</div>
+        <div>{content}</div>
       </main>
       <AdmissionsCTA college={college} />
       <Footer college={college} />

@@ -30,28 +30,30 @@ const featureIcons = [PhoneIcon, ShieldIcon, CapIcon, BuildingIcon]
 export default function WhyChooseUs({ college }) {
   return (
     <section className="w-full bg-white section-pad">
-      <div className="max-w-[1200px] mx-auto flex gap-[30px] items-start">
-        <div className="flex-1 flex flex-col gap-3 pr-8">
-          <h2 className="font-display font-semibold text-type-h2-mob lg:text-type-h2 text-[#222222]">
-            {college.aboutHeading}
+      <div className="flex flex-col lg:flex-row gap-10 lg:items-start">
+        <div className="flex-1 flex flex-col gap-3 lg:max-w-xl lg:pr-8">
+          <h2 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 leading-[1.2] text-[#111827]">
+            <span className="lg:whitespace-nowrap">{college.aboutHeading.replace(' College of Pharmacy', '')}</span>
+            <br />
+            College of Pharmacy
           </h2>
-          <p className="font-body font-normal text-type-body text-[#666666]">
+          <p className="font-body font-normal text-type-body text-[#555555]">
             {college.aboutP1}
           </p>
-          <p className="font-body font-normal text-type-body text-[#666666]">
+          <p className="font-body font-normal text-type-body text-[#555555]">
             {college.aboutP2}
           </p>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-5 mt-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-5 mt-3">
             {college.aboutFeatures.map(({ title, sub }, i) => {
               const Icon = featureIcons[i % featureIcons.length]
               return (
                 <div key={title} className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--green-soft, rgba(45,122,80,0.08))' }}>
+                  <div className="w-10 h-10 bg-[#F3DAB2]/30 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Icon />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className="font-display font-bold text-type-ui text-[#222222]">{title}</span>
-                    <span className="font-display font-normal text-type-cap text-[#666666]">{sub}</span>
+                    <span className="font-display font-semibold text-type-ui text-[#333333]">{title}</span>
+                    <span className="font-body font-normal text-type-cap text-[#666666]">{sub}</span>
                   </div>
                 </div>
               )
@@ -59,24 +61,35 @@ export default function WhyChooseUs({ college }) {
           </div>
         </div>
 
-        <div className="flex-1 flex justify-end relative" style={{ minHeight: '480px' }}>
-          <div className="relative w-[585px]">
+        <div className="flex-1 flex justify-end relative w-full">
+          <div className="relative w-full lg:max-w-[585px]">
             <img
               src={college.aboutImage}
               alt={`${college.shortName} Campus`}
-              className="w-full h-auto"
+              className="w-full h-auto aspect-video lg:aspect-auto"
             />
             <div
-              className="absolute -left-6 -bottom-5 w-[256px] bg-white border-l-4 rounded-3xl px-6 py-5"
+              className="hidden lg:block absolute -left-6 -bottom-6 w-[240px] bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5"
               style={{
-                boxShadow: '0px 20px 25px -5px rgba(0,0,0,0.1), 0px 8px 10px -6px rgba(0,0,0,0.1)',
-                borderLeftColor: 'var(--maroon, #2D7A50)',
+                boxShadow: '0 4px 6px -1px rgba(45,122,80,0.06), 0 8px 32px -4px rgba(45,122,80,0.14)',
+                border: '1px solid rgba(45,122,80,0.08)',
               }}
             >
-              <span className="font-display font-bold text-type-h1 block" style={{ color: 'var(--maroon, #2D7A50)' }}>{college.aboutYears}</span>
-              <span className="font-display font-medium text-type-ui text-[#666666]">
-                {college.aboutYearsLabel}
-              </span>
+              <div
+                className="h-[3px] w-full"
+                style={{ background: `linear-gradient(90deg, ${college.primaryColor}, ${college.accentColor})` }}
+              />
+              <div className="px-6 py-5">
+                <span
+                  className="font-display font-bold text-[3rem] leading-none block"
+                  style={{ color: college.primaryColor }}
+                >
+                  {college.aboutYears}
+                </span>
+                <span className="font-display font-medium text-type-body-sm leading-snug text-[#555555] mt-1.5 block">
+                  {college.aboutYearsLabel}
+                </span>
+              </div>
             </div>
           </div>
         </div>

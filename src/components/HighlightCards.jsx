@@ -21,26 +21,23 @@ const icons = [AwardIcon, MortarIcon, UsersIcon]
 export default function HighlightCards({ college }) {
   return (
     <section className="w-full section-pad" style={{ backgroundColor: '#FAF4EE' }}>
-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {college.highlightCards.map(({ title, desc }, i) => {
           const Icon = icons[i % icons.length]
           return (
             <div
               key={title}
-              className="bg-white rounded-2xl px-8 py-10 flex flex-col gap-5 premium-card"
-              style={{
-                boxShadow: '0 2px 8px rgba(45,122,80,0.10), 0 1px 3px rgba(0,0,0,0.05)',
-                borderTop: '3px solid #2D7A50',
-              }}
+              className="bg-white border border-black/[0.05] rounded-xl p-6 md:p-7 flex flex-col gap-5 transition-all duration-200 hover:-translate-y-1"
+              style={{ boxShadow: '0px 20px 40px -10px rgba(0,0,0,0.05)' }}
             >
               <div
-                className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: college.greenAccent, color: '#F3DAB2' }}
+                className="w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0"
+                style={{ backgroundColor: 'rgba(45,122,80,0.07)', color: college.primaryColor }}
               >
                 <Icon />
               </div>
               <div className="flex flex-col gap-2.5">
-                <h3 className="font-display font-semibold text-type-h6" style={{ color: college.primaryColor }}>
+                <h3 className="font-display font-semibold text-type-card-title" style={{ color: college.primaryColor }}>
                   {title}
                 </h3>
                 <p className="font-body font-normal text-type-body" style={{ color: '#606060' }}>

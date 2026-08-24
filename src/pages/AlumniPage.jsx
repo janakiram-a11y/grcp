@@ -35,7 +35,7 @@ function SectionHeader({ label, title }) {
   return (
     <div className="mb-8">
       <h2
-        className="font-display font-semibold text-type-h2-mob pb-3"
+        className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 pb-3"
         style={{
           color: greenAccent,
           borderBottom: `3px solid ${greenAccent}`,
@@ -132,7 +132,7 @@ function EnrollmentSection() {
                 <p className="font-display font-semibold text-type-body mb-1" style={{ color: primaryColor }}>
                   {s.title}
                 </p>
-                <p className="font-body text-type-ui-sm text-gray-600">{s.desc}</p>
+                <p className="font-body text-type-body text-gray-600">{s.desc}</p>
               </div>
             </div>
           ))}
@@ -160,7 +160,7 @@ function EnrollmentSection() {
         </h3>
         <ul className="space-y-3">
           {benefits.map((b, i) => (
-            <li key={i} className="flex items-start gap-3 font-body text-type-body-xs text-gray-700">
+            <li key={i} className="flex items-start gap-3 font-body text-type-body text-gray-700">
               <span
                 className="flex-shrink-0 mt-1 w-5 h-5 rounded-full flex items-center justify-center text-white text-type-label font-bold"
                 style={{ backgroundColor: greenAccent }}
@@ -201,7 +201,7 @@ function RegistrationSection() {
           <p className="font-display font-bold text-type-body mb-1" style={{ color: primaryColor }}>
             Alumni Registration Form
           </p>
-          <p className="font-body text-type-ui-sm text-gray-500 mb-3">
+          <p className="font-body text-type-body text-gray-500 mb-3">
             Download the official registration form (PDF). Fill in your details and submit to the college office or via email.
           </p>
           <a
@@ -227,7 +227,7 @@ function RegistrationSection() {
         <h3 className="font-display font-bold text-type-h6 mb-4" style={{ color: primaryColor }}>
           What Information is Required?
         </h3>
-        <ul className="space-y-2 font-body text-type-body-xs text-gray-700 list-disc list-inside">
+        <ul className="space-y-2 font-body text-type-body text-gray-700 list-disc list-inside">
           <li>Full name and contact details (phone, email, address)</li>
           <li>Year of passing and programme (B. Pharm / M. Pharm)</li>
           <li>Hall Ticket / Register number</li>
@@ -241,7 +241,7 @@ function RegistrationSection() {
         className="mt-8 p-5 rounded-lg"
         style={{ backgroundColor: `${greenAccent}0D`, borderLeft: `4px solid ${greenAccent}` }}
       >
-        <p className="font-body text-type-body-xs" style={{ color: '#374151' }}>
+        <p className="font-body text-type-body" style={{ color: '#374151' }}>
           <strong style={{ color: greenAccent }}>Alumni Coordinator:</strong> Mrs. B. Karuna Devi, Assistant Professor &mdash;{' '}
           <a href="mailto:karuna8062@grcp.ac.in" style={{ color: primaryColor, textDecoration: 'underline' }}>
             karuna8062@grcp.ac.in
@@ -409,7 +409,7 @@ function AlumniListSection() {
           <p className="font-display font-semibold text-type-body mb-1" style={{ color: primaryColor }}>
             Distinguished Alumni List (PDF)
           </p>
-          <p className="font-body text-type-ui-sm text-gray-500">
+          <p className="font-body text-type-body text-gray-500">
             Download the complete list of distinguished alumni recognised by GRCP.
           </p>
         </div>
@@ -426,7 +426,7 @@ function AlumniListSection() {
 
       {/* Contact note for full list */}
       <div
-        className="p-5 rounded-lg border-l-4 font-body text-type-body-xs"
+        className="p-5 rounded-lg border-l-4 font-body text-type-body"
         style={{ backgroundColor: '#fefce8', borderLeftColor: '#eab308', color: '#713f12' }}
       >
         <p className="font-semibold mb-1">Access the Complete Alumni Database</p>
@@ -614,7 +614,7 @@ export default function AlumniPage() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -624,7 +624,7 @@ export default function AlumniPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto">
+        <div>
           {sectionContent[section] || sectionContent['alumni-registration']}
         </div>
       </main>

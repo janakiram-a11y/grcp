@@ -99,6 +99,11 @@ const sectionConfig = {
     subtitle: 'GRCP faculty and students in leading pharmaceutical professional bodies',
     breadcrumb: ['Achievements', 'Professional Associations / Societies'],
   },
+  'faculty-achievements': {
+    title: 'Faculty Achievements',
+    subtitle: 'Awards, recognitions, and editorial contributions of GRCP faculty',
+    breadcrumb: ['Achievements', 'Faculty Achievements'],
+  },
   'student-achievements': {
     title: 'Student Achievements',
     subtitle: 'Academic excellence, research, and professional accomplishments of GRCP students',
@@ -112,7 +117,7 @@ function SectionHeader({ label, title }) {
   return (
     <div className="mb-6">
       <h2
-        className="font-display font-bold text-type-h2-mob pb-3"
+        className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 pb-3"
         style={{
           color: ac,
           borderBottom: `3px solid ${ac}`,
@@ -183,7 +188,7 @@ function ProfileCard({ person, institution, qualifications, bio }) {
         {/* Name / title / qualifications */}
         <div className="flex-1 min-w-0">
           <h3
-            className="font-display font-bold text-type-h2-mob mb-1"
+            className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 mb-1"
             style={{ color: pc }}
           >
             {name}
@@ -899,6 +904,90 @@ function ProfessionalAssociationsSection() {
   );
 }
 
+// ── Section: Faculty Achievements ────────────────────────────────────────────
+
+function CertLink({ href }) {
+  if (!href) return <span className="text-[#9CA3AF]">—</span>;
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-display font-semibold text-type-ui-sm underline whitespace-nowrap"
+      style={{ color: pc }}
+    >
+      View
+    </a>
+  );
+}
+
+function FacultyAchievementsSection() {
+  const d = college.administration.facultyAchievements;
+  return (
+    <div className="space-y-6">
+      <SectionHeader label="Achievements" title="Faculty Achievements" />
+      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
+
+      <SubHeading>Faculty Awards &amp; Recognition</SubHeading>
+      <div className="overflow-x-auto rounded-xl border" style={{ borderColor: `${pc}18` }}>
+        <table className="w-full border-collapse">
+          <thead>
+            <tr style={{ backgroundColor: ac }}>
+              {['S.No.', 'Faculty Name', 'Award / Recognition', 'Organization', 'Year', 'Level', 'Certificate'].map((h) => (
+                <th key={h} className="font-display font-semibold text-type-ui-sm text-white text-left px-5 py-3.5 whitespace-nowrap first:rounded-tl-xl last:rounded-tr-xl">
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {d.awards.map((m, i) => (
+              <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#FAFAFA' : '#FFFFFF' }}>
+                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{i + 1}</td>
+                <td className="font-display font-semibold text-type-ui px-5 py-3.5 border-b align-top" style={{ color: pc, borderColor: `${pc}10` }}>{m.name}</td>
+                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.title}</td>
+                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.org}</td>
+                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.year}</td>
+                <td className="px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}><RoleBadge role={m.level} /></td>
+                <td className="px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}><CertLink href={m.cert} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <SubHeading>Editorial &amp; Reviewer Roles</SubHeading>
+      <div className="overflow-x-auto rounded-xl border" style={{ borderColor: `${pc}18` }}>
+        <table className="w-full border-collapse">
+          <thead>
+            <tr style={{ backgroundColor: ac }}>
+              {['S.No.', 'Faculty Name', 'Journal', 'Indexing', 'Role', 'Level', 'Year', 'Certificate'].map((h) => (
+                <th key={h} className="font-display font-semibold text-type-ui-sm text-white text-left px-5 py-3.5 whitespace-nowrap first:rounded-tl-xl last:rounded-tr-xl">
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {d.editorialRoles.map((m, i) => (
+              <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#FAFAFA' : '#FFFFFF' }}>
+                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{i + 1}</td>
+                <td className="font-display font-semibold text-type-ui px-5 py-3.5 border-b align-top" style={{ color: pc, borderColor: `${pc}10` }}>{m.name}</td>
+                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.journal}</td>
+                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.indexing}</td>
+                <td className="px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}><RoleBadge role={m.role} /></td>
+                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.level}</td>
+                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.year}</td>
+                <td className="px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}><CertLink href={m.cert} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 // ── Section: Student Achievements ────────────────────────────────────────────
 
 function StudentAchievementsSection() {
@@ -912,7 +1001,7 @@ function StudentAchievementsSection() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {d.highlights.map((h, i) => (
           <div key={i} className="rounded-xl p-5 text-center" style={{ backgroundColor: `${pc}08`, border: `1px solid ${pc}14` }}>
-            <span className="font-display font-bold text-type-h2-mob block" style={{ color: pc }}>{h.count}</span>
+            <span className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 block" style={{ color: pc }}>{h.count}</span>
             <span className="font-display text-type-cap uppercase tracking-wide block" style={{ color: ac }}>{h.label}</span>
             <span className="font-body text-type-cap text-[#6B7280] block mt-0.5">{h.year}</span>
           </div>
@@ -924,7 +1013,7 @@ function StudentAchievementsSection() {
         {d.categories.map((cat, i) => (
           <div key={i} className="rounded-2xl p-5" style={{ border: `1px solid ${pc}18`, backgroundColor: '#FAFAFA' }}>
             <h3 className="font-display font-bold text-type-body mb-2" style={{ color: pc }}>{cat.title}</h3>
-            <p className="font-body text-type-body-xs text-[#474747] mb-3">{cat.desc}</p>
+            <p className="font-body text-type-body text-[#474747] mb-3">{cat.desc}</p>
             {cat.href && (
               <a
                 href={cat.href}
@@ -963,6 +1052,7 @@ const sectionRegistry = {
   'equal-opportunity': { label: 'Equal Opportunity Cell', content: <EqualOpportunitySection /> },
   'other-committees': { label: 'Other Committees', content: <OtherCommitteesSection /> },
   'professional-associations': { label: 'Professional Associations', content: <ProfessionalAssociationsSection /> },
+  'faculty-achievements': { label: 'Faculty Achievements', content: <FacultyAchievementsSection /> },
   'student-achievements': { label: 'Student Achievements', content: <StudentAchievementsSection /> },
 };
 

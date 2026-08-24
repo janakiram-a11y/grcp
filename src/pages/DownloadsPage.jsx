@@ -101,7 +101,7 @@ export default function DownloadsPage() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -111,10 +111,10 @@ export default function DownloadsPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto">
+        <div>
 
           <div className="mb-8">
-            <h2 className="font-display font-bold text-type-h2-mob lg:text-type-h2 mb-2" style={{ color: accent }}>
+            <h2 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 mb-2" style={{ color: accent }}>
               Document Repository
             </h2>
             <div className="w-14 h-[3px] rounded-full mb-6" style={{ backgroundColor: accent }} />

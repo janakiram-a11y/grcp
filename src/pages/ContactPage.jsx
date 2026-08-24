@@ -58,7 +58,7 @@ function ContactInfoCards() {
       Icon: MapPinIcon,
       heading: 'Our Address',
       content: (
-        <p className="font-body text-type-body-xs text-[#474747]">
+        <p className="font-body text-type-body text-[#474747]">
           {college.address}
         </p>
       ),
@@ -183,7 +183,7 @@ function WorkingHoursCard() {
               className="rounded-xl p-4"
               style={{ backgroundColor: `${college.primaryColor}08`, border: `1px solid ${college.primaryColor}18` }}
             >
-              <p className="font-body text-type-ui-sm text-[#474747]">
+              <p className="font-body text-type-body text-[#474747]">
                 <span className="font-semibold">Ragging Helpline (24×7):</span>{' '}
                 <a
                   href="tel:18001805522"
@@ -214,12 +214,12 @@ function ContactForm() {
         style={{ borderColor: `${college.primaryColor}18` }}
       >
         <h2
-          className="font-display font-bold text-type-h2-mob mb-1"
+          className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 mb-1"
           style={{ color: college.greenAccent }}
         >
           Get In Touch
         </h2>
-        <p className="font-body text-type-body-xs text-[#6B7280] mb-7">
+        <p className="font-body text-type-body text-[#6B7280] mb-7">
           Send us a message and we'll get back to you within 1–2 working days.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
@@ -315,7 +315,7 @@ function HowToReachSection() {
   return (
     <section>
       <h2
-        className="font-display font-bold text-type-h2-mob mb-6"
+        className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 mb-6"
         style={{ color: college.greenAccent }}
       >
         How to Reach Us
@@ -339,7 +339,7 @@ function HowToReachSection() {
             >
               {o.mode}
             </h4>
-            <p className="font-body text-type-ui-sm text-[#474747]">{o.desc}</p>
+            <p className="font-body text-type-body text-[#474747]">{o.desc}</p>
           </div>
         ))}
       </div>
@@ -347,7 +347,7 @@ function HowToReachSection() {
         className="mt-5 rounded-xl p-5 border"
         style={{ borderColor: `${college.greenAccent}30`, backgroundColor: `${college.greenAccent}0D` }}
       >
-        <p className="font-body text-type-body-xs text-[#474747]">
+        <p className="font-body text-type-body text-[#474747]">
           <span className="font-semibold">Landmark:</span> GRCP is situated on Nizampet Bachupally Road, Kukatpally. The college is easily identifiable
           from the main road and has adequate parking for visitors.
         </p>
@@ -360,7 +360,7 @@ function GoogleMapSection() {
   return (
     <section>
       <h2
-        className="font-display font-bold text-type-h2-mob mb-6"
+        className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 mb-6"
         style={{ color: college.greenAccent }}
       >
         Our Location
@@ -397,7 +397,7 @@ function GrievanceSection() {
   return (
     <section>
       <h2
-        className="font-display font-bold text-type-h2-mob mb-4"
+        className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 mb-4"
         style={{ color: college.greenAccent }}
       >
         Grievance Redressal
@@ -419,7 +419,7 @@ function GrievanceSection() {
         >
           Student / Faculty / Parent Grievances
         </p>
-        <p className="font-body text-type-body-xs text-[#474747]">
+        <p className="font-body text-type-body text-[#474747]">
           For any academic or administrative grievances, students may contact the Grievance Redressal
           Committee at{' '}
           <a
@@ -514,7 +514,7 @@ export default function ContactPage() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -524,7 +524,7 @@ export default function ContactPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto space-y-12">
+        <div className="space-y-12">
           <ContactInfoCards />
           <WorkingHoursCard />
           <GoogleMapSection />

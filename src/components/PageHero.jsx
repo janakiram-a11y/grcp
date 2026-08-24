@@ -4,7 +4,7 @@ export default function PageHero({ college, title, subtitle, breadcrumb = [], bg
   const hasBgImage = !!bgImage;
 
   return (
-    <section className="relative w-full overflow-hidden" style={{ minHeight: '260px' }}>
+    <section className="relative w-full overflow-hidden">
 
       {/* ── Background image ───────────────────────────────────── */}
       {bgImage && (
@@ -66,7 +66,7 @@ export default function PageHero({ college, title, subtitle, breadcrumb = [], bg
       />
 
       {/* ── Content ──────────────────────────────────────────────── */}
-      <div className="relative z-10 w-full px-6 py-10 md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[80px] flex flex-col gap-4">
+      <div className="relative z-10 w-full px-5 py-10 md:px-16 md:py-12 lg:px-[120px] lg:py-14 flex flex-col gap-4">
 
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 flex-wrap">
@@ -99,7 +99,7 @@ export default function PageHero({ college, title, subtitle, breadcrumb = [], bg
 
         {/* Title */}
         <h1
-          className="font-display font-bold text-type-h1-mob lg:text-type-h1 max-w-[700px]"
+          className="font-display font-bold text-type-h1-mob md:text-type-h1-tab lg:text-type-h1 max-w-[700px]"
           style={{
             color: '#EEF7F1',
             textShadow: '0 2px 24px rgba(0,0,0,0.40)',

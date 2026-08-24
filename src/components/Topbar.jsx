@@ -19,13 +19,6 @@ function SearchIcon() {
     </svg>
   );
 }
-function CloseIcon() {
-  return (
-    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  );
-}
 function ArrowIcon() {
   return (
     <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -69,11 +62,6 @@ export default function Topbar({ college }) {
   const navigate                    = useNavigate();
 
   const results = getResults(query);
-
-  /* Auto-focus */
-  useEffect(() => {
-    if (searchOpen && inputRef.current) inputRef.current.focus();
-  }, [searchOpen]);
 
   /* Close on Escape / click outside */
   useEffect(() => {
@@ -139,7 +127,7 @@ export default function Topbar({ college }) {
       className="w-full"
       style={{ backgroundColor: '#ffffff', borderBottom: '1px solid rgba(45,122,80,0.15)' }}
     >
-      <div className="max-w-[1320px] mx-auto px-4 sm:px-8 lg:px-[60px] py-[8px] flex items-center gap-4 lg:gap-6">
+      <div className="max-w-[1320px] mx-auto container-px py-[6px] flex items-center gap-4 lg:gap-6">
 
         {/* Left: counselling code */}
         <div className="shrink-0 flex items-center">
@@ -184,81 +172,54 @@ export default function Topbar({ college }) {
         {/* Right: Search with live dropdown */}
         <div
           ref={containerRef}
-          className="shrink-0 flex items-center justify-end"
+          className="shrink-0"
           style={{ width: 260, position: 'relative' }}
         >
           <form
             onSubmit={handleSubmit}
             role="search"
-            className="flex items-center gap-1.5 w-full justify-end"
+            className="flex items-stretch w-full overflow-hidden"
+            style={{
+              height: 36,
+              borderRadius: 8,
+              border: '1px solid #E2E4E3',
+              backgroundColor: '#fff',
+              transition: 'border-color 0.15s, box-shadow 0.15s',
+              boxShadow: searchOpen ? `0 0 0 3px ${college.accentColor}1A` : 'none',
+              borderColor: searchOpen ? college.accentColor : '#E2E4E3',
+            }}
           >
             {/* Input */}
-            <div
-              style={{
-                overflow: 'hidden',
-                width: searchOpen ? '100%' : 0,
-                maxWidth: 200,
-                transition: 'width 0.25s ease',
-                flexShrink: 0,
-              }}
-            >
-              <input
-                ref={inputRef}
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search GRCP…"
-                aria-label="Search"
-                tabIndex={searchOpen ? 0 : -1}
-                autoComplete="off"
-                className="font-display text-type-ui-sm outline-none bg-white border rounded px-3 py-1 w-full placeholder:text-gray-400"
-                style={{
-                  borderColor: 'rgba(199,34,53,0.40)',
-                  color: '#222',
-                  borderRadius: '4px',
-                  display: 'block',
-                }}
-                onFocus={(e) => (e.currentTarget.style.borderColor = college.accentColor)}
-                onBlur={(e)  => (e.currentTarget.style.borderColor = 'rgba(199,34,53,0.40)')}
-              />
-            </div>
+            <input
+              ref={inputRef}
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onFocus={() => setSearchOpen(true)}
+              placeholder="Search pages, faculty, programmes…"
+              aria-label="Search"
+              autoComplete="off"
+              className="font-display text-type-ui-sm outline-none bg-transparent flex-1 min-w-0 px-3.5 placeholder:text-gray-400"
+              style={{ color: '#222' }}
+            />
 
-            {/* Search icon */}
+            {/* Search button */}
             <button
-              type={searchOpen ? 'submit' : 'button'}
-              aria-label={searchOpen ? 'Run search' : 'Open search'}
-              onClick={!searchOpen ? () => setSearchOpen(true) : undefined}
-              className="flex items-center justify-center w-8 h-8 rounded transition-colors shrink-0"
-              style={{ color: college.accentColor }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#A81C2E')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = college.accentColor)}
+              type="submit"
+              aria-label="Search"
+              className="flex items-center justify-center shrink-0 transition-colors"
+              style={{ width: 42, backgroundColor: college.accentColor, color: '#fff' }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#A81C2E')}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = college.accentColor)}
             >
               <SearchIcon />
-            </button>
-
-            {/* Close icon */}
-            <button
-              type="button"
-              aria-label="Close search"
-              onClick={closeSearch}
-              className="flex items-center justify-center w-7 h-7 rounded transition-colors shrink-0"
-              style={{
-                color: 'rgba(199,34,53,0.55)',
-                opacity: searchOpen ? 1 : 0,
-                pointerEvents: searchOpen ? 'auto' : 'none',
-                transition: 'opacity 0.2s ease',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#A81C2E')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(199,34,53,0.55)')}
-            >
-              <CloseIcon />
             </button>
           </form>
 
           {/* ── Live results dropdown ─────────────────────────────────── */}
           {searchOpen && results.length > 0 && (
             <div
-              className="absolute top-full right-0 mt-2 bg-white rounded-xl overflow-hidden"
+              className="absolute top-full left-0 mt-2 bg-white rounded-xl overflow-hidden"
               style={{
                 width: 320,
                 boxShadow: '0 8px 32px -4px rgba(0,0,0,0.14), 0 2px 8px -2px rgba(0,0,0,0.08)',
@@ -330,7 +291,7 @@ export default function Topbar({ college }) {
           {/* No results */}
           {searchOpen && query.trim().length > 1 && results.length === 0 && (
             <div
-              className="absolute top-full right-0 mt-2 bg-white rounded-xl px-5 py-4"
+              className="absolute top-full left-0 mt-2 bg-white rounded-xl px-5 py-4"
               style={{
                 width: 280,
                 boxShadow: '0 8px 32px -4px rgba(0,0,0,0.12)',

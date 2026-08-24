@@ -13,7 +13,6 @@ import AlumniPage from './pages/AlumniPage';
 import ContactPage from './pages/ContactPage';
 import AlumniAssociationPage from './pages/AlumniAssociationPage';
 import MandatoryDisclosuresPage from './pages/MandatoryDisclosuresPage';
-import NbaPage from './pages/NbaPage';
 import EventsPage from './pages/EventsPage';
 import EBulletinPage from './pages/EBulletinPage';
 import DownloadsPage from './pages/DownloadsPage';
@@ -80,8 +79,8 @@ export default function App() {
         {/* Standalone pages */}
         <Route path="/alumni-association" element={<AlumniAssociationPage />} />
         <Route path="/mandatory-disclosures" element={<MandatoryDisclosuresPage />} />
-        <Route path="/nba" element={<NbaPage />} />
-        <Route path="/nirf" element={<NbaPage />} />
+        <Route path="/nba" element={<Navigate to="/mandatory-disclosures#accreditation-ranking-disclosures" replace />} />
+        <Route path="/nirf" element={<Navigate to="/mandatory-disclosures#accreditation-ranking-disclosures" replace />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/e-bulletin" element={<EBulletinPage />} />
         <Route path="/downloads" element={<DownloadsPage />} />

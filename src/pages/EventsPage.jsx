@@ -79,7 +79,7 @@ function EventCard({ event }) {
         {event.title}
       </h3>
       {event.desc && (
-        <p className="font-body text-type-ui-sm italic text-[#6B7280]">{event.desc}</p>
+        <p className="font-body text-type-body italic text-[#6B7280]">{event.desc}</p>
       )}
       <a
         href={event.link}
@@ -106,7 +106,7 @@ export default function EventsPage() {
   const currentEvents = activeYear === '2026' ? events2026 : events2025;
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -116,10 +116,10 @@ export default function EventsPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto">
+        <div>
 
           <div className="mb-6">
-            <h2 className="font-display font-bold text-type-h2-mob mb-2" style={{ color: accent }}>
+            <h2 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 mb-2" style={{ color: accent }}>
               College Events
             </h2>
             <div className="w-14 h-[3px] rounded-full mb-6" style={{ backgroundColor: accent }} />

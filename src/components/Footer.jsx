@@ -58,7 +58,7 @@ function ColHeading({ children }) {
 }
 
 function FLink({ href, external, college, children }) {
-  const cls = 'font-display text-type-ui leading-relaxed transition-colors duration-150';
+  const cls = 'font-display text-type-footer-link leading-relaxed transition-colors duration-150';
   const style = { color: '#4B5563' };
   const hoverIn  = (e) => (e.currentTarget.style.color = college.greenAccent);
   const hoverOut = (e) => (e.currentTarget.style.color = '#4B5563');
@@ -98,9 +98,10 @@ function LinkList({ items, college }) {
 export default function Footer({ college }) {
   return (
     <footer className="w-full" style={{ backgroundColor: '#F8FAF8', borderTop: '1px solid rgba(45,122,80,0.14)' }}>
+      <div className="max-w-[1320px] mx-auto container-px">
 
       {/* ── Brand strip — logo + tagline + socials ───────────────────────── */}
-      <div className="max-w-[1320px] mx-auto px-6 sm:px-10 lg:px-[120px] pt-12 pb-8">
+      <div className="pt-12 pb-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
           <div className="flex flex-col gap-2">
             <img
@@ -130,12 +131,10 @@ export default function Footer({ college }) {
       </div>
 
       {/* ── Thin divider ─────────────────────────────────────────────────── */}
-      <div className="max-w-[1320px] mx-auto px-6 sm:px-10 lg:px-[120px]">
-        <div style={{ height: 1, backgroundColor: 'rgba(45,122,80,0.10)' }} />
-      </div>
+      <div style={{ height: 1, backgroundColor: 'rgba(45,122,80,0.10)' }} />
 
       {/* ── Main columns ─────────────────────────────────────────────────── */}
-      <div className="max-w-[1320px] mx-auto px-6 sm:px-10 lg:px-[120px] pt-10 pb-12">
+      <div className="pt-10 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12">
 
           {/* ── Col 1: Committees ─────────────────────────────────────────── */}
@@ -170,7 +169,7 @@ export default function Footer({ college }) {
               {/* Address */}
               <li className="flex items-start gap-3">
                 <span style={{ color: '#2D7A50' }}><PinIcon /></span>
-                <span className="font-display text-type-ui leading-relaxed" style={{ color: '#4B5563' }}>
+                <span className="font-display text-type-footer-link leading-relaxed" style={{ color: '#4B5563' }}>
                   {college.address}
                 </span>
               </li>
@@ -179,7 +178,7 @@ export default function Footer({ college }) {
               <li className="flex items-center gap-3">
                 <span style={{ color: '#2D7A50' }}><PhoneIcon /></span>
                 <a href={`tel:${college.phone}`}
-                  className="font-display text-type-ui transition-colors" style={{ color: '#4B5563' }}
+                  className="font-display text-type-footer-link transition-colors" style={{ color: '#4B5563' }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = '#C72235')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = '#4B5563')}
                 >
@@ -191,7 +190,7 @@ export default function Footer({ college }) {
               <li className="flex items-center gap-3">
                 <span style={{ color: '#2D7A50' }}><MailIcon /></span>
                 <a href={`mailto:${college.email}`}
-                  className="font-display text-type-ui transition-colors" style={{ color: '#4B5563' }}
+                  className="font-display text-type-footer-link transition-colors" style={{ color: '#4B5563' }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = '#C72235')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = '#4B5563')}
                 >
@@ -219,12 +218,10 @@ export default function Footer({ college }) {
       </div>
 
       {/* ── Divider ─────────────────────────────────────────────────────── */}
-      <div className="max-w-[1320px] mx-auto px-6 sm:px-10 lg:px-[120px]">
-        <div style={{ height: 1, backgroundColor: 'rgba(45,122,80,0.12)' }} />
-      </div>
+      <div style={{ height: 1, backgroundColor: 'rgba(45,122,80,0.10)' }} />
 
       {/* ── Bottom bar ──────────────────────────────────────────────────── */}
-      <div className="max-w-[1320px] mx-auto px-6 sm:px-10 lg:px-[120px] py-5">
+      <div className="py-5">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="font-display text-type-ui-sm" style={{ color: '#6B7280' }}>
             © {new Date().getFullYear()} {college.fullName}. All rights reserved.
@@ -247,6 +244,7 @@ export default function Footer({ college }) {
         </div>
       </div>
 
+      </div>
     </footer>
   );
 }

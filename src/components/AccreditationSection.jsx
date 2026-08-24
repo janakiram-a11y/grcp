@@ -62,33 +62,33 @@ const iconKeys = ['Accreditation', 'PCI', 'Research', 'Green', 'Infrastructure',
 export default function AccreditationSection({ college }) {
   return (
     <section className="w-full bg-[#F6F1F2] section-pad">
-      <div className="max-w-[1200px] mx-auto flex flex-col gap-14">
+      <div className="flex flex-col gap-14">
 
         {/* Header */}
         <div className="flex flex-col items-center gap-4">
-          <h2 className="font-display font-semibold text-type-h2-mob lg:text-type-h2 text-center max-w-[720px]" style={{ color: 'var(--maroon, #C72235)' }}>
+          <h2 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 text-center max-w-[720px]" style={{ color: 'var(--maroon, #C72235)' }}>
             {college.whyChooseHeading}
           </h2>
         </div>
 
         {/* 4-col × 2-row grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {college.whyChooseCards.map((card, i) => {
             const Icon = icons[iconKeys[i % iconKeys.length]]
             return (
               <div
                 key={card.title}
-                className="bg-white border border-black/[0.05] rounded-xl p-6 flex flex-col gap-4 transition-all duration-200 hover:-translate-y-1"
-                style={{ boxShadow: '0 4px 24px -6px rgba(0,0,0,0.07)' }}
+                className="bg-white border border-black/[0.05] rounded-xl p-6 md:p-7 flex flex-col gap-4 transition-all duration-200 hover:-translate-y-1"
+                style={{ boxShadow: '0px 20px 40px -10px rgba(0,0,0,0.05)' }}
               >
                 <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
-                  style={{ backgroundColor: 'var(--green-soft, rgba(45,122,80,0.08))' }}
+                  className="w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{ backgroundColor: 'var(--green-soft, rgba(45,122,80,0.07))' }}
                 >
                   <Icon />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h3 className="font-display font-semibold text-type-body text-[#1A1A2E]">
+                  <h3 className="font-display font-semibold text-type-card-title text-[#1A1A2E]">
                     {card.title}
                   </h3>
                   <p className="font-body font-normal text-type-body text-[#666]">

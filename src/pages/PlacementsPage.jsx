@@ -15,7 +15,7 @@ function SectionHeader({ label, title }) {
   return (
     <div className="mb-6">
       <h2
-        className="font-display font-bold text-type-h2-mob pb-3"
+        className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 pb-3"
         style={{
           color: ACCENT,
           borderBottom: `3px solid ${ACCENT}`,
@@ -97,7 +97,7 @@ function OverviewSection() {
               style={{ borderColor: `${PRIMARY}18`, backgroundColor: '#FAFAFA' }}
             >
               <p
-                className="font-display font-bold text-type-h2-mob lg:text-type-h2 leading-none mb-1"
+                className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 leading-none mb-1"
                 style={{ color: PRIMARY }}
               >
                 {s.value}
@@ -328,7 +328,7 @@ export default function PlacementsPage() {
     activeSection === 'placement-status' ? <PlacementStatusSection /> : <OverviewSection />;
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -338,7 +338,7 @@ export default function PlacementsPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto">{content}</div>
+        <div>{content}</div>
       </main>
       <AdmissionsCTA college={college} />
       <Footer college={college} />

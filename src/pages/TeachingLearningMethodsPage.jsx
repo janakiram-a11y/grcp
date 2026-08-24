@@ -14,7 +14,7 @@ export default function TeachingLearningMethodsPage() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -24,7 +24,7 @@ export default function TeachingLearningMethodsPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto">
+        <div>
           <div
             className="rounded-2xl overflow-hidden border"
             style={{ borderColor: `${college.primaryColor}18`, minHeight: 800 }}

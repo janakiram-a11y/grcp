@@ -24,13 +24,13 @@ const gradients = [
 */
 
 const layout = [
-  { col: '1 / 3', row: '1 / 3', titleSize: 'text-type-h3-mob', descSize: 'text-type-ui', pad: 'p-7' },     // 0 – large
-  { col: '3 / 4', row: '1 / 2', titleSize: 'text-type-body', descSize: 'text-type-cap', pad: 'p-4' },     // 1
-  { col: '4 / 5', row: '1 / 3', titleSize: 'text-type-body', descSize: 'text-type-cap', pad: 'p-4' },     // 2 – tall (fills Scholastic gap)
-  { col: '3 / 4', row: '2 / 3', titleSize: 'text-type-body', descSize: 'text-type-cap', pad: 'p-4' },     // 3
-  { col: '1 / 2', row: '3 / 4', titleSize: 'text-type-body', descSize: 'text-type-cap', pad: 'p-4' },     // 4
-  { col: '2 / 4', row: '3 / 4', titleSize: 'text-type-body-lg', descSize: 'text-type-ui-sm', pad: 'p-5' }, // 5 – medium
-  { col: '4 / 5', row: '3 / 4', titleSize: 'text-type-body', descSize: 'text-type-cap', pad: 'p-4' },     // 6
+  { lgPlacement: 'lg:col-[1/3] lg:row-[1/3]', titleSize: 'text-type-h3-mob', descSize: 'text-type-ui', pad: 'p-7' },     // 0 – large
+  { lgPlacement: 'lg:col-[3/4] lg:row-[1/2]', titleSize: 'text-type-body', descSize: 'text-type-cap', pad: 'p-4' },     // 1
+  { lgPlacement: 'lg:col-[4/5] lg:row-[1/3]', titleSize: 'text-type-body', descSize: 'text-type-cap', pad: 'p-4' },     // 2 – tall (fills Scholastic gap)
+  { lgPlacement: 'lg:col-[3/4] lg:row-[2/3]', titleSize: 'text-type-body', descSize: 'text-type-cap', pad: 'p-4' },     // 3
+  { lgPlacement: 'lg:col-[1/2] lg:row-[3/4]', titleSize: 'text-type-body', descSize: 'text-type-cap', pad: 'p-4' },     // 4
+  { lgPlacement: 'lg:col-[2/4] lg:row-[3/4]', titleSize: 'text-type-body-lg', descSize: 'text-type-ui-sm', pad: 'p-5' }, // 5 – medium
+  { lgPlacement: 'lg:col-[4/5] lg:row-[3/4]', titleSize: 'text-type-body', descSize: 'text-type-cap', pad: 'p-4' },     // 6
 ]
 
 export default function CampusLife({ college }) {
@@ -38,12 +38,12 @@ export default function CampusLife({ college }) {
 
   return (
     <section className="w-full bg-white section-pad">
-      <div className="max-w-[1200px] mx-auto flex flex-col gap-10">
+      <div className="flex flex-col gap-10">
 
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
           <div className="flex flex-col gap-3">
-            <h2 className="font-display font-bold text-type-h2-mob lg:text-type-h2" style={{ color: 'var(--maroon, #C72235)' }}>
+            <h2 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2" style={{ color: 'var(--maroon, #C72235)' }}>
               {college.campusLifeHeading}
             </h2>
           </div>
@@ -58,25 +58,16 @@ export default function CampusLife({ college }) {
           </Link>
         </div>
 
-        {/* Bento grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gridTemplateRows: '240px 200px 220px',
-            gap: '14px',
-          }}
-        >
+        {/* Bento grid — stacked/2-col on mobile & tablet, full bento at lg+ */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-[14px] lg:[grid-template-rows:240px_200px_220px]">
           {cards.map((card, i) => {
-            const { col, row, titleSize, descSize, pad } = layout[i]
+            const { lgPlacement, titleSize, descSize, pad } = layout[i]
             return (
               <Link
                 key={card.title}
                 to={`/gallery/${card.slug}`}
-                className="relative rounded-2xl overflow-hidden block"
+                className={`relative rounded-2xl overflow-hidden block h-[200px] sm:h-[240px] md:h-[280px] lg:h-auto ${lgPlacement}`}
                 style={{
-                  gridColumn: col,
-                  gridRow: row,
                   background: gradients[i % gradients.length],
                   textDecoration: 'none',
                 }}

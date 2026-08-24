@@ -1,10 +1,11 @@
 /**
  * AntiRaggingModal — pixel-perfect replica of grcp.ac.in popup.
  *
- * Typography matches Bootstrap 4.4.1 used on the reference site:
- *  h4  → 1.5rem  / weight 500 / line-height 1.2
- *  h5  → 1.25rem / weight 500 / line-height 1.2
- *  p   → 1rem    / weight 400 / line-height 1.5 / margin-bottom 1rem
+ * Typography based on Bootstrap 4.4.1 used on the reference site, with body
+ * text bumped to the site-wide 18px body size:
+ *  h4  → 1.5rem   / weight 500 / line-height 1.2
+ *  h5  → 1.25rem  / weight 500 / line-height 1.2
+ *  p   → 1.125rem / weight 400 / line-height 1.5 / margin-bottom 1rem
  *  Font family: Bootstrap system-font stack
  *
  * Display logic (controlled by GrcpPage):
@@ -46,44 +47,45 @@ export default function AntiRaggingModal({ onClose }) {
     color: '#007bff',
     textDecoration: 'none',
     fontFamily: FONT,
-    fontSize: '1rem',
+    fontSize: '1.125rem',
   };
   const tealLink = {
     color: '#17a2b8',
     textDecoration: 'none',
     fontFamily: FONT,
-    fontSize: '1rem',
+    fontSize: '1.125rem',
   };
 
   /* ── Shared paragraph style ─────────────────────────────────────────────── */
   const p = {
     fontFamily: FONT,
-    fontSize: '1rem',
+    fontSize: '1.125rem',
     fontWeight: 400,
     lineHeight: '1.5',
     color: '#212529',
-    margin: '0 0 1rem',
+    margin: '0 0 1.15rem',
   };
 
   return (
     /* ── Backdrop ────────────────────────────────────────────────────────── */
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center"
-      style={{ backgroundColor: 'rgba(0,0,0,0.5)', padding: '0.5rem' }}
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6"
+      style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="anti-ragging-title"
     >
-      {/* ── Modal card ──────────────────────────────────────────────────── */}
+      {/* ── Modal card — square aspect ratio, scrolls internally if content overflows ── */}
       <div
-        className="relative bg-white w-full"
+        className="relative bg-white w-full flex flex-col"
         style={{
-          maxWidth: '500px',
-          maxHeight: '90vh',
+          maxWidth: '600px',
+          aspectRatio: '1 / 1',
+          maxHeight: '92vh',
           overflowY: 'auto',
           border: '2px solid #dc3545',
-          borderRadius: '.3rem',
+          borderRadius: '.5rem',
           boxShadow: '0 3px 9px rgba(0,0,0,0.5)',
           fontFamily: FONT,
           color: '#212529',
@@ -96,8 +98,8 @@ export default function AntiRaggingModal({ onClose }) {
           aria-label="Close"
           style={{
             position: 'absolute',
-            top: '12px',
-            right: '16px',
+            top: '1.25rem',
+            right: '1.5rem',
             fontSize: '1.5rem',
             fontWeight: '700',
             lineHeight: '1',
@@ -117,9 +119,9 @@ export default function AntiRaggingModal({ onClose }) {
         </button>
 
         {/* ── Body ─────────────────────────────────────────────────────── */}
-        <div style={{ padding: '1rem' }}>
+        <div className="p-6 sm:p-8 md:p-10">
 
-          {/* h4 — Bootstrap 4: 1.5rem, weight 500, margin-bottom 0.5rem */}
+          {/* h4 — Bootstrap 4: 1.5rem, weight 500 */}
           <h4
             id="anti-ragging-title"
             style={{
@@ -128,7 +130,7 @@ export default function AntiRaggingModal({ onClose }) {
               fontWeight: 500,
               lineHeight: '1.2',
               color: '#212529',
-              margin: '0 0 0.5rem',
+              margin: '0 0 1rem',
               paddingRight: '2rem',
             }}
           >
@@ -144,7 +146,7 @@ export default function AntiRaggingModal({ onClose }) {
             <strong>1800-180-5522</strong>
           </p>
 
-          {/* h5 — Bootstrap 4: 1.25rem, weight 500, margin-bottom 0.5rem */}
+          {/* h5 — Bootstrap 4: 1.25rem, weight 500 */}
           <h5
             style={{
               fontFamily: FONT,
@@ -152,7 +154,7 @@ export default function AntiRaggingModal({ onClose }) {
               fontWeight: 500,
               lineHeight: '1.2',
               color: '#212529',
-              margin: '0 0 0.5rem',
+              margin: '0.5rem 0 0.75rem',
             }}
           >
             UGC Monitoring Agency
@@ -183,7 +185,7 @@ export default function AntiRaggingModal({ onClose }) {
           </p>
 
           {/* Nodal officers — bold paragraph */}
-          <p style={{ ...p, fontWeight: 700 }}>
+          <p style={{ ...p, fontWeight: 700, marginTop: '0.5rem' }}>
             Contact Details of the Nodal Officers of Anti-Ragging Committee and Squad
           </p>
 

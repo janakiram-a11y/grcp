@@ -14,13 +14,18 @@
 import Topbar from './Topbar';
 import Navbar from './Navbar';
 import NavStrip from './NavStrip';
+import useScrolled from '../hooks/useScrolled';
 
 export default function SiteHeader({ college }) {
+  const scrolled = useScrolled();
+
   return (
     <>
       <Topbar college={college} />
-      <Navbar college={college} />
-      <NavStrip college={college} />
+      <div className="sticky top-0 z-50">
+        <Navbar college={college} scrolled={scrolled} />
+        <NavStrip college={college} scrolled={scrolled} />
+      </div>
     </>
   );
 }

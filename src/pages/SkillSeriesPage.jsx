@@ -52,7 +52,7 @@ export default function SkillSeriesPage() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -62,7 +62,7 @@ export default function SkillSeriesPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto space-y-12">
+        <div className="space-y-12">
 
           {/* Intro */}
           <div className="max-w-[760px]">

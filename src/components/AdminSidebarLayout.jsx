@@ -19,7 +19,7 @@ export default function AdminSidebarLayout({
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -29,7 +29,7 @@ export default function AdminSidebarLayout({
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto">
+        <div>
           {currentSection?.content}
         </div>
       </main>

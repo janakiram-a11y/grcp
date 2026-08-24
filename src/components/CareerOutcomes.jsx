@@ -1,10 +1,80 @@
+import recruiterLogos from '../data/recruiterLogos';
+
+const half = Math.ceil(recruiterLogos.length / 2);
+const rowA = recruiterLogos.slice(0, half);
+const rowB = recruiterLogos.slice(half);
+
+function LogoRow({ logos, reverse }) {
+  return (
+    <div
+      className="overflow-hidden"
+      style={{
+        maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+      }}
+    >
+      <div
+        className="recruiter-scroll-track"
+        style={{ animationDirection: reverse ? 'reverse' : 'normal' }}
+      >
+        {[...logos, ...logos].map((logo, idx) => (
+          <div
+            key={idx}
+            className="flex items-center justify-center flex-shrink-0 bg-white rounded-lg border"
+            style={{ width: 128, height: 64, marginRight: 14, borderColor: 'rgba(45,122,80,0.14)' }}
+          >
+            <img
+              src={logo.src}
+              alt={logo.name}
+              title={logo.name}
+              loading="lazy"
+              style={{ maxWidth: 96, maxHeight: 44, width: 'auto', height: 'auto', objectFit: 'contain' }}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function RecruiterLogoSlider() {
+  return (
+    <div
+      className="w-full rounded-2xl bg-white p-6 flex flex-col gap-4"
+      style={{ border: '1px solid rgba(229,231,235,0.7)', boxShadow: '0 1px 8px rgba(45,122,80,0.07), 0 1px 3px rgba(0,0,0,0.05)' }}
+    >
+      <style>{`
+        @keyframes recruiter-scroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .recruiter-scroll-track {
+          display: flex;
+          width: max-content;
+          animation: recruiter-scroll 32s linear infinite;
+        }
+        .recruiter-scroll-track:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+      <p className="font-display font-bold text-type-cap uppercase tracking-[0.12em] text-[#222222] opacity-70">
+        Our Recruiting Partners
+      </p>
+      <div className="flex flex-col gap-3">
+        <LogoRow logos={rowA} />
+        <LogoRow logos={rowB} reverse />
+      </div>
+    </div>
+  );
+}
+
 export default function CareerOutcomes({ college }) {
   return (
     <section className="w-full section-pad" style={{ backgroundColor: 'var(--cream, #F0F7F3)' }}>
-      <div className="max-w-[1200px] mx-auto flex items-center gap-24">
+      <div className="flex flex-col lg:flex-row lg:items-center gap-10">
         <div className="flex flex-col flex-1 gap-6">
           <div>
-            <h2 className="font-display font-semibold text-type-h2-mob lg:text-type-h2 mb-4" style={{ color: 'var(--maroon, #C72235)' }}>
+            <h2 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 mb-4" style={{ color: 'var(--maroon, #C72235)' }}>
               {college.careerHeading}
             </h2>
             <p className="font-body font-normal text-type-body text-[#4B5563] max-w-[512px]">
@@ -14,39 +84,22 @@ export default function CareerOutcomes({ college }) {
 
           <div className="flex">
             <div className="flex-1 pl-6 border-l-2 flex flex-col gap-1" style={{ borderColor: 'var(--maroon, #2D7A50)' }}>
-              <span className="font-display font-bold text-type-h2-mob text-[#222222]">{college.careerHighestPackage}</span>
+              <span className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 text-[#222222]">{college.careerHighestPackage}</span>
               <span className="font-display font-bold text-type-label uppercase tracking-[0.12em] text-[#4B5563]">
                 HIGHEST PACKAGE
               </span>
             </div>
             <div className="flex-1 pl-6 border-l-2 flex flex-col gap-1" style={{ borderColor: 'var(--maroon, #C72235)' }}>
-              <span className="font-display font-bold text-type-h2-mob text-[#222222]">{college.careerOffersCount}</span>
+              <span className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 text-[#222222]">{college.careerOffersCount}</span>
               <span className="font-display font-bold text-type-label uppercase tracking-[0.12em] text-[#4B5563]">
                 OFFERS MADE
               </span>
             </div>
           </div>
-
-          <div
-            className="border border-[rgba(229,231,235,0.5)] rounded-sm bg-white px-[14px] py-4 flex flex-col gap-3"
-          >
-            <p className="font-display font-bold text-type-cap uppercase tracking-[0.12em] text-[#222222] opacity-70">
-              Top Recruiters
-            </p>
-            <div className="flex items-center gap-10 opacity-60">
-              {college.careerRecruiters.map(r => (
-                <span key={r} className="font-display font-bold text-type-sub text-[#222222]">{r}</span>
-              ))}
-            </div>
-          </div>
         </div>
 
-        <div className="w-[548px] flex-shrink-0">
-          <img
-            src={college.careerImage}
-            alt="Career Outcomes"
-            className="w-full h-auto"
-          />
+        <div className="w-full lg:flex-1 lg:max-w-lg flex-shrink-0">
+          <RecruiterLogoSlider />
         </div>
       </div>
     </section>

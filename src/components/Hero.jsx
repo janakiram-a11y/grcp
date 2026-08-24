@@ -64,7 +64,7 @@ export default function Hero({ college }) {
 
   return (
     <section
-      className="relative w-full h-[420px] sm:h-[520px] lg:h-[620px] flex items-center overflow-hidden"
+      className="relative w-full h-[420px] sm:h-[480px] md:h-[540px] lg:h-[620px] flex items-center overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -130,7 +130,7 @@ export default function Hero({ college }) {
         <div className="flex flex-col gap-[14px] sm:gap-[18px] max-w-[660px]">
 
           <h1
-            className="font-display font-bold text-type-h3 sm:text-[38px] lg:text-type-h1"
+            className="font-display font-bold text-type-h1-mob md:text-type-h1-tab lg:text-type-h1"
             style={{
               color: 'var(--cream, #E6F4EC)',
               textShadow: '0 1px 4px rgba(0,0,0,0.42), 0 3px 16px rgba(0,0,0,0.32), 0 8px 36px rgba(0,0,0,0.18)',

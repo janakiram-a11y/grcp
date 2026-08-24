@@ -12,7 +12,7 @@ const accent = college.greenAccent;
 function SectionHeader({ label, title }) {
   return (
     <div className="flex flex-col gap-2 mb-8">
-      <h2 className="font-display font-bold text-type-h2-mob" style={{ color: accent }}>
+      <h2 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2" style={{ color: accent }}>
         {title}
       </h2>
       <div className="w-14 h-[3px] rounded-full" style={{ backgroundColor: accent }} />
@@ -66,7 +66,7 @@ export default function AlumniAssociationPage() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -76,7 +76,7 @@ export default function AlumniAssociationPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto space-y-14">
+        <div className="space-y-14">
 
           {/* About */}
           <section>
@@ -109,7 +109,7 @@ export default function AlumniAssociationPage() {
                   <p className="font-display font-semibold text-type-body" style={{ color: primary }}>
                     {item.label}
                   </p>
-                  <p className="font-body text-type-ui-sm text-[#6B7280] flex-1">
+                  <p className="font-body text-type-body text-[#6B7280] flex-1">
                     {item.desc}
                   </p>
                   {item.external ? (

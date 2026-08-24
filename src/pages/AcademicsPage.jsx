@@ -14,7 +14,7 @@ const accent  = college.greenAccent;  // #C72235
 function SectionHeader({ label, title }) {
   return (
     <div className="flex flex-col gap-2 mb-8">
-      <h2 className="font-display font-bold text-type-h2-mob" style={{ color: accent }}>
+      <h2 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2" style={{ color: accent }}>
         {title}
       </h2>
       <div className="w-14 h-[3px] rounded-full" style={{ backgroundColor: accent }} />
@@ -39,7 +39,7 @@ function InfoCallout({ children }) {
       <svg className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: accent }} fill="currentColor" viewBox="0 0 20 20">
         <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
       </svg>
-      <p className="font-body text-type-body-xs text-[#4B5563]">{children}</p>
+      <p className="font-body text-type-body text-[#4B5563]">{children}</p>
     </div>
   );
 }
@@ -613,7 +613,7 @@ function LibraryContent() {
               >
                 {sub.title}
               </h3>
-              <p className="font-body text-type-ui-sm text-[#6B7280]">{sub.desc}</p>
+              <p className="font-body text-type-body text-[#6B7280]">{sub.desc}</p>
             </div>
           </a>
         ))}

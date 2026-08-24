@@ -32,7 +32,7 @@ function SectionHeader({ label, title }) {
   return (
     <div className="mb-8">
       <h2
-        className="font-display font-semibold text-type-h2-mob pb-3"
+        className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 pb-3"
         style={{
           color: college.greenAccent,
           borderBottom: `3px solid ${college.greenAccent}`,
@@ -80,7 +80,7 @@ function BulletList({ items }) {
             className="w-2 h-2 rounded-full flex-shrink-0 mt-[8px]"
             style={{ backgroundColor: college.greenAccent }}
           />
-          <span className="font-body text-type-body-xs text-[#474747]">{item}</span>
+          <span className="font-body text-type-body text-[#474747]">{item}</span>
         </li>
       ))}
     </ul>
@@ -131,7 +131,7 @@ function ProcedureProgram({ heading, data, showLateralEntry }) {
       </h4>
       <div className="space-y-3 mb-4">
         {data.firstYear.items.map((item, i) => (
-          <div key={i} className="flex gap-3 font-body text-type-body-xs text-[#474747]">
+          <div key={i} className="flex gap-3 font-body text-type-body text-[#474747]">
             <span className="font-semibold flex-shrink-0" style={{ color: college.primaryColor }}>
               {item.label}
             </span>
@@ -168,7 +168,7 @@ function ProcedureProgram({ heading, data, showLateralEntry }) {
           </h4>
           <div className="space-y-3">
             {data.lateralEntry.items.map((item, i) => (
-              <div key={i} className="flex gap-3 font-body text-type-body-xs text-[#474747]">
+              <div key={i} className="flex gap-3 font-body text-type-body text-[#474747]">
                 <span className="font-semibold flex-shrink-0" style={{ color: college.primaryColor }}>
                   {item.label}
                 </span>
@@ -482,7 +482,7 @@ export default function AdmissionsPage() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <SiteHeader college={college} />
       <PageHero
         college={college}
@@ -492,7 +492,7 @@ export default function AdmissionsPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div className="max-w-[1200px] mx-auto">
+        <div>
           {sectionContent[section] || sectionContent['admission-procedure']}
         </div>
       </main>
