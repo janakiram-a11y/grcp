@@ -116,7 +116,7 @@ export default function AnnouncementBar({ college }) {
         className="w-full py-2"
         style={{ background: '#ffffff', borderBottom: '1px solid rgba(0,0,0,0.10)' }}
       >
-        <div className="max-w-[1320px] mx-auto container-px flex items-center gap-4">
+        <div className="container-px flex items-center gap-4">
           {/* Announcements pill */}
           <div
             className="flex items-center gap-2 shrink-0 px-4 py-1.5"

@@ -71,10 +71,58 @@ function StripedTable({ headers, rows }) {
   );
 }
 
+function committeeRows(members) {
+  return members.map((m) => [
+    m.sno,
+    m.name,
+    m.designation,
+    m.position,
+    m.email ? (
+      <a key={m.email} href={`mailto:${m.email}`} className="underline" style={{ color: PRIMARY }}>
+        {m.email}
+      </a>
+    ) : (
+      <span style={{ color: '#9CA3AF' }}>—</span>
+    ),
+  ]);
+}
+
+function CommitteeYearTabs({ compositions }) {
+  const [activeYear, setActiveYear] = useState(compositions[0]?.year);
+  const active = compositions.find((c) => c.year === activeYear) ?? compositions[0];
+
+  return (
+    <div>
+      <div className="flex flex-wrap gap-2 mb-5">
+        {compositions.map((c) => (
+          <button
+            key={c.year}
+            onClick={() => setActiveYear(c.year)}
+            className="font-display font-semibold text-type-ui-sm px-4 py-2 rounded-lg transition-colors"
+            style={
+              activeYear === c.year
+                ? { backgroundColor: PRIMARY, color: '#fff' }
+                : { backgroundColor: `${PRIMARY}0D`, color: PRIMARY }
+            }
+          >
+            {c.label || c.year}
+          </button>
+        ))}
+      </div>
+      {active && (
+        <StripedTable
+          headers={['S.No.', 'Name', 'Designation', 'Position', 'Email']}
+          rows={committeeRows(active.members)}
+        />
+      )}
+    </div>
+  );
+}
+
 // ─── Placement Cell Overview ──────────────────────────────────────────────────
 
 function OverviewSection() {
-  const { overview, stats, functions: fns, committee, recruiters } = college.placements;
+  const { overview, stats, functions: fns, committee, recruiters, careerGuidance } = college.placements;
 
   return (
     <div className="space-y-14">
@@ -82,7 +130,7 @@ function OverviewSection() {
       {/* 1. Overview paragraph */}
       <section>
         <SectionHeader label="Placements" title="Placement Cell @ GRCP" />
-        <p className="font-body text-type-body text-[#474747] mt-4 max-w-[820px]">
+        <p className="font-body text-type-body text-[#474747] mt-4">
           {overview}
         </p>
       </section>
@@ -116,7 +164,7 @@ function OverviewSection() {
         >
           Functions of the Placement Cell
         </h3>
-        <ol className="space-y-3 max-w-[820px]">
+        <ol className="space-y-3">
           {fns.map((fn, i) => (
             <li key={i} className="flex items-start gap-4">
               <span
@@ -137,25 +185,37 @@ function OverviewSection() {
           className="font-display font-semibold text-type-h5 mb-5"
           style={{ color: ACCENT }}
         >
-          Placement Committee 2025-26
+          Placement Committee
         </h3>
-        <StripedTable
-          headers={['S.No.', 'Name', 'Designation', 'Position', 'Email']}
-          rows={committee.map((m) => [
-            m.sno,
-            m.name,
-            m.designation,
-            m.position,
-            <a
-              key={m.email}
-              href={`mailto:${m.email}`}
-              className="underline"
-              style={{ color: PRIMARY }}
-            >
-              {m.email}
-            </a>,
-          ])}
-        />
+        <CommitteeYearTabs compositions={committee} />
+      </section>
+
+      {/* 4b. Career Guidance Committee */}
+      <section>
+        <h3
+          className="font-display font-semibold text-type-h5 mb-5"
+          style={{ color: ACCENT }}
+        >
+          Career Guidance Committee
+        </h3>
+        <p className="font-body text-type-body text-[#474747] mb-5">
+          {careerGuidance.description}
+        </p>
+        <h4 className="font-display font-semibold text-type-body mb-3" style={{ color: PRIMARY }}>
+          Roles &amp; Responsibilities
+        </h4>
+        <ul className="space-y-2.5 mb-6">
+          {careerGuidance.responsibilities.map((item, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <span
+                className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                style={{ backgroundColor: ACCENT }}
+              />
+              <span className="font-body text-type-body text-[#474747]">{item}</span>
+            </li>
+          ))}
+        </ul>
+        <CommitteeYearTabs compositions={careerGuidance.yearlyCompositions} />
       </section>
 
       {/* 5. Key Recruiters */}
@@ -297,6 +357,80 @@ function PlacementStatusSection() {
   );
 }
 
+// ─── Industry Connect: IIPC ───────────────────────────────────────────────────
+
+function IipcSection() {
+  const d = college.placements.iipc;
+  return (
+    <div className="space-y-8">
+      <SectionHeader label="Industry Connect" title="Industry – Institute Partnership Cell (IIPC)" />
+      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
+
+      <div>
+        <h3 className="font-display font-semibold text-type-h5 mb-4" style={{ color: ACCENT }}>
+          Roles and Responsibilities of IIPC @ GRCP
+        </h3>
+        <ul className="space-y-2.5">
+          {d.responsibilities.map((item, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <span
+                className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                style={{ backgroundColor: ACCENT }}
+              />
+              <span className="font-body text-type-body text-[#474747]">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 className="font-display font-semibold text-type-h5 mb-5" style={{ color: ACCENT }}>
+          Committee Composition
+        </h3>
+        <CommitteeYearTabs compositions={d.yearlyCompositions} />
+      </div>
+    </div>
+  );
+}
+
+// ─── Industry Connect: Student Training & Internship Cell ────────────────────
+
+function StudentTrainingInternshipSection() {
+  const d = college.placements.studentTrainingInternshipCell;
+  return (
+    <div className="space-y-8">
+      <SectionHeader label="Industry Connect" title="Student Training & Internship Cell" />
+      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
+
+      <div>
+        <h3 className="font-display font-semibold text-type-h5 mb-4" style={{ color: ACCENT }}>
+          Role and Responsibilities of the Student Training and Internship Committee
+        </h3>
+        <ol className="space-y-2.5">
+          {d.responsibilities.map((item, i) => (
+            <li key={i} className="flex items-start gap-4">
+              <span
+                className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-white font-display font-bold text-type-cap mt-0.5"
+                style={{ backgroundColor: ACCENT }}
+              >
+                {i + 1}
+              </span>
+              <span className="font-body text-type-body text-[#474747]">{item}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div>
+        <h3 className="font-display font-semibold text-type-h5 mb-5" style={{ color: ACCENT }}>
+          Committee Composition
+        </h3>
+        <CommitteeYearTabs compositions={d.yearlyCompositions} />
+      </div>
+    </div>
+  );
+}
+
 // ─── Page config ──────────────────────────────────────────────────────────────
 
 const sectionConfig = {
@@ -309,6 +443,16 @@ const sectionConfig = {
     title: 'Placement Status',
     subtitle: 'Year-wise placement records for B.Pharmacy and M.Pharmacy graduates',
     breadcrumb: ['Placements', 'Placement Status'],
+  },
+  iipc: {
+    title: 'Industry – Institute Partnership Cell (IIPC)',
+    subtitle: 'Bridging industry and institute for GRCP students',
+    breadcrumb: ['Placements', 'Industry Connect', 'IIPC'],
+  },
+  'student-training-internship-cell': {
+    title: 'Student Training & Internship Cell',
+    subtitle: 'Planning, coordinating, and monitoring internship activities for pharmacy students',
+    breadcrumb: ['Placements', 'Industry Connect', 'Student Training & Internship Cell'],
   },
 };
 
@@ -325,7 +469,10 @@ export default function PlacementsPage() {
   }, [location.pathname]);
 
   const content =
-    activeSection === 'placement-status' ? <PlacementStatusSection /> : <OverviewSection />;
+    activeSection === 'placement-status' ? <PlacementStatusSection />
+    : activeSection === 'iipc' ? <IipcSection />
+    : activeSection === 'student-training-internship-cell' ? <StudentTrainingInternshipSection />
+    : <OverviewSection />;
 
   return (
     <div className="min-h-screen flex flex-col bg-white overflow-x-clip">

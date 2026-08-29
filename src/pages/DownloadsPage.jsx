@@ -118,7 +118,7 @@ export default function DownloadsPage() {
               Document Repository
             </h2>
             <div className="w-14 h-[3px] rounded-full mb-6" style={{ backgroundColor: accent }} />
-            <p className="font-body text-type-body text-[#474747] max-w-[720px]">
+            <p className="font-body text-type-body text-[#474747]">
               Download official documents and application forms from Gokaraju Rangaraju College of Pharmacy.
               Click the <strong>Download</strong> button next to any file to open or save it.
             </p>

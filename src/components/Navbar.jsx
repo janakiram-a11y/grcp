@@ -61,7 +61,7 @@ export default function Navbar({ college, scrolled = false }) {
       >
         {/* Single row: college logo | divider | auto-scroll strip */}
         <div
-          className="max-w-[1320px] mx-auto container-px flex items-center"
+          className="container-px flex items-center"
           style={{
             minHeight: isDesktop ? (shrink ? '60px' : '88px') : '56px',
             transition: 'min-height 0.3s ease',
@@ -106,7 +106,7 @@ export default function Navbar({ college, scrolled = false }) {
                  Below sm, flex-1 with a 0% basis lets this shrink to fit instead of
                  forcing a 560px basis that fights narrow viewports for space. */
               maxWidth: '50%',
-              marginLeft: '16px',
+              marginLeft: 'auto',
               maskImage:
                 'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
               WebkitMaskImage:

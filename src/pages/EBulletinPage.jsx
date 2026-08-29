@@ -133,7 +133,7 @@ export default function EBulletinPage() {
               About the E-Bulletin
             </h2>
             <div className="w-14 h-[3px] rounded-full mb-6" style={{ backgroundColor: accent }} />
-            <p className="font-body text-type-body text-[#474747] max-w-[780px]">
+            <p className="font-body text-type-body text-[#474747]">
               The GRCP E-Bulletin is an official institutional publication of Gokaraju Rangaraju College of
               Pharmacy, Hyderabad. It documents academic achievements, research activities, student
               accomplishments, faculty contributions, events, and other highlights from the college community.

@@ -251,7 +251,7 @@ export default function InfrastructurePage() {
             <section key={sec.id} id={sec.id}>
               <SectionHeader title={sec.title} />
               {sec.description && (
-                <p className="font-body text-type-body text-[#474747] mb-6 max-w-[820px]">
+                <p className="font-body text-type-body text-[#474747] mb-6">
                   {sec.description}
                 </p>
               )}

@@ -59,11 +59,11 @@ function CommitteeTable({ members }) {
                   className="font-display font-semibold text-type-cap px-2.5 py-1 rounded"
                   style={{
                     backgroundColor:
-                      m.position === 'Chairperson' ? college.primaryColor
+                      (m.position === 'Chairperson' || m.position === 'Chairman') ? college.primaryColor
                       : m.position.startsWith('Co-ordinator') ? '#002a6f'
                       : `${college.primaryColor}15`,
                     color:
-                      m.position === 'Member' ? college.primaryColor : '#fff',
+                      m.position.startsWith('Member') ? college.primaryColor : '#fff',
                   }}
                 >
                   {m.position}
@@ -78,6 +78,35 @@ function CommitteeTable({ members }) {
           ))}
         </tbody>
       </table>
+    </div>
+  );
+}
+
+// ─── Year Tabs ────────────────────────────────────────────────────────────────
+
+function YearTabs({ compositions }) {
+  const [activeYear, setActiveYear] = useState(compositions[0]?.year);
+  const active = compositions.find((c) => c.year === activeYear) ?? compositions[0];
+
+  return (
+    <div>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {compositions.map((c) => (
+          <button
+            key={c.year}
+            onClick={() => setActiveYear(c.year)}
+            className="font-display font-semibold text-type-ui-sm px-4 py-2 rounded-lg transition-colors"
+            style={
+              activeYear === c.year
+                ? { backgroundColor: college.primaryColor, color: '#fff' }
+                : { backgroundColor: `${college.primaryColor}0D`, color: college.primaryColor }
+            }
+          >
+            {c.label || c.year}
+          </button>
+        ))}
+      </div>
+      {active && <CommitteeTable members={active.members} />}
     </div>
   );
 }
@@ -140,7 +169,7 @@ function SectionPill({ title }) {
 // ─── Examination Branch Section ───────────────────────────────────────────────
 
 function ExaminationBranchSection() {
-  const { functions: fns, contact, ugSessionalCommittee, pgSessionalCommittee, ouExamCell } = college.examination;
+  const { functions: fns, contact, ugSessionalCommittee, pgSessionalCommittee, ouExamCell, malpracticeCommittee } = college.examination;
 
   return (
     <div className="space-y-10">
@@ -151,7 +180,7 @@ function ExaminationBranchSection() {
         <h3 className="font-display font-semibold text-type-h6 mb-4" style={{ color: college.primaryColor }}>
           Functions of the Examination Branch
         </h3>
-        <ol className="space-y-2 max-w-[760px]">
+        <ol className="space-y-2">
           {fns.map((fn, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
@@ -172,7 +201,7 @@ function ExaminationBranchSection() {
           Contact
         </h3>
         <div
-          className="rounded-xl px-6 py-4 flex flex-wrap gap-4 max-w-[760px] text-type-body-xs font-body font-medium text-[#383838]"
+          className="rounded-xl px-6 py-4 flex flex-wrap gap-4 text-type-body-xs font-body font-medium text-[#383838]"
           style={{ backgroundColor: '#f8f9fa', border: `1px solid ${college.primaryColor}20`, borderLeft: `4px solid ${college.primaryColor}` }}
         >
           <span>
@@ -191,28 +220,37 @@ function ExaminationBranchSection() {
       {/* UG Committee */}
       <section>
         <h3 className="font-display font-semibold text-type-h6 mb-1" style={{ color: college.primaryColor }}>
-          UG – Sessional Exam Committee (2025–2026)
+          UG – Sessional Exam Committee
         </h3>
         <hr className="mb-4" style={{ borderColor: `${college.primaryColor}20` }} />
-        <CommitteeTable members={ugSessionalCommittee} />
+        <YearTabs compositions={ugSessionalCommittee} />
       </section>
 
       {/* PG Committee */}
       <section>
         <h3 className="font-display font-semibold text-type-h6 mb-1" style={{ color: college.primaryColor }}>
-          PG – Sessional Exam Committee (2025–2026)
+          PG – Sessional Exam Committee
         </h3>
         <hr className="mb-4" style={{ borderColor: `${college.primaryColor}20` }} />
-        <CommitteeTable members={pgSessionalCommittee} />
+        <YearTabs compositions={pgSessionalCommittee} />
       </section>
 
       {/* OU Exam Cell */}
       <section>
         <h3 className="font-display font-semibold text-type-h6 mb-1" style={{ color: college.primaryColor }}>
-          Osmania University Examination Cell (2025–2026)
+          Osmania University Examination Cell
         </h3>
         <hr className="mb-4" style={{ borderColor: `${college.primaryColor}20` }} />
-        <CommitteeTable members={ouExamCell} />
+        <YearTabs compositions={ouExamCell} />
+      </section>
+
+      {/* Malpractice Prevention Committee */}
+      <section>
+        <h3 className="font-display font-semibold text-type-h6 mb-1" style={{ color: college.primaryColor }}>
+          Malpractice Prevention Committee (2026-27)
+        </h3>
+        <hr className="mb-4" style={{ borderColor: `${college.primaryColor}20` }} />
+        <CommitteeTable members={malpracticeCommittee} />
       </section>
     </div>
   );

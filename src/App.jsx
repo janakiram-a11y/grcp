@@ -9,6 +9,7 @@ import AcademicsPage from './pages/AcademicsPage';
 import ResearchPage from './pages/ResearchPage';
 import ExaminationPage from './pages/ExaminationPage';
 import PlacementsPage from './pages/PlacementsPage';
+import StudentActivitiesPage from './pages/StudentActivitiesPage';
 import AlumniPage from './pages/AlumniPage';
 import ContactPage from './pages/ContactPage';
 import AlumniAssociationPage from './pages/AlumniAssociationPage';
@@ -67,6 +68,8 @@ export default function App() {
         {/* Placements — dynamic :section passes param correctly */}
         <Route path="/placements" element={<PlacementsPage />} />
         <Route path="/placements/:section" element={<PlacementsPage />} />
+        <Route path="/student-activities" element={<StudentActivitiesPage />} />
+        <Route path="/student-activities/:section" element={<StudentActivitiesPage />} />
 
         {/* Alumni — dynamic :section passes param correctly */}
         <Route path="/alumni" element={<AlumniPage />} />

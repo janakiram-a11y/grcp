@@ -483,17 +483,37 @@ const LIBRARY_OBJECTIVES = [
   'Undertake activities to foster an interest in books and increase involvement in the library.',
 ];
 
-const LIBRARY_COMMITTEE = [
-  { sno: '1',  name: 'Dr. M. Ganga Raju',            designation: 'Professor & Principal',     position: 'President',    email: 'ganga8000@grcp.ac.in' },
-  { sno: '2',  name: 'Mr. I. Lakshmana Rao',          designation: 'Librarian',                 position: 'Co-ordinator', email: 'grcplibrary@gmail.com' },
-  { sno: '3',  name: 'Dr. A. Seetha Devi',            designation: 'Professor',                 position: 'Member',       email: 'seethadevi8090@grcp.ac.in' },
-  { sno: '4',  name: 'Dr. N.V.L. Suvarchala Reddy V', designation: 'Professor & HoD',           position: 'Member',       email: 'suvarchala8018@grcp.ac.in' },
-  { sno: '5',  name: 'Dr. A. D. Pani Kumar',          designation: 'Associate Professor & HoD', position: 'Member',       email: 'durga8017@grcp.ac.in' },
-  { sno: '6',  name: 'Dr. Monika Nijhawan',           designation: 'Professor & HoD',           position: 'Member',       email: 'monika8009@grcp.ac.in' },
-  { sno: '7',  name: 'Mrs. K. Lalitha',              designation: 'Assistant Professor',        position: 'Member',       email: 'kalakotalalitha8094@grcp.ac.in' },
-  { sno: '8',  name: 'Dr. C. Nisha Shri',            designation: 'Associate Professor',        position: 'Member',       email: 'nisha8091@grcp.ac.in' },
-  { sno: '9',  name: 'Mrs. Ch. Soujanya',            designation: 'Assistant Professor',        position: 'Member',       email: 'soujanya8056@grcp.ac.in' },
-  { sno: '10', name: 'Mr. K. Eswara Raju',           designation: 'Assistant Librarian',        position: 'Member',       email: 'keraju1993@gmail.com' },
+const LIBRARY_COMMITTEE_YEARS = [
+  {
+    year: '2026-27',
+    members: [
+      { sno: '1',  name: 'Dr. M. Ganga Raju',            designation: 'Professor & Principal',     position: 'President',    email: 'mgr8000@grcp.ac.in' },
+      { sno: '2',  name: 'Mr. I. Lakshmana Rao',          designation: 'Librarian',                 position: 'Co-ordinator', email: 'grcplibrary@gmail.com' },
+      { sno: '3',  name: 'Dr. A. Seetha Devi',            designation: 'Professor',                 position: 'Member',       email: 'seethadevi8090@grcp.ac.in' },
+      { sno: '4',  name: 'Dr. N.V.L. Suvarchala Reddy V', designation: 'Professor & HoD',           position: 'Member',       email: 'suvarchala8018@grcp.ac.in' },
+      { sno: '5',  name: 'Dr. A. D. Pani Kumar',          designation: 'Associate Professor & HoD', position: 'Member',       email: 'durga8017@grcp.ac.in' },
+      { sno: '6',  name: 'Dr. Monika Nijhawan',           designation: 'Professor & HoD',           position: 'Member',       email: 'monika8009@grcp.ac.in' },
+      { sno: '7',  name: 'Dr. K. Lalitha',                designation: 'Assistant Professor',       position: 'Member',       email: 'kalakotalalitha8094@grcp.ac.in' },
+      { sno: '8',  name: 'Dr. C. Nisha Shri',             designation: 'Associate Professor',       position: 'Member',       email: 'nisha8091@grcp.ac.in' },
+      { sno: '9',  name: 'Dr. Ch. Soujanya',              designation: 'Assistant Professor',       position: 'Member',       email: 'soujanya8056@grcp.ac.in' },
+      { sno: '10', name: 'Mr. K. Eswara Raju',            designation: 'Assistant Librarian',       position: 'Member',       email: 'keraju1993@gmail.com' },
+    ],
+  },
+  {
+    year: '2025-26',
+    members: [
+      { sno: '1',  name: 'Dr. M. Ganga Raju',            designation: 'Professor & Principal',     position: 'President',    email: 'ganga8000@grcp.ac.in' },
+      { sno: '2',  name: 'Mr. I. Lakshmana Rao',          designation: 'Librarian',                 position: 'Co-ordinator', email: 'grcplibrary@gmail.com' },
+      { sno: '3',  name: 'Dr. A. Seetha Devi',            designation: 'Professor',                 position: 'Member',       email: 'seethadevi8090@grcp.ac.in' },
+      { sno: '4',  name: 'Dr. N.V.L. Suvarchala Reddy V', designation: 'Professor & HoD',           position: 'Member',       email: 'suvarchala8018@grcp.ac.in' },
+      { sno: '5',  name: 'Dr. A. D. Pani Kumar',          designation: 'Associate Professor & HoD', position: 'Member',       email: 'durga8017@grcp.ac.in' },
+      { sno: '6',  name: 'Dr. Monika Nijhawan',           designation: 'Professor & HoD',           position: 'Member',       email: 'monika8009@grcp.ac.in' },
+      { sno: '7',  name: 'Mrs. K. Lalitha',              designation: 'Assistant Professor',        position: 'Member',       email: 'kalakotalalitha8094@grcp.ac.in' },
+      { sno: '8',  name: 'Dr. C. Nisha Shri',            designation: 'Associate Professor',        position: 'Member',       email: 'nisha8091@grcp.ac.in' },
+      { sno: '9',  name: 'Mrs. Ch. Soujanya',            designation: 'Assistant Professor',        position: 'Member',       email: 'soujanya8056@grcp.ac.in' },
+      { sno: '10', name: 'Mr. K. Eswara Raju',           designation: 'Assistant Librarian',        position: 'Member',       email: 'keraju1993@gmail.com' },
+    ],
+  },
 ];
 
 const LIBRARY_STATS = [
@@ -505,6 +525,9 @@ const LIBRARY_STATS = [
 
 
 function LibraryContent() {
+  const [committeeYear, setCommitteeYear] = React.useState(LIBRARY_COMMITTEE_YEARS[0].year);
+  const activeCommittee = LIBRARY_COMMITTEE_YEARS.find((c) => c.year === committeeYear) ?? LIBRARY_COMMITTEE_YEARS[0];
+
   const subsections = [
     {
       title: 'About Library',
@@ -645,7 +668,23 @@ function LibraryContent() {
 
       {/* Library Committee Table */}
       <div className="mb-8">
-        <SectionHeader label="Governance" title="Composition of Library Committee (2025-26)" />
+        <SectionHeader label="Governance" title="Composition of Library Committee" />
+        <div className="flex flex-wrap gap-2 mb-5">
+          {LIBRARY_COMMITTEE_YEARS.map((c) => (
+            <button
+              key={c.year}
+              onClick={() => setCommitteeYear(c.year)}
+              className="font-display font-semibold text-type-ui-sm px-4 py-2 rounded-lg transition-colors"
+              style={
+                committeeYear === c.year
+                  ? { backgroundColor: primary, color: '#fff' }
+                  : { backgroundColor: `${primary}0D`, color: primary }
+              }
+            >
+              {c.year}
+            </button>
+          ))}
+        </div>
         <div className="overflow-x-auto rounded-xl border border-[#E5E7EB]">
           <table className="w-full min-w-[640px]">
             <thead>
@@ -661,7 +700,7 @@ function LibraryContent() {
               </tr>
             </thead>
             <tbody>
-              {LIBRARY_COMMITTEE.map((row, i) => (
+              {activeCommittee.members.map((row, i) => (
                 <tr key={row.sno} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
                   <td className="font-body text-type-body-xs px-5 py-3.5 text-[#374151]">{row.sno}</td>
                   <td className="font-body text-type-body-xs px-5 py-3.5 font-semibold" style={{ color: primary }}>{row.name}</td>
@@ -697,39 +736,38 @@ const FACULTY_DATA = [
   { sno: '5',  name: 'Dr. A. Seetha Devi',              designation: 'Professor',                        dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '24.8 years', email: 'seethadevi8090@grcp.ac.in',            photo: `${GRCP_MEDIA}666813811105cASD Photo.jpg` },
   { sno: '6',  name: 'Dr. Gyati Shilakari Asthana',     designation: 'Professor',                        dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '22.5 years', email: 'gyati8061@grcp.ac.in',                 photo: `${GRCP_MEDIA}635ca67f5f45cphoto - Dr. Gyati Shilakari Asthana.jpg` },
   { sno: '7',  name: 'Dr. Jagadeesh Induru',            designation: 'Associate Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '29 years',   email: 'jagadeesh8002@grcp.ac.in',             photo: `${GRCP_MEDIA}635ca199d221bIj photo22kb.jpg` },
-  { sno: '8',  name: 'Dr. A D Panikumar',               designation: 'Associate Professor and HOD',     dept: 'Pharmaceutical Analysis',  qual: 'M. Pharm., Ph.D',         exp: '18 years',   email: 'durga8017@grcp.ac.in',                 photo: `${GRCP_MEDIA}635c00af3199e8017.jpg` },
-  { sno: '9',  name: 'Dr. Shashikala Metri',            designation: 'Associate Professor',              dept: 'Pharmacognosy',            qual: 'M. Pharm., Ph.D',         exp: '17.2 years', email: 'shashikala8052@grcp.ac.in',            photo: `${GRCP_MEDIA}635bfe83a52baShasikala Photo.jpg` },
-  { sno: '10', name: 'Dr. P. Veeresh Babu',             designation: 'Associate Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., Ph.D',         exp: '15 years',   email: 'veeresh8034@grcp.ac.in',               photo: `${GRCP_MEDIA}635bfd7862c3f8034.jpg` },
-  { sno: '11', name: 'Dr. Nisha Shri Chengama Raju',    designation: 'Associate Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., Ph.D.',        exp: '12 years',   email: 'nisha8091@grcp.ac.in',                 photo: `${GRCP_MEDIA}66ed40d209d85Dr Nisha pic.jpg` },
-  { sno: '12', name: 'Dr. G. Sailaja',                  designation: 'Associate Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '16.5 years', email: 'sailaja8082@grcp.ac.in',               photo: `${GRCP_MEDIA}635bf1feeda94Sailaja.jpeg` },
-  { sno: '13', name: 'Dr. Talat Farheen Mohammed Aref', designation: 'Associate Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '13 years',   email: 'talatfarheen8097@grcp.ac.in',          photo: `${GRCP_MEDIA}6900be941c496Talat image.jpg` },
-  { sno: '14', name: 'Dr. M. Lakshmi Madhuri',          designation: 'Associate Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., Ph.D',         exp: '7.11 years', email: 'madhuri8072@grcp.ac.in',               photo: `${GRCP_MEDIA}635aa214ee4928072.jpg` },
-  { sno: '15', name: 'Dr. N. Sree Lakshmi',             designation: 'Associate Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., Ph.D',         exp: '11.3 years', email: 'lakshmi8064@grcp.ac.in',               photo: `${GRCP_MEDIA}635be9481e59b8064.jpg` },
-  { sno: '16', name: 'Dr. K. Lalitha',                  designation: 'Associate Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., Ph.D',         exp: '17.5 years', email: 'kalakotalalitha8094@grcp.ac.in',        photo: `${GRCP_MEDIA}680a7a63e83dak lalitha jpg.jpg` },
-  { sno: '17', name: 'Dr. Venna R Surya Anusha',        designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '10.3 years', email: 'vrsanusha8088@grcp.ac.in',             photo: `${GRCP_MEDIA}6623fe57313d7Dr Rajeshwari anusha pic.jpg` },
-  { sno: '18', name: 'Dr. K. Mamatha',                  designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '16.3 years', email: 'kolamamatha8074@grcp.ac.in',            photo: `${GRCP_MEDIA}635be7e094ce08074.jpg` },
-  { sno: '19', name: 'Mr. Vivek Kumar Tiwari',          designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., (Ph.D)',       exp: '11 years',   email: 'vivek8033@grcp.ac.in',                 photo: `${GRCP_MEDIA}635be68a7e15b8033.jpg` },
-  { sno: '20', name: 'Mrs. Ch. Soujanya',               designation: 'Assistant Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., (Ph.D)',       exp: '11 years',   email: 'soujanya8056@grcp.ac.in',              photo: `${GRCP_MEDIA}635be170a123a8056.jpg` },
-  { sno: '21', name: 'Mrs. B. Karuna Devi',             designation: 'Assistant Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., (Ph.D)',       exp: '15.1 years', email: 'karuna8062@grcp.ac.in',                photo: `${GRCP_MEDIA}635abdb818147Karuna.jpg` },
-  { sno: '22', name: 'Mrs. M. Mamatha',                 designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '5.1 years',  email: 'mamatha8069@grcp.ac.in',               photo: `${GRCP_MEDIA}635abb417a18a8069.jpg` },
-  { sno: '23', name: 'Mrs. G. Kinnera Ratna Sri',       designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '3.7 years',  email: 'kinnera8077@grcp.ac.in',               photo: `${GRCP_MEDIA}635a9d3bed53f8077.jpg` },
-  { sno: '24', name: 'Mrs. Shabnam Kumari Thakur',      designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '3.8 years',  email: 'shabnam8079@grcp.ac.in',               photo: `${GRCP_MEDIA}635a96d7cb2568079.jpg` },
-  { sno: '25', name: 'Mrs. Nabamita Basu',              designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., (Ph.D)',       exp: '5 years',    email: 'nabamita8080@grcp.ac.in',              photo: `${GRCP_MEDIA}635a9bb4e32aa8080.jpg` },
-  { sno: '26', name: 'Mrs. Kabita Banik',               designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharmacy',             exp: '10 years',   email: 'kabita8092@grcp.ac.in',                photo: `${GRCP_MEDIA}67440217977e6kabita photo.jpg` },
-  { sno: '27', name: 'Mrs. Syed Sara Afreen',           designation: 'Assistant Professor',              dept: 'Pharmaceutical Analysis',  qual: 'M. Pharmacy',             exp: '4.3 years',  email: 'sara8073@grcp.ac.in',                  photo: `${GRCP_MEDIA}635abeb2b84098073.JPG` },
-  { sno: '28', name: 'Mrs. D. Vijaya Durga',            designation: 'Assistant Professor',              dept: 'Pharmaceutical Analysis',  qual: 'M. Pharmacy',             exp: '15.5 years', email: 'vijayadurga8076@grcp.ac.in',           photo: `${GRCP_MEDIA}635aa055673508076.jpg` },
-  { sno: '29', name: 'Mrs. Rupali Rupasmita Rout',      designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., (Ph.D)',       exp: '5.5 years',  email: 'rupali8096@grcp.ac.in',                photo: `${GRCP_MEDIA}68c7e56eb326eRupali_pic.png` },
-  { sno: '30', name: 'Mrs. B. Prathyusha',              designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharmacy',             exp: '3 years',    email: 'prathyusha8083@grcp.ac.in',            photo: `${GRCP_MEDIA}64df24c93b92aprathyusha.jpeg` },
-  { sno: '31', name: 'Mrs. P. A D G Lakshmi',          designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '2 years',    email: 'ahalyapati8087@grcp.ac.in',            photo: `${GRCP_MEDIA}66222d789b8b4ahalya pic.jpg` },
-  { sno: '32', name: 'Mrs. S.L.S. Mounica Pratyusha',  designation: 'Assistant Professor',              dept: 'Pharmaceutical Analysis',  qual: 'M. Pharm., (Ph.D)',       exp: '3.7 years',  email: 'slsmounicapratyusha8093@grcp.ac.in',   photo: `${GRCP_MEDIA}67fb8290e0f47monica prathyusha.jpg` },
-  { sno: '33', name: 'Mrs. K. Sudha Rani',             designation: 'Assistant Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharmacy',             exp: '10.9 years', email: 'sudharani8095@grcp.ac.in',             photo: `${GRCP_MEDIA}6899b0c588789k sudharani pic.jpg` },
-  { sno: '34', name: 'Mrs. Vishnu Priya Kadiyala',     designation: 'Assistant Professor',              dept: 'Pharmacognosy',            qual: 'M. Pharmacy',             exp: '—',          email: 'vishnupriya8098@grcp.ac.in',           photo: `${GRCP_MEDIA}697f7ce874670vishnu priya_page-0001.jpg` },
-  { sno: '35', name: 'Mrs. Azhar Sulthana Inkollu',    designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '1.5 years',  email: 'azharsulthana8099@grcp.ac.in',         photo: `${GRCP_MEDIA}69828391c29ecazra sulthana pic.jpeg` },
-  { sno: '36', name: 'Mrs. P. Naveena',                designation: 'Assistant Professor',              dept: 'Pharmaceutical Analysis',  qual: 'M. Pharm., (Ph.D)',       exp: '10 years',   email: '',                                     photo: `${GRCP_MEDIA}6a0ff620797ceP. Naveena JPG.jpeg` },
-  { sno: '37', name: 'Mrs. K. Pavani',                 designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '3 years',    email: 'pavani8071@grcp.ac.in',                photo: null },
-  { sno: '38', name: 'Mrs. K. Aruna',                  designation: 'Assistant Professor',              dept: 'General Studies',          qual: 'M.A English Literature',  exp: '24 years',   email: 'arunakavuru5@gmail.com',               photo: `${GRCP_MEDIA}662e76f2c4368aruna pic.jpg` },
-  { sno: '39', name: 'Dr. Venkata Krishna Sarma. S',   designation: 'Asst. Professor (part-time)',      dept: 'General Studies',          qual: 'M.Sc., Ph.D.',            exp: '18 years',   email: 'sarma.krishna1@gmail.com',             photo: `${GRCP_MEDIA}679a496c1601f63788802-6d67-42b8-908a-54cdf4842487.jpg` },
-  { sno: '40', name: 'Mr. Ravikrishna Bursu',          designation: 'Asst. Professor (part-time)',      dept: 'General Studies',          qual: 'M. Tech',                 exp: '10 years',   email: 'ravikrishnab@griet.ac.in',             photo: `${GRCP_MEDIA}69eb090bb61b0ravi krishna .jpeg` },
+  { sno: '8',  name: 'Dr. Shashikala Metri',            designation: 'Associate Professor',              dept: 'Pharmacognosy',            qual: 'M. Pharm., Ph.D',         exp: '17.2 years', email: 'shashikala8052@grcp.ac.in',            photo: `${GRCP_MEDIA}635bfe83a52baShasikala Photo.jpg` },
+  { sno: '9',  name: 'Dr. P. Veeresh Babu',             designation: 'Associate Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., Ph.D',         exp: '15 years',   email: 'veeresh8034@grcp.ac.in',               photo: `${GRCP_MEDIA}635bfd7862c3f8034.jpg` },
+  { sno: '10', name: 'Dr. Nisha Shri Chengama Raju',    designation: 'Associate Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., Ph.D.',        exp: '12 years',   email: 'nisha8091@grcp.ac.in',                 photo: `${GRCP_MEDIA}66ed40d209d85Dr Nisha pic.jpg` },
+  { sno: '11', name: 'Dr. G. Sailaja',                  designation: 'Associate Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '16.5 years', email: 'sailaja8082@grcp.ac.in',               photo: `${GRCP_MEDIA}635bf1feeda94Sailaja.jpeg` },
+  { sno: '12', name: 'Dr. Talat Farheen Mohammed Aref', designation: 'Associate Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '13 years',   email: 'talatfarheen8097@grcp.ac.in',          photo: `${GRCP_MEDIA}6900be941c496Talat image.jpg` },
+  { sno: '13', name: 'Dr. M. Lakshmi Madhuri',          designation: 'Associate Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., Ph.D',         exp: '7.11 years', email: 'madhuri8072@grcp.ac.in',               photo: `${GRCP_MEDIA}635aa214ee4928072.jpg` },
+  { sno: '14', name: 'Dr. N. Sree Lakshmi',             designation: 'Associate Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., Ph.D',         exp: '11.3 years', email: 'lakshmi8064@grcp.ac.in',               photo: `${GRCP_MEDIA}635be9481e59b8064.jpg` },
+  { sno: '15', name: 'Dr. K. Lalitha',                  designation: 'Associate Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., Ph.D',         exp: '17.5 years', email: 'kalakotalalitha8094@grcp.ac.in',        photo: `${GRCP_MEDIA}680a7a63e83dak lalitha jpg.jpg` },
+  { sno: '16', name: 'Dr. Venna R Surya Anusha',        designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '10.3 years', email: 'vrsanusha8088@grcp.ac.in',             photo: `${GRCP_MEDIA}6623fe57313d7Dr Rajeshwari anusha pic.jpg` },
+  { sno: '17', name: 'Dr. K. Mamatha',                  designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '16.3 years', email: 'kolamamatha8074@grcp.ac.in',            photo: `${GRCP_MEDIA}635be7e094ce08074.jpg` },
+  { sno: '18', name: 'Mr. Vivek Kumar Tiwari',          designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., (Ph.D)',       exp: '11 years',   email: 'vivek8033@grcp.ac.in',                 photo: `${GRCP_MEDIA}635be68a7e15b8033.jpg` },
+  { sno: '19', name: 'Mrs. Ch. Soujanya',               designation: 'Assistant Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., (Ph.D)',       exp: '11 years',   email: 'soujanya8056@grcp.ac.in',              photo: `${GRCP_MEDIA}635be170a123a8056.jpg` },
+  { sno: '20', name: 'Mrs. B. Karuna Devi',             designation: 'Assistant Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., (Ph.D)',       exp: '15.1 years', email: 'karuna8062@grcp.ac.in',                photo: `${GRCP_MEDIA}635abdb818147Karuna.jpg` },
+  { sno: '21', name: 'Mrs. M. Mamatha',                 designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '5.1 years',  email: 'mamatha8069@grcp.ac.in',               photo: `${GRCP_MEDIA}635abb417a18a8069.jpg` },
+  { sno: '22', name: 'Mrs. G. Kinnera Ratna Sri',       designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '3.7 years',  email: 'kinnera8077@grcp.ac.in',               photo: `${GRCP_MEDIA}635a9d3bed53f8077.jpg` },
+  { sno: '23', name: 'Mrs. Shabnam Kumari Thakur',      designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '3.8 years',  email: 'shabnam8079@grcp.ac.in',               photo: `${GRCP_MEDIA}635a96d7cb2568079.jpg` },
+  { sno: '24', name: 'Mrs. Nabamita Basu',              designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., (Ph.D)',       exp: '5 years',    email: 'nabamita8080@grcp.ac.in',              photo: `${GRCP_MEDIA}635a9bb4e32aa8080.jpg` },
+  { sno: '25', name: 'Mrs. Kabita Banik',               designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharmacy',             exp: '10 years',   email: 'kabita8092@grcp.ac.in',                photo: `${GRCP_MEDIA}67440217977e6kabita photo.jpg` },
+  { sno: '26', name: 'Mrs. Syed Sara Afreen',           designation: 'Assistant Professor',              dept: 'Pharmaceutical Analysis',  qual: 'M. Pharmacy',             exp: '4.3 years',  email: 'sara8073@grcp.ac.in',                  photo: `${GRCP_MEDIA}635abeb2b84098073.JPG` },
+  { sno: '27', name: 'Mrs. D. Vijaya Durga',            designation: 'Assistant Professor',              dept: 'Pharmaceutical Analysis',  qual: 'M. Pharmacy',             exp: '15.5 years', email: 'vijayadurga8076@grcp.ac.in',           photo: `${GRCP_MEDIA}635aa055673508076.jpg` },
+  { sno: '28', name: 'Mrs. Rupali Rupasmita Rout',      designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., (Ph.D)',       exp: '5.5 years',  email: 'rupali8096@grcp.ac.in',                photo: `${GRCP_MEDIA}68c7e56eb326eRupali_pic.png` },
+  { sno: '29', name: 'Mrs. B. Prathyusha',              designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharmacy',             exp: '3 years',    email: 'prathyusha8083@grcp.ac.in',            photo: `${GRCP_MEDIA}64df24c93b92aprathyusha.jpeg` },
+  { sno: '30', name: 'Mrs. P. A D G Lakshmi',          designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '2 years',    email: 'ahalyapati8087@grcp.ac.in',            photo: `${GRCP_MEDIA}66222d789b8b4ahalya pic.jpg` },
+  { sno: '31', name: 'Mrs. S.L.S. Mounica Pratyusha',  designation: 'Assistant Professor',              dept: 'Pharmaceutical Analysis',  qual: 'M. Pharm., (Ph.D)',       exp: '3.7 years',  email: 'slsmounicapratyusha8093@grcp.ac.in',   photo: `${GRCP_MEDIA}67fb8290e0f47monica prathyusha.jpg` },
+  { sno: '32', name: 'Mrs. K. Sudha Rani',             designation: 'Assistant Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharmacy',             exp: '10.9 years', email: 'sudharani8095@grcp.ac.in',             photo: `${GRCP_MEDIA}6899b0c588789k sudharani pic.jpg` },
+  { sno: '33', name: 'Mrs. Vishnu Priya Kadiyala',     designation: 'Assistant Professor',              dept: 'Pharmacognosy',            qual: 'M. Pharmacy',             exp: '—',          email: 'vishnupriya8098@grcp.ac.in',           photo: `${GRCP_MEDIA}697f7ce874670vishnu priya_page-0001.jpg` },
+  { sno: '34', name: 'Mrs. Azhar Sulthana Inkollu',    designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '1.5 years',  email: 'azharsulthana8099@grcp.ac.in',         photo: `${GRCP_MEDIA}69828391c29ecazra sulthana pic.jpeg` },
+  { sno: '35', name: 'Mrs. P. Naveena',                designation: 'Assistant Professor',              dept: 'Pharmaceutical Analysis',  qual: 'M. Pharm., (Ph.D)',       exp: '10 years',   email: '',                                     photo: `${GRCP_MEDIA}6a0ff620797ceP. Naveena JPG.jpeg` },
+  { sno: '36', name: 'Mrs. K. Pavani',                 designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '3 years',    email: 'pavani8071@grcp.ac.in',                photo: null },
+  { sno: '37', name: 'Mrs. K. Aruna',                  designation: 'Assistant Professor',              dept: 'General Studies',          qual: 'M.A English Literature',  exp: '24 years',   email: 'arunakavuru5@gmail.com',               photo: `${GRCP_MEDIA}662e76f2c4368aruna pic.jpg` },
+  { sno: '38', name: 'Dr. Venkata Krishna Sarma. S',   designation: 'Asst. Professor (part-time)',      dept: 'General Studies',          qual: 'M.Sc., Ph.D.',            exp: '18 years',   email: 'sarma.krishna1@gmail.com',             photo: `${GRCP_MEDIA}679a496c1601f63788802-6d67-42b8-908a-54cdf4842487.jpg` },
+  { sno: '39', name: 'Mr. Ravikrishna Bursu',          designation: 'Asst. Professor (part-time)',      dept: 'General Studies',          qual: 'M. Tech',                 exp: '10 years',   email: 'ravikrishnab@griet.ac.in',             photo: `${GRCP_MEDIA}69eb090bb61b0ravi krishna .jpeg` },
 ];
 
 const DEPT_COLORS = {
@@ -884,7 +922,7 @@ function FacultyContent() {
     <>
       <SectionHeader label="Academic Staff" title="Faculty List" />
       <p className="font-body text-type-body text-[#474747] mb-6">
-        GRCP has a team of 40 highly qualified and experienced faculty members across all departments.
+        GRCP has a team of 39 highly qualified and experienced faculty members across all departments.
         The listing below reflects the teaching staff as maintained by the administration.
       </p>
 
@@ -1013,7 +1051,7 @@ function InformationCenterContent() {
   return (
     <>
       <SectionHeader label="Library" title="Information Center @ GRCP" />
-      <div className="space-y-8 max-w-[820px]">
+      <div className="space-y-8">
         <div className="rounded-xl p-6 border" style={{ borderColor: `${primary}18`, backgroundColor: '#FAFAFA' }}>
           <h3 className="font-display font-semibold text-type-body-lg mb-3" style={{ color: primary }}>Librarian Contact</h3>
           <p className="font-body text-type-body-xs text-[#474747]">Lakshmana Rao Indurthi</p>
@@ -1281,10 +1319,10 @@ function DailyNewsPapersContent() {
   return (
     <>
       <SectionHeader label="Library" title="Daily Newspapers" />
-      <p className="font-body text-type-body text-[#474747] mb-8 max-w-[720px]">
+      <p className="font-body text-type-body text-[#474747] mb-8">
         The GRCP Library subscribes to the following newspapers. Physical copies are available in the library reading room.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-[760px]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {NEWSPAPERS.map((p) => (
           <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer" className="rounded-xl p-5 border flex items-center gap-3 hover:shadow-sm transition-shadow" style={{ borderColor: `${primary}18`, backgroundColor: '#FAFAFA' }}>
             <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${primary}10` }}>
@@ -1499,10 +1537,10 @@ function TitleVolumesContent() {
   return (
     <>
       <SectionHeader label="Library" title="Titles &amp; Volumes 2025–26" />
-      <p className="font-body text-type-body text-[#474747] mb-2 max-w-[900px]">
+      <p className="font-body text-type-body text-[#474747] mb-2">
         New books added to the GRCP Library collection in 2025-26.
       </p>
-      <p className="font-body text-type-ui-sm text-[#6B7280] mb-6 max-w-[900px]">
+      <p className="font-body text-type-ui-sm text-[#6B7280] mb-6">
         Total: 83 new titles added in 2025-26 (539 total volumes)
       </p>
       <div className="overflow-x-auto rounded-xl border border-[#E5E7EB]">

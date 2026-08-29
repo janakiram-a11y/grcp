@@ -39,6 +39,11 @@ const sectionConfig = {
     subtitle: 'Institutional Development and Monitoring Committee',
     breadcrumb: ['Administration', 'IDMC'],
   },
+  iqac: {
+    title: 'IQAC',
+    subtitle: 'Internal Quality Assurance Cell',
+    breadcrumb: ['Administration', 'IQAC'],
+  },
   'org-chart': {
     title: 'Organizational Chart',
     subtitle: 'Administrative hierarchy of Gokaraju Rangaraju College of Pharmacy',
@@ -64,20 +69,10 @@ const sectionConfig = {
     subtitle: 'Bridging academia and industry at Gokaraju Rangaraju College of Pharmacy',
     breadcrumb: ['Administration', 'IIIC'],
   },
-  iic: {
-    title: "Institution's Innovation Council (IIC)",
-    subtitle: "Fostering a culture of innovation and entrepreneurship at GRCP",
-    breadcrumb: ['Administration', "Institution's Innovation Council"],
-  },
   'sc-st': {
     title: 'SC / ST Committee',
     subtitle: 'Safeguarding the welfare and interests of SC/ST students and staff at GRCP',
     breadcrumb: ['Administration', 'SC / ST Committee'],
-  },
-  iaec: {
-    title: 'Institutional Animal Ethics Committee (IAEC)',
-    subtitle: 'Ensuring humane and ethical use of animals in research — CPCSEA compliant',
-    breadcrumb: ['Administration', 'IAEC'],
   },
   'mentor-mentee': {
     title: 'Mentor Mentee Committee',
@@ -89,10 +84,10 @@ const sectionConfig = {
     subtitle: 'Promoting inclusive and equitable access to education at GRCP',
     breadcrumb: ['Administration', 'Equal Opportunity Cell Committee'],
   },
-  'other-committees': {
-    title: 'Other Committees',
-    subtitle: 'Statutory and non-statutory committees supporting GRCP operations',
-    breadcrumb: ['Administration', 'Other Committees'],
+  'digital-media': {
+    title: 'Digital Media and Web Management Committee',
+    subtitle: 'Shaping and maintaining the institution\'s digital presence',
+    breadcrumb: ['Administration', 'Digital Media and Web Management Committee'],
   },
   'professional-associations': {
     title: 'Professional Associations / Societies',
@@ -475,6 +470,24 @@ function IdmcSection() {
   );
 }
 
+// ── Section: IQAC ──────────────────────────────────────────────────────────────
+
+function IqacSection() {
+  const d = college.administration.iqac;
+  return (
+    <div className="space-y-6">
+      <SectionHeader label="Institutional Committee" title="IQAC" />
+      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
+
+      <SubHeading>Objectives</SubHeading>
+      <BulletList items={d.objectives} />
+
+      <SubHeading>Committee Composition</SubHeading>
+      <YearTabs compositions={d.yearlyCompositions} />
+    </div>
+  );
+}
+
 // ── Section: Org Chart ────────────────────────────────────────────────────────
 
 function OrgChartSection() {
@@ -716,24 +729,6 @@ function IiicSection() {
   );
 }
 
-// ── Section: IIC ──────────────────────────────────────────────────────────────
-
-function IicSection() {
-  const d = college.administration.iic;
-  return (
-    <div className="space-y-6">
-      <SectionHeader label="Committee" title="Institution's Innovation Council (IIC)" />
-      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
-
-      <SubHeading>Core Roles &amp; Responsibilities</SubHeading>
-      <BulletList items={d.objectives} />
-
-      <SubHeading>Committee Composition</SubHeading>
-      <YearTabs compositions={d.yearlyCompositions} />
-    </div>
-  );
-}
-
 // ── Section: SC/ST Committee ──────────────────────────────────────────────────
 
 function ScStSection() {
@@ -745,27 +740,6 @@ function ScStSection() {
 
       <SubHeading>Roles &amp; Responsibilities</SubHeading>
       <BulletList items={d.rolesAndResponsibilities} />
-
-      <SubHeading>Committee Composition</SubHeading>
-      <YearTabs compositions={d.yearlyCompositions} />
-    </div>
-  );
-}
-
-// ── Section: IAEC ─────────────────────────────────────────────────────────────
-
-function IaecSection() {
-  const d = college.administration.iaec;
-  return (
-    <div className="space-y-6">
-      <SectionHeader label="Committee" title="Institutional Animal Ethics Committee (IAEC)" />
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg font-display font-semibold text-type-ui-sm" style={{ backgroundColor: `${pc}10`, color: pc }}>
-        CPCSEA Registration: {d.cpcsea}
-      </div>
-      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
-
-      <SubHeading>Roles &amp; Responsibilities</SubHeading>
-      <BulletList items={d.responsibilities} />
 
       <SubHeading>Committee Composition</SubHeading>
       <YearTabs compositions={d.yearlyCompositions} />
@@ -828,41 +802,20 @@ function EqualOpportunitySection() {
   );
 }
 
-// ── Section: Other Committees ─────────────────────────────────────────────────
+// ── Section: Digital Media and Web Management Committee ───────────────────────
 
-function OtherCommitteesSection() {
-  const committees = college.administration.otherCommittees;
+function DigitalMediaSection() {
+  const d = college.administration.digitalMedia;
   return (
     <div className="space-y-6">
-      <SectionHeader label="Committees" title="Other Committees" />
-      <div className="space-y-8">
-        {committees.map((c, idx) => (
-          <div key={idx} className="rounded-2xl p-6" style={{ border: `1px solid ${pc}18`, backgroundColor: '#FAFAFA' }}>
-            <h3 className="font-display font-bold text-type-h5 mb-4" style={{ color: pc }}>{c.name}</h3>
-            <div className="overflow-x-auto rounded-xl border" style={{ borderColor: `${pc}18` }}>
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr style={{ backgroundColor: ac }}>
-                    {['S.No.', 'Name', 'Designation', 'Position'].map((h) => (
-                      <th key={h} className="font-display font-semibold text-type-ui-sm text-white text-left px-4 py-3">{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {c.members.map((m, i) => (
-                    <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#FFFFFF' : '#F9FAFB' }}>
-                      <td className="font-body text-type-ui text-[#474747] px-4 py-3 border-b" style={{ borderColor: `${pc}10` }}>{i + 1}</td>
-                      <td className="font-display font-semibold text-type-ui px-4 py-3 border-b" style={{ color: pc, borderColor: `${pc}10` }}>{m.name}</td>
-                      <td className="font-body text-type-ui text-[#474747] px-4 py-3 border-b" style={{ borderColor: `${pc}10` }}>{m.designation}</td>
-                      <td className="font-body text-type-ui text-[#474747] px-4 py-3 border-b" style={{ borderColor: `${pc}10` }}>{m.position}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        ))}
-      </div>
+      <SectionHeader label="Committee" title="Digital Media and Web Management Committee" />
+      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
+
+      <SubHeading>Roles &amp; Responsibilities</SubHeading>
+      <BulletList items={d.responsibilities} />
+
+      <SubHeading>Committee Composition</SubHeading>
+      <YearTabs compositions={d.yearlyCompositions} />
     </div>
   );
 }
@@ -1040,17 +993,16 @@ const sectionRegistry = {
   principal: { label: 'Principal', content: <PrincipalSection /> },
   'governing-body': { label: 'Governing Body', content: <GoverningBodySection /> },
   idmc: { label: 'IDMC', content: <IdmcSection /> },
+  iqac: { label: 'IQAC', content: <IqacSection /> },
   'org-chart': { label: 'Organizational Chart', content: <OrgChartSection /> },
   'anti-ragging': { label: 'Anti-Ragging / Discipline', content: <AntiRaggingSection /> },
   'anti-harassment': { label: 'Anti-Sexual Harassment / ICC', content: <AntiHarassmentSection /> },
   grievance: { label: 'Grievance Redressal', content: <GrievanceSection /> },
   iiic: { label: 'IIIC', content: <IiicSection /> },
-  iic: { label: "Institution's Innovation Council", content: <IicSection /> },
   'sc-st': { label: 'SC / ST Committee', content: <ScStSection /> },
-  iaec: { label: 'IAEC', content: <IaecSection /> },
   'mentor-mentee': { label: 'Mentor Mentee', content: <MentorMenteeSection /> },
   'equal-opportunity': { label: 'Equal Opportunity Cell', content: <EqualOpportunitySection /> },
-  'other-committees': { label: 'Other Committees', content: <OtherCommitteesSection /> },
+  'digital-media': { label: 'Digital Media and Web Management Committee', content: <DigitalMediaSection /> },
   'professional-associations': { label: 'Professional Associations', content: <ProfessionalAssociationsSection /> },
   'faculty-achievements': { label: 'Faculty Achievements', content: <FacultyAchievementsSection /> },
   'student-achievements': { label: 'Student Achievements', content: <StudentAchievementsSection /> },

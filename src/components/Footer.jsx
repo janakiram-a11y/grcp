@@ -98,7 +98,7 @@ function LinkList({ items, college }) {
 export default function Footer({ college }) {
   return (
     <footer className="w-full" style={{ backgroundColor: '#F8FAF8', borderTop: '1px solid rgba(45,122,80,0.14)' }}>
-      <div className="max-w-[1320px] mx-auto container-px">
+      <div className="container-px">
 
       {/* ── Brand strip — logo + tagline + socials ───────────────────────── */}
       <div className="pt-12 pb-8">
@@ -109,9 +109,6 @@ export default function Footer({ college }) {
               alt={`${college.shortName} Logo`}
               className="h-14 w-auto object-contain object-left"
             />
-            <p className="font-body text-type-body-xs" style={{ color: '#6B7280', maxWidth: 400 }}>
-              {college.tagline}
-            </p>
           </div>
           {/* Social icons */}
           <div className="flex items-center gap-3">
@@ -119,9 +116,9 @@ export default function Footer({ college }) {
               <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                 aria-label={label}
                 className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-150"
-                style={{ backgroundColor: 'rgba(45,122,80,0.08)', color: '#2D7A50', border: '1px solid rgba(45,122,80,0.14)' }}
+                style={{ backgroundColor: 'rgba(199,34,53,0.08)', color: '#C72235', border: '1px solid rgba(199,34,53,0.18)' }}
                 onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#C72235'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#C72235'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(45,122,80,0.08)'; e.currentTarget.style.color = '#2D7A50'; e.currentTarget.style.borderColor = 'rgba(45,122,80,0.14)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(199,34,53,0.08)'; e.currentTarget.style.color = '#C72235'; e.currentTarget.style.borderColor = 'rgba(199,34,53,0.18)'; }}
               >
                 <Icon />
               </a>
@@ -168,7 +165,7 @@ export default function Footer({ college }) {
 
               {/* Address */}
               <li className="flex items-start gap-3">
-                <span style={{ color: '#2D7A50' }}><PinIcon /></span>
+                <span style={{ color: '#C72235' }}><PinIcon /></span>
                 <span className="font-display text-type-footer-link leading-relaxed" style={{ color: '#4B5563' }}>
                   {college.address}
                 </span>
@@ -176,7 +173,7 @@ export default function Footer({ college }) {
 
               {/* Phone */}
               <li className="flex items-center gap-3">
-                <span style={{ color: '#2D7A50' }}><PhoneIcon /></span>
+                <span style={{ color: '#C72235' }}><PhoneIcon /></span>
                 <a href={`tel:${college.phone}`}
                   className="font-display text-type-footer-link transition-colors" style={{ color: '#4B5563' }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = '#C72235')}
@@ -188,7 +185,7 @@ export default function Footer({ college }) {
 
               {/* Email */}
               <li className="flex items-center gap-3">
-                <span style={{ color: '#2D7A50' }}><MailIcon /></span>
+                <span style={{ color: '#C72235' }}><MailIcon /></span>
                 <a href={`mailto:${college.email}`}
                   className="font-display text-type-footer-link transition-colors" style={{ color: '#4B5563' }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = '#C72235')}

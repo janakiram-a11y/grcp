@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import college from '../theme';
 import SiteHeader from '../components/SiteHeader';
@@ -68,6 +68,19 @@ function CommitteeTable({ rows, columns }) {
                     >
                       {row[col.key]}
                     </a>
+                  ) : col.key === 'position' ? (
+                    <span
+                      className="font-display font-semibold text-type-cap px-2.5 py-1 rounded inline-block"
+                      style={{
+                        backgroundColor:
+                          row.position === 'Chairperson' ? primaryColor
+                          : row.position?.startsWith('Co-ordinator') ? '#002a6f'
+                          : `${primaryColor}15`,
+                        color: row.position?.startsWith('Member') ? primaryColor : '#fff',
+                      }}
+                    >
+                      {row.position}
+                    </span>
                   ) : (
                     row[col.key]
                   )}
@@ -77,6 +90,44 @@ function CommitteeTable({ rows, columns }) {
           ))}
         </tbody>
       </table>
+    </div>
+  );
+}
+
+function YearTabs({ compositions }) {
+  const [activeYear, setActiveYear] = useState(compositions[0]?.year);
+  const active = compositions.find((c) => c.year === activeYear) ?? compositions[0];
+
+  return (
+    <div>
+      <div className="flex flex-wrap gap-2 mb-5">
+        {compositions.map((c) => (
+          <button
+            key={c.year}
+            onClick={() => setActiveYear(c.year)}
+            className="font-display font-semibold text-type-ui-sm px-4 py-2 rounded-lg transition-colors"
+            style={
+              activeYear === c.year
+                ? { backgroundColor: greenAccent, color: '#fff' }
+                : { backgroundColor: `${greenAccent}0D`, color: greenAccent }
+            }
+          >
+            {c.label || c.year}
+          </button>
+        ))}
+      </div>
+      {active && (
+        <CommitteeTable
+          rows={active.members}
+          columns={[
+            { key: 'sno', label: 'Sl.No.' },
+            { key: 'name', label: 'Name' },
+            { key: 'designation', label: 'Designation' },
+            { key: 'position', label: 'Position' },
+            { key: 'email', label: 'Email' },
+          ]}
+        />
+      )}
     </div>
   );
 }
@@ -187,7 +238,7 @@ function MPharmacyOverview() {
 
       <section>
         <SectionHeader label="M.Pharmacy" title="Program Overview" />
-        <p className="mt-4 font-body text-type-body text-[#474747] max-w-[780px]">
+        <p className="mt-4 font-body text-type-body text-[#474747]">
           {mp.about}
         </p>
       </section>
@@ -345,16 +396,7 @@ function PgCommitteeContent() {
   return (
     <div className="space-y-8">
       <SectionHeader label="M.Pharmacy" title="PG Program Committee" />
-      <CommitteeTable
-        rows={pgCommittee}
-        columns={[
-          { key: 'sno', label: 'Sl.No.' },
-          { key: 'name', label: 'Name' },
-          { key: 'designation', label: 'Designation' },
-          { key: 'position', label: 'Position' },
-          { key: 'email', label: 'Email' },
-        ]}
-      />
+      <YearTabs compositions={pgCommittee.yearlyCompositions} />
       <div>
         <Link
           to="/programmes/m-pharmacy"

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import college from '../theme';
 import SiteHeader from '../components/SiteHeader';
 import PageHero from '../components/PageHero';
@@ -129,6 +129,145 @@ function StatusBadge({ status }) {
   );
 }
 
+function BulletList({ items }) {
+  return (
+    <ul className="space-y-2.5">
+      {items.map((item, i) => (
+        <li key={i} className="flex items-start gap-2.5">
+          <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-[9px]" style={{ backgroundColor: primary }} />
+          <span className="font-body text-type-body text-[#474747]">{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function RoleBadge({ role }) {
+  if (!role) return <span className="text-[#9CA3AF]">—</span>;
+  const lower = role.toLowerCase();
+  let bg, color;
+  if (lower.includes('chairperson') || lower.includes('president') || lower.includes('chairman')) {
+    bg = '#FEF2F2'; color = '#B91C1C';
+  } else if (lower.includes('co-ordinator') || lower.includes('coordinator') || lower.includes('convener') || lower.includes('secretary')) {
+    bg = '#F0FDF4'; color = '#166534';
+  } else {
+    bg = '#F3F4F6'; color = '#374151';
+  }
+  return (
+    <span
+      className="inline-block font-display font-semibold text-type-ui-sm px-2.5 py-0.5 rounded-full whitespace-nowrap"
+      style={{ backgroundColor: bg, color }}
+    >
+      {role}
+    </span>
+  );
+}
+
+function YearTabs({ compositions, contactHeader }) {
+  const [activeYear, setActiveYear] = useState(compositions[0]?.year);
+  const active = compositions.find(c => c.year === activeYear) ?? compositions[0];
+  const contactCol = active?.contactHeader || contactHeader;
+  return (
+    <div>
+      <div className="flex flex-wrap gap-2 mb-5">
+        {compositions.map(c => (
+          <button
+            key={c.year}
+            onClick={() => setActiveYear(c.year)}
+            className="font-display font-semibold text-type-ui-sm px-4 py-2 rounded-lg transition-colors"
+            style={activeYear === c.year
+              ? { backgroundColor: primary, color: '#fff' }
+              : { backgroundColor: `${primary}0D`, color: primary }
+            }
+          >
+            {c.label || c.year}
+          </button>
+        ))}
+      </div>
+      {active && (
+        <div className="overflow-x-auto rounded-xl border" style={{ borderColor: `${primary}18` }}>
+          <table className="w-full border-collapse">
+            <thead>
+              <tr style={{ backgroundColor: accent }}>
+                {['S.No.', 'Name', 'Designation', 'Position', contactCol || 'Email'].map((h) => (
+                  <th key={h} className="font-display font-semibold text-type-ui-sm text-white text-left px-5 py-3.5">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {active.members.map((m, i) => (
+                <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#FAFAFA' : '#FFFFFF' }}>
+                  <td className="font-body text-type-ui text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.sno || i + 1}</td>
+                  <td className="font-display font-semibold text-type-ui px-5 py-3 border-b" style={{ color: primary, borderColor: `${primary}10` }}>{m.name}</td>
+                  <td className="font-body text-type-ui text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.designation}</td>
+                  <td className="px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}><RoleBadge role={m.position || m.role} /></td>
+                  <td className="px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>
+                    {(m.email || m.contact || m.phone)
+                      ? <span className="font-body text-type-ui-sm text-[#374151]">{m.email || m.contact || m.phone}</span>
+                      : <span className="text-[#9CA3AF]">—</span>
+                    }
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Sticky right-side quick nav ────────────────────────────────────────────────
+
+const RESEARCH_BRANCH_LINKS = [
+  { key: 'arc',              label: 'Academic Research Committee (ARC)',      href: '/research/arc' },
+  { key: 'iaec',             label: 'Institutional Animal Ethics Committee',  href: '/research/iaec' },
+  { key: 'bio-medical-waste',label: 'Bio-Medical Waste Management Committee',href: '/research/bio-medical-waste' },
+];
+
+const INNOVATION_BRANCH_LINKS = [
+  { key: 'iic',    label: "Institution's Innovation Council (IIC)", href: '/research/iic' },
+  { key: 'e-cell', label: 'Entrepreneurship Cell (E-Cell)',          href: '/research/e-cell' },
+];
+
+const TOP_LEVEL_LINKS = [
+  { key: 'research',   label: 'Research@GRCP',            href: '/research/research-at-grcp' },
+  { key: 'innovation', label: 'Innovation/E-Cell@GRCP',    href: '/research/innovation-ecell' },
+];
+
+function QuickNavButton({ label, href, active }) {
+  return (
+    <Link
+      to={href}
+      className="block font-display font-semibold text-type-ui-sm px-4 py-3 rounded-lg transition-colors"
+      style={
+        active
+          ? { backgroundColor: primary, color: '#fff' }
+          : { backgroundColor: `${primary}0D`, color: primary }
+      }
+    >
+      {label}
+    </Link>
+  );
+}
+
+function ResearchQuickNav({ branch, activeKey }) {
+  const branchLinks = branch === 'innovation' ? INNOVATION_BRANCH_LINKS : RESEARCH_BRANCH_LINKS;
+  return (
+    <aside className="w-full lg:w-[280px] lg:flex-shrink-0">
+      <div className="lg:sticky lg:top-24 flex flex-col gap-2">
+        {TOP_LEVEL_LINKS.map((item) => (
+          <QuickNavButton key={item.key} label={item.label} href={item.href} active={item.key === branch} />
+        ))}
+        <div className="h-px my-1" style={{ backgroundColor: `${primary}18` }} />
+        {branchLinks.map((item) => (
+          <QuickNavButton key={item.key} label={item.label} href={item.href} active={item.key === activeKey} />
+        ))}
+      </div>
+    </aside>
+  );
+}
+
 // ── Section: Research @ GRCP (Overview) ───────────────────────────────────────
 
 function OverviewSection() {
@@ -142,7 +281,7 @@ function OverviewSection() {
       {/* Overview */}
       <section>
         <SectionHeader label="Research at GRCP" title="Research @ GRCP" />
-        <p className="font-body font-normal text-type-body text-[#474747] mt-4 max-w-[820px]">
+        <p className="font-body font-normal text-type-body text-[#474747] mt-4">
           {college.research.overview}
         </p>
       </section>
@@ -237,7 +376,7 @@ function OverviewSection() {
                     key={i}
                     src={src}
                     alt={`${activeDept.label} research ${i + 1}`}
-                    className="rounded-lg object-cover w-full h-36"
+                    className="rounded-lg object-cover object-top w-full h-56"
                     onError={(e) => { e.currentTarget.style.display = 'none'; }}
                   />
                 ))}
@@ -284,7 +423,7 @@ function ConsultancySection() {
     <div className="space-y-10">
       <section>
         <SectionHeader label="Funded Research" title="Sponsored Projects / Consultancy" />
-        <p className="font-body font-normal text-type-body text-[#474747] mt-4 max-w-[820px]">
+        <p className="font-body font-normal text-type-body text-[#474747] mt-4">
           GRCP faculty have secured research grants from government and industry funding bodies for
           sponsored / consultancy projects in pharmaceutical sciences. These projects strengthen the
           research culture and contribute to societal healthcare needs.
@@ -364,7 +503,7 @@ function PhdGuideships() {
     <div className="space-y-10">
       <section>
         <SectionHeader label="Doctoral Research" title="Ph.D Guideships" />
-        <p className="font-body font-normal text-type-body text-[#474747] mt-4 max-w-[820px]">
+        <p className="font-body font-normal text-type-body text-[#474747] mt-4">
           GRCP faculty recognised as Ph.D guides at multiple universities actively supervise doctoral
           scholars across departments. Below are the details of recognised guides and the Ph.D scholar
           statistics.
@@ -429,7 +568,7 @@ function PublicationsSection() {
     <div className="space-y-10">
       <section>
         <SectionHeader label="Research Output" title="Publications" />
-        <p className="font-body font-normal text-type-body text-[#474747] mt-4 max-w-[820px]">
+        <p className="font-body font-normal text-type-body text-[#474747] mt-4">
           GRCP faculty and postgraduate students publish research in reputed national and international
           pharmaceutical journals. Select an academic year below to view publication statistics.
         </p>
@@ -659,7 +798,7 @@ function PatentsSection() {
     <div className="space-y-10">
       <section>
         <SectionHeader label="Intellectual Property" title="Patents" />
-        <p className="font-body font-normal text-type-body text-[#474747] mt-4 max-w-[820px]">
+        <p className="font-body font-normal text-type-body text-[#474747] mt-4">
           GRCP faculty and researchers have filed patents for novel pharmaceutical inventions, contributing
           to the intellectual property portfolio of the institution.
         </p>
@@ -700,6 +839,146 @@ function PatentsSection() {
   );
 }
 
+// ── Section: Academic Research Committee (ARC) ────────────────────────────────
+
+function ArcSection() {
+  const d = college.research.arc;
+  return (
+    <div className="space-y-6">
+      <SectionHeader label="Committee" title="Academic Research Committee (ARC)" />
+      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
+
+      <SubHeading>Roles &amp; Responsibilities of Academic Research Committee (ARC)</SubHeading>
+      <BulletList items={d.responsibilities} />
+
+      <SubHeading>Committee Composition</SubHeading>
+      <YearTabs compositions={d.yearlyCompositions} />
+    </div>
+  );
+}
+
+// ── Section: Institutional Animal Ethics Committee (IAEC) ─────────────────────
+
+function ResearchIaecSection() {
+  const d = college.administration.iaec;
+  return (
+    <div className="space-y-6">
+      <SectionHeader label="Committee" title="Institutional Animal Ethics Committee (IAEC)" />
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg font-display font-semibold text-type-ui-sm" style={{ backgroundColor: `${primary}10`, color: primary }}>
+        CPCSEA Registration: {d.cpcsea}
+      </div>
+      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
+
+      <SubHeading>Roles &amp; Responsibilities</SubHeading>
+      <BulletList items={d.responsibilities} />
+
+      <SubHeading>Committee Composition</SubHeading>
+      <YearTabs compositions={d.yearlyCompositions} />
+    </div>
+  );
+}
+
+// ── Section: Bio-Medical Waste Management Committee ───────────────────────────
+
+function BioMedicalWasteSection() {
+  const d = college.research.bioMedicalWaste;
+  return (
+    <div className="space-y-6">
+      <SectionHeader label="Committee" title="Bio-Medical Waste Management Committee" />
+      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
+
+      <SubHeading>Committee Composition</SubHeading>
+      <YearTabs compositions={d.yearlyCompositions} />
+    </div>
+  );
+}
+
+// ── Section: Innovation/E-Cell @ GRCP (overview) ───────────────────────────────
+
+function InnovationEcellOverview() {
+  return (
+    <div className="space-y-6">
+      <SectionHeader label="Innovation & Entrepreneurship" title="Innovation/E-Cell @ GRCP" />
+      <p className="font-body text-type-body text-[#474747]">
+        GRCP fosters a culture of innovation and entrepreneurship through two dedicated bodies —
+        the Institution's Innovation Council (IIC), which drives innovation activities under the
+        Ministry of Education's Innovation Cell, and the Entrepreneurship Cell (E-Cell), which supports
+        student-led startup ideas. Use the links on the right to explore each.
+      </p>
+    </div>
+  );
+}
+
+// ── Section: Institution's Innovation Council (IIC) ────────────────────────────
+
+function ResearchIicSection() {
+  const d = college.administration.iic;
+  return (
+    <div className="space-y-6">
+      <SectionHeader label="Committee" title="Institution's Innovation Council (IIC)" />
+      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
+
+      <SubHeading>Core Roles &amp; Responsibilities</SubHeading>
+      <BulletList items={d.objectives} />
+
+      <SubHeading>Committee Composition</SubHeading>
+      <YearTabs compositions={d.yearlyCompositions} />
+    </div>
+  );
+}
+
+// ── Section: Entrepreneurship Cell (E-Cell) ────────────────────────────────────
+
+function ECellSection() {
+  const d = college.research.eCell;
+  return (
+    <div className="space-y-6">
+      <SectionHeader label="Committee" title="Entrepreneurship Cell (E-Cell)" />
+      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
+
+      <SubHeading>Roles and Responsibilities of E-Cell @ GRCP</SubHeading>
+      <BulletList items={d.responsibilities} />
+
+      <SubHeading>Committee Composition</SubHeading>
+      <YearTabs compositions={d.yearlyCompositions} />
+    </div>
+  );
+}
+
+// ── Section: Data Pooling Center ───────────────────────────────────────────────
+
+function DataPoolingCenterSection() {
+  const d = college.research.dataPoolingCenter;
+  return (
+    <div className="space-y-6">
+      <SectionHeader label="Committee" title="Data Pooling Center" />
+      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
+
+      <SubHeading>Roles &amp; Responsibilities</SubHeading>
+      <BulletList items={d.responsibilities} />
+
+      <SubHeading>Committee Composition</SubHeading>
+      <YearTabs compositions={d.yearlyCompositions} />
+    </div>
+  );
+}
+
+function ResearchDigitalMediaSection() {
+  const d = college.administration.digitalMedia;
+  return (
+    <div className="space-y-6">
+      <SectionHeader label="Committee" title="Digital Media and Web Management Committee" />
+      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
+
+      <SubHeading>Roles &amp; Responsibilities</SubHeading>
+      <BulletList items={d.responsibilities} />
+
+      <SubHeading>Committee Composition</SubHeading>
+      <YearTabs compositions={d.yearlyCompositions} />
+    </div>
+  );
+}
+
 // ── Section config ─────────────────────────────────────────────────────────────
 
 const sectionConfig = {
@@ -708,6 +987,61 @@ const sectionConfig = {
     subtitle: 'Advancing pharmaceutical sciences through collaborative and applied research',
     breadcrumb: ['Research', 'Research @ GRCP'],
     content: <OverviewSection />,
+    quickNav: { branch: 'research', activeKey: 'research-at-grcp' },
+  },
+  arc: {
+    title: 'Academic Research Committee (ARC)',
+    subtitle: 'Overseeing and supporting research activities at GRCP',
+    breadcrumb: ['Research', 'Research @ GRCP', 'Academic Research Committee'],
+    content: <ArcSection />,
+    quickNav: { branch: 'research', activeKey: 'arc' },
+  },
+  iaec: {
+    title: 'Institutional Animal Ethics Committee (IAEC)',
+    subtitle: 'Ensuring humane and ethical use of animals in research — CPCSEA compliant',
+    breadcrumb: ['Research', 'Research @ GRCP', 'IAEC'],
+    content: <ResearchIaecSection />,
+    quickNav: { branch: 'research', activeKey: 'iaec' },
+  },
+  'bio-medical-waste': {
+    title: 'Bio-Medical Waste Management Committee',
+    subtitle: 'Safe collection, segregation, and disposal of bio-medical waste at GRCP',
+    breadcrumb: ['Research', 'Research @ GRCP', 'Bio-Medical Waste Management Committee'],
+    content: <BioMedicalWasteSection />,
+    quickNav: { branch: 'research', activeKey: 'bio-medical-waste' },
+  },
+  'innovation-ecell': {
+    title: 'Innovation/E-Cell @ GRCP',
+    subtitle: "Fostering a culture of innovation and entrepreneurship at GRCP",
+    breadcrumb: ['Research', 'Innovation/E-Cell @ GRCP'],
+    content: <InnovationEcellOverview />,
+    quickNav: { branch: 'innovation', activeKey: 'innovation-ecell' },
+  },
+  iic: {
+    title: "Institution's Innovation Council (IIC)",
+    subtitle: 'Fostering a culture of innovation and entrepreneurship at GRCP',
+    breadcrumb: ['Research', 'Innovation/E-Cell @ GRCP', "Institution's Innovation Council"],
+    content: <ResearchIicSection />,
+    quickNav: { branch: 'innovation', activeKey: 'iic' },
+  },
+  'e-cell': {
+    title: 'Entrepreneurship Cell (E-Cell)',
+    subtitle: 'Fostering innovation, creativity, and entrepreneurial thinking at GRCP',
+    breadcrumb: ['Research', 'Innovation/E-Cell @ GRCP', 'Entrepreneurship Cell'],
+    content: <ECellSection />,
+    quickNav: { branch: 'innovation', activeKey: 'e-cell' },
+  },
+  'data-pooling-center': {
+    title: 'Data Pooling Center',
+    subtitle: 'Centralizing institutional academic, research, and administrative data',
+    breadcrumb: ['Research', 'Data Pooling Center'],
+    content: <DataPoolingCenterSection />,
+  },
+  'digital-media': {
+    title: 'Digital Media and Web Management Committee',
+    subtitle: 'Shaping the institution’s online identity and digital presence',
+    breadcrumb: ['Research', 'Digital Media and Web Management Committee'],
+    content: <ResearchDigitalMediaSection />,
   },
   'phd-guideships': {
     title: 'Ph.D Guideships',
@@ -758,9 +1092,14 @@ export default function ResearchPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div>
-          {config.content}
-        </div>
+        {config.quickNav ? (
+          <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+            <div className="min-w-0 flex-1">{config.content}</div>
+            <ResearchQuickNav branch={config.quickNav.branch} activeKey={config.quickNav.activeKey} />
+          </div>
+        ) : (
+          <div>{config.content}</div>
+        )}
       </main>
       <AdmissionsCTA college={college} />
       <Footer college={college} />

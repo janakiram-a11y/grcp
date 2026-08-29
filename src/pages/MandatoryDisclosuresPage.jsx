@@ -44,8 +44,8 @@ function PdfLink({ href, label }) {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="font-display text-type-ui font-medium transition-colors hover:underline"
-        style={{ color: primary }}
+        className="font-display text-[18px] leading-[1.4] font-medium transition-colors hover:underline"
+        style={{ color: '#000000' }}
       >
         {label}
       </a>
@@ -53,12 +53,12 @@ function PdfLink({ href, label }) {
   );
 }
 
-function DisclosureSection({ title, links }) {
+function DisclosureSection({ title, links, columns = 1 }) {
   return (
     <section className="mb-10">
       <SectionHeader title={title} />
       <div className="rounded-xl border overflow-hidden" style={{ borderColor: `${primary}18` }}>
-        <ul className="px-5 py-2">
+        <ul className={`px-5 py-2 ${columns === 2 ? 'sm:grid sm:grid-cols-2 sm:gap-x-10' : ''}`}>
           {links.map((l, i) => (
             <PdfLink key={i} href={l.href} label={l.label} />
           ))}
@@ -68,12 +68,12 @@ function DisclosureSection({ title, links }) {
   );
 }
 
-function SubSection({ title, links }) {
+function SubSection({ title, links, columns = 1 }) {
   return (
     <div className="mb-8">
       <SubHeading>{title}</SubHeading>
       <div className="rounded-xl border overflow-hidden" style={{ borderColor: `${primary}18` }}>
-        <ul className="px-5 py-2">
+        <ul className={`px-5 py-2 ${columns === 2 ? 'sm:grid sm:grid-cols-2 sm:gap-x-10' : ''}`}>
           {links.map((l, i) => (
             <PdfLink key={i} href={l.href} label={l.label} />
           ))}
@@ -125,7 +125,7 @@ function AccreditationRankingSection() {
     <section className="mb-10" id="accreditation-ranking-disclosures">
       <SectionHeader title="Accreditation, Ranking and Disclosures" />
 
-      <div className="max-w-[780px] space-y-4 mb-8">
+      <div className="space-y-4 mb-6">
         <p className="font-body text-type-body text-[#474747]">
           The National Board of Accreditation (NBA) is an autonomous body under the Ministry of Education,
           Government of India, established to evaluate the quality of technical and professional education
@@ -140,7 +140,7 @@ function AccreditationRankingSection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
         {ACCREDITATION_STATS.map((stat) => (
           <div
             key={stat.label}
@@ -157,39 +157,10 @@ function AccreditationRankingSection() {
         ))}
       </div>
 
-      <div
-        className="rounded-xl p-5 flex items-start gap-3 mb-8"
-        style={{ backgroundColor: `${primary}08`, borderLeft: `4px solid ${accent}` }}
-      >
-        <svg className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: accent }} fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-        </svg>
-        <p className="font-body text-type-body text-[#4B5563]">
-          GRCP's B.Pharmacy programme has been accredited by the National Board of Accreditation (NBA),
-          New Delhi for the period 2025–2028. This accreditation is a testament to the institution's
-          dedication to academic excellence, quality infrastructure, and student outcomes.
-        </p>
-      </div>
-
       <SubSection
-        title="Accreditation Certificate"
+        title="Accreditation status"
         links={[
           { label: 'NBA Accreditation Certificate — B.Pharmacy (2025–2028)', href: 'https://grcp.ac.in/downloads/NBA%20Accreditation.pdf' },
-        ]}
-      />
-
-      <SubSection
-        title="Self-Assessment Reports (SAR)"
-        links={[
-          { label: 'SAR — B.Pharmacy Programme 2024–25', href: 'https://grcp.ac.in/downloads/NBA%20Accreditation.pdf' },
-        ]}
-      />
-
-      <SubSection
-        title="Programme Outcomes & Attainment"
-        links={[
-          { label: 'Programme Educational Objectives (PEO)', href: '/about/peo' },
-          { label: 'Programme Outcomes (POs)',                href: '/about/pos' },
         ]}
       />
 
@@ -219,15 +190,16 @@ function AccreditationRankingSection() {
 
       <SubSection
         title="NIRF Disclosures"
+        columns={2}
         links={[
-          { label: 'NIRF Innovation 2026',                                     href: '/downloads/nirf/nirf-innovation-2026.pdf' },
-          { label: 'NIRF Sustainable Institutions 2026',                       href: '/downloads/nirf/nirf-sustainable-institutions-2026.pdf' },
-          { label: 'Data Submitted by Institution for India Rankings 2026',    href: '/downloads/nirf/nirf-data-submitted-2026.pdf' },
-          { label: 'NIRF Innovation 2024',                                     href: '/downloads/nirf/nirf-innovation-2024.pdf' },
-          { label: 'Data Submitted by Institution for India Rankings 2024',    href: '/downloads/nirf/nirf-data-submitted-2024.pdf' },
-          { label: 'Data Submitted by Institution for India Rankings 2023',    href: '/downloads/nirf/nirf-data-submitted-2023.pdf' },
-          { label: 'Data Submitted by Institution for India Rankings 2022',    href: '/downloads/nirf/nirf-data-submitted-2022.pdf' },
-          { label: 'NIRF Certificate',                                        href: '/downloads/nirf/nirf-certificate-2022.pdf' },
+          { label: 'NIRF Innovation 2026',                href: '/downloads/nirf/nirf-innovation-2026.pdf' },
+          { label: 'NIRF Sustainable Institutions 2026',   href: '/downloads/nirf/nirf-sustainable-institutions-2026.pdf' },
+          { label: 'Data Submitted by Institution 2026',   href: '/downloads/nirf/nirf-data-submitted-2026.pdf' },
+          { label: 'NIRF Innovation 2024',                 href: '/downloads/nirf/nirf-innovation-2024.pdf' },
+          { label: 'Data Submitted by Institution 2024',   href: '/downloads/nirf/nirf-data-submitted-2024.pdf' },
+          { label: 'Data Submitted by Institution 2023',   href: '/downloads/nirf/nirf-data-submitted-2023.pdf' },
+          { label: 'Data Submitted by Institution 2022',   href: '/downloads/nirf/nirf-data-submitted-2022.pdf' },
+          { label: 'NIRF Certificate',                     href: '/downloads/nirf/nirf-certificate-2022.pdf' },
         ]}
       />
 
@@ -263,6 +235,7 @@ export default function MandatoryDisclosuresPage() {
 
           <DisclosureSection
             title="PCI Disclosures"
+            columns={2}
             links={[
               { label: 'Decision Letter — PCI for Academic Session 2025-2026', href: 'https://grcp.ac.in/downloads/Decision%20Letter_PCI_%20for%20Academic%20Session%282025-2026%29.pdf' },
               { label: 'Decision Letter — PCI for Academic Session 2021-2022', href: 'https://grcp.ac.in/downloads/Decision%20Letter_PCI_%20for%20Academic%20Session%282021-2022%29.pdf' },
@@ -272,6 +245,7 @@ export default function MandatoryDisclosuresPage() {
 
           <DisclosureSection
             title="OU Disclosures"
+            columns={2}
             links={[
               { label: 'OU Affiliation 2025-2026', href: 'https://grcp.ac.in/downloads/OU%20Affiliation%202025-2026.pdf' },
               { label: 'OU Affiliation 2024-2025', href: 'https://grcp.ac.in/downloads/OU%20Affiliation%202024-2025.pdf' },
@@ -294,6 +268,7 @@ export default function MandatoryDisclosuresPage() {
 
           <DisclosureSection
             title="Audit Reports"
+            columns={2}
             links={[
               { label: 'GRCP Audit Report 2024-25', href: 'https://grcp.ac.in/downloads/GRCP%20Audit%20report%202024-25.pdf' },
               { label: 'GRCP Audit Report 2023-24', href: 'https://grcp.ac.in/downloads/GRCP%20Audit%20report%202023-24.pdf' },

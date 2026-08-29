@@ -127,7 +127,7 @@ export default function Topbar({ college }) {
       className="w-full"
       style={{ backgroundColor: '#ffffff', borderBottom: '1px solid rgba(45,122,80,0.15)' }}
     >
-      <div className="max-w-[1320px] mx-auto container-px py-[6px] flex items-center gap-4 lg:gap-6">
+      <div className="container-px py-[6px] flex items-center gap-4 lg:gap-6">
 
         {/* Left: counselling code */}
         <div className="shrink-0 flex items-center">

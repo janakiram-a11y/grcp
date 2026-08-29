@@ -37,7 +37,7 @@ function PdfLink({ href, label }) {
         target="_blank"
         rel="noopener noreferrer"
         className="font-display text-type-ui font-medium transition-colors hover:underline"
-        style={{ color: primary }}
+        style={{ color: '#000000' }}
       >
         {label}
       </a>

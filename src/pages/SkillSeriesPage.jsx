@@ -65,7 +65,7 @@ export default function SkillSeriesPage() {
         <div className="space-y-12">
 
           {/* Intro */}
-          <div className="max-w-[760px]">
+          <div>
             <p className="font-body text-type-body-lg text-[#474747] leading-relaxed">
               The Skill Series at GRCP is a structured program designed to bridge the gap between academic learning and industry requirements. Through a series of focused workshops, seminars, and hands-on sessions, students acquire practical skills that complement their pharmaceutical education and enhance their employability.
             </p>

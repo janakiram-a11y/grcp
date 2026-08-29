@@ -1,27 +1,20 @@
 import recruiterLogos from '../data/recruiterLogos';
 
-const half = Math.ceil(recruiterLogos.length / 2);
-const rowA = recruiterLogos.slice(0, half);
-const rowB = recruiterLogos.slice(half);
-
-function LogoRow({ logos, reverse }) {
+function RecruiterLogoGrid() {
   return (
     <div
-      className="overflow-hidden"
-      style={{
-        maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
-        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
-      }}
+      className="w-full rounded-2xl bg-white p-6 flex flex-col gap-4"
+      style={{ border: '1px solid rgba(229,231,235,0.7)', boxShadow: '0 1px 8px rgba(45,122,80,0.07), 0 1px 3px rgba(0,0,0,0.05)' }}
     >
-      <div
-        className="recruiter-scroll-track"
-        style={{ animationDirection: reverse ? 'reverse' : 'normal' }}
-      >
-        {[...logos, ...logos].map((logo, idx) => (
+      <p className="font-display font-bold text-type-cap uppercase tracking-[0.12em] text-[#222222] opacity-70">
+        Our Recruiting Partners
+      </p>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        {recruiterLogos.map((logo) => (
           <div
-            key={idx}
-            className="flex items-center justify-center flex-shrink-0 bg-white rounded-lg border"
-            style={{ width: 128, height: 64, marginRight: 14, borderColor: 'rgba(45,122,80,0.14)' }}
+            key={logo.name}
+            className="flex items-center justify-center bg-white rounded-lg border"
+            style={{ height: 64, borderColor: 'rgba(45,122,80,0.14)' }}
           >
             <img
               src={logo.src}
@@ -37,43 +30,12 @@ function LogoRow({ logos, reverse }) {
   );
 }
 
-function RecruiterLogoSlider() {
-  return (
-    <div
-      className="w-full rounded-2xl bg-white p-6 flex flex-col gap-4"
-      style={{ border: '1px solid rgba(229,231,235,0.7)', boxShadow: '0 1px 8px rgba(45,122,80,0.07), 0 1px 3px rgba(0,0,0,0.05)' }}
-    >
-      <style>{`
-        @keyframes recruiter-scroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .recruiter-scroll-track {
-          display: flex;
-          width: max-content;
-          animation: recruiter-scroll 32s linear infinite;
-        }
-        .recruiter-scroll-track:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
-      <p className="font-display font-bold text-type-cap uppercase tracking-[0.12em] text-[#222222] opacity-70">
-        Our Recruiting Partners
-      </p>
-      <div className="flex flex-col gap-3">
-        <LogoRow logos={rowA} />
-        <LogoRow logos={rowB} reverse />
-      </div>
-    </div>
-  );
-}
-
 export default function CareerOutcomes({ college }) {
   return (
     <section className="w-full section-pad" style={{ backgroundColor: 'var(--cream, #F0F7F3)' }}>
-      <div className="flex flex-col lg:flex-row lg:items-center gap-10">
-        <div className="flex flex-col flex-1 gap-6">
-          <div>
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-10">
+          <div className="lg:flex-1">
             <h2 className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 mb-4" style={{ color: 'var(--maroon, #C72235)' }}>
               {college.careerHeading}
             </h2>
@@ -82,7 +44,7 @@ export default function CareerOutcomes({ college }) {
             </p>
           </div>
 
-          <div className="flex">
+          <div className="flex lg:w-[420px] lg:flex-shrink-0">
             <div className="flex-1 pl-6 border-l-2 flex flex-col gap-1" style={{ borderColor: 'var(--maroon, #2D7A50)' }}>
               <span className="font-display font-bold text-type-h2-mob md:text-type-h2-tab lg:text-type-h2 text-[#222222]">{college.careerHighestPackage}</span>
               <span className="font-display font-bold text-type-label uppercase tracking-[0.12em] text-[#4B5563]">
@@ -98,9 +60,7 @@ export default function CareerOutcomes({ college }) {
           </div>
         </div>
 
-        <div className="w-full lg:flex-1 lg:max-w-lg flex-shrink-0">
-          <RecruiterLogoSlider />
-        </div>
+        <RecruiterLogoGrid />
       </div>
     </section>
   )
