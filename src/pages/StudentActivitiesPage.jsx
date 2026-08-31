@@ -129,20 +129,32 @@ function YearTabs({ compositions }) {
   );
 }
 
-// ── Sticky right-side quick nav ────────────────────────────────────────────────
+// ── Sticky left-side quick nav ─────────────────────────────────────────────────
 
-function QuickNavButton({ label, href, active }) {
+const QUICKNAV_HEADER = '#4A1428';
+
+function QuickNavRow({ label, href, active }) {
+  const color = active ? accent : '#222222';
   return (
     <Link
       to={href}
-      className="block font-display font-semibold text-type-ui-sm px-4 py-3 rounded-lg transition-colors"
-      style={
-        active
-          ? { backgroundColor: primary, color: '#fff' }
-          : { backgroundColor: `${primary}0D`, color: primary }
-      }
+      className="flex items-center gap-3 px-5 py-3.5 transition-colors"
+      style={{ backgroundColor: active ? `${QUICKNAV_HEADER}0D` : '#fff' }}
     >
-      {label}
+      <span
+        className="rounded-full flex-shrink-0 transition-all"
+        style={{
+          width: active ? 10 : 8,
+          height: active ? 10 : 8,
+          backgroundColor: color,
+        }}
+      />
+      <span
+        className="font-display text-type-ui-sm"
+        style={{ color, fontWeight: active ? 700 : 600 }}
+      >
+        {label}
+      </span>
     </Link>
   );
 }
@@ -150,12 +162,22 @@ function QuickNavButton({ label, href, active }) {
 function StudentActivitiesQuickNav({ activeKey }) {
   return (
     <aside className="w-full lg:w-[280px] lg:flex-shrink-0">
-      <div className="lg:sticky lg:top-24 flex flex-col gap-2">
-        <QuickNavButton label="Student Activities" href="/student-activities" active={activeKey === 'overview'} />
-        <div className="h-px my-1" style={{ backgroundColor: `${primary}18` }} />
-        {COMMITTEES.map((c) => (
-          <QuickNavButton key={c.key} label={c.name} href={`/student-activities/${c.key}`} active={c.key === activeKey} />
-        ))}
+      <div
+        className="lg:sticky lg:top-24 rounded-2xl overflow-hidden border shadow-sm"
+        style={{ borderColor: '#E5E7EB' }}
+      >
+        <Link
+          to="/student-activities"
+          className="block font-display font-bold text-type-body px-5 py-4"
+          style={{ backgroundColor: QUICKNAV_HEADER, color: '#fff' }}
+        >
+          Student Activities
+        </Link>
+        <div className="flex flex-col divide-y divide-gray-100">
+          {COMMITTEES.map((c) => (
+            <QuickNavRow key={c.key} label={c.name} href={`/student-activities/${c.key}`} active={c.key === activeKey} />
+          ))}
+        </div>
       </div>
     </aside>
   );
@@ -288,8 +310,8 @@ export default function StudentActivitiesPage() {
       <main className="flex-1 section-pad">
         {config.quickNav ? (
           <div className="flex flex-col lg:flex-row lg:items-start gap-8">
-            <div className="min-w-0 flex-1">{config.content}</div>
             <StudentActivitiesQuickNav activeKey={config.quickNav.activeKey} />
+            <div className="min-w-0 flex-1">{config.content}</div>
           </div>
         ) : (
           <div>{config.content}</div>

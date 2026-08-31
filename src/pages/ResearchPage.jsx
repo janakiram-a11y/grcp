@@ -235,35 +235,60 @@ const TOP_LEVEL_LINKS = [
   { key: 'innovation', label: 'Innovation/E-Cell@GRCP',    href: '/research/innovation-ecell' },
 ];
 
-function QuickNavButton({ label, href, active, variant = 'sub' }) {
-  const color = variant === 'top' ? accent : primary;
+const QUICKNAV_HEADER = '#4A1428';
+
+function QuickNavRow({ label, href, active, variant = 'sub' }) {
+  const isTop = variant === 'top';
+  const color = active ? accent : '#222222';
   return (
     <Link
       to={href}
-      className="block font-display font-semibold text-type-ui px-5 py-3.5 rounded-lg transition-colors"
-      style={
-        active
-          ? { backgroundColor: color, color: '#fff' }
-          : { backgroundColor: `${color}0D`, color }
-      }
+      className="flex items-center gap-3 px-5 py-3.5 transition-colors"
+      style={{ backgroundColor: active ? `${QUICKNAV_HEADER}0D` : '#fff' }}
     >
-      {label}
+      <span
+        className="rounded-full flex-shrink-0 transition-all"
+        style={{
+          width: active || isTop ? 10 : 8,
+          height: active || isTop ? 10 : 8,
+          backgroundColor: color,
+        }}
+      />
+      <span
+        className="font-display text-type-ui-sm"
+        style={{ color, fontWeight: active || isTop ? 700 : 600 }}
+      >
+        {label}
+      </span>
     </Link>
   );
 }
 
 function ResearchQuickNav({ branch, activeKey }) {
+  const isResearch = branch !== 'innovation';
+  const currentTop = isResearch ? TOP_LEVEL_LINKS[0] : TOP_LEVEL_LINKS[1];
+  const otherTop = isResearch ? TOP_LEVEL_LINKS[1] : TOP_LEVEL_LINKS[0];
   const branchLinks = branch === 'innovation' ? INNOVATION_BRANCH_LINKS : RESEARCH_BRANCH_LINKS;
+
   return (
     <aside className="w-full lg:w-[280px] lg:flex-shrink-0">
-      <div className="lg:sticky lg:top-24 flex flex-col gap-2">
-        {TOP_LEVEL_LINKS.map((item) => (
-          <QuickNavButton key={item.key} label={item.label} href={item.href} active={item.key === branch} variant="top" />
-        ))}
-        <div className="h-px my-1" style={{ backgroundColor: `${primary}18` }} />
-        {branchLinks.map((item) => (
-          <QuickNavButton key={item.key} label={item.label} href={item.href} active={item.key === activeKey} variant="sub" />
-        ))}
+      <div
+        className="lg:sticky lg:top-24 rounded-2xl overflow-hidden border shadow-sm"
+        style={{ borderColor: '#E5E7EB' }}
+      >
+        <Link
+          to={currentTop.href}
+          className="block font-display font-bold text-type-body px-5 py-4"
+          style={{ backgroundColor: QUICKNAV_HEADER, color: '#fff' }}
+        >
+          {currentTop.label}
+        </Link>
+        <div className="flex flex-col divide-y divide-gray-100">
+          <QuickNavRow label={otherTop.label} href={otherTop.href} active={false} variant="top" />
+          {branchLinks.map((item) => (
+            <QuickNavRow key={item.key} label={item.label} href={item.href} active={item.key === activeKey} variant="sub" />
+          ))}
+        </div>
       </div>
     </aside>
   );
@@ -1073,8 +1098,8 @@ export default function ResearchPage() {
       <main className="flex-1 section-pad">
         {config.quickNav ? (
           <div className="flex flex-col lg:flex-row lg:items-start gap-8">
-            <div className="min-w-0 flex-1">{config.content}</div>
             <ResearchQuickNav branch={config.quickNav.branch} activeKey={config.quickNav.activeKey} />
+            <div className="min-w-0 flex-1">{config.content}</div>
           </div>
         ) : (
           <div>{config.content}</div>

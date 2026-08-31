@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import college from '../theme';
 import SiteHeader from '../components/SiteHeader';
 import PageHero from '../components/PageHero';
@@ -431,6 +431,67 @@ function StudentTrainingInternshipSection() {
   );
 }
 
+// ─── Sticky left-side quick nav ────────────────────────────────────────────────
+
+const QUICKNAV_HEADER = '#4A1428';
+
+const PLACEMENTS_NAV_LINKS = [
+  { key: 'placement-cell',                     label: 'Placement Cell @ GRCP',      href: '/placements/placement-cell' },
+  { key: 'placement-status',                   label: 'Placement Status',           href: '/placements/placement-status' },
+  { key: 'iipc',                                label: 'Industry – Institute Partnership Cell (IIPC)', href: '/placements/iipc' },
+  { key: 'student-training-internship-cell',   label: 'Student Training & Internship Cell', href: '/placements/student-training-internship-cell' },
+];
+
+function QuickNavRow({ label, href, active }) {
+  const color = active ? ACCENT : '#222222';
+  return (
+    <Link
+      to={href}
+      className="flex items-center gap-3 px-5 py-3.5 transition-colors"
+      style={{ backgroundColor: active ? `${QUICKNAV_HEADER}0D` : '#fff' }}
+    >
+      <span
+        className="rounded-full flex-shrink-0 transition-all"
+        style={{
+          width: active ? 10 : 8,
+          height: active ? 10 : 8,
+          backgroundColor: color,
+        }}
+      />
+      <span
+        className="font-display text-type-ui-sm"
+        style={{ color, fontWeight: active ? 700 : 600 }}
+      >
+        {label}
+      </span>
+    </Link>
+  );
+}
+
+function PlacementsQuickNav({ activeKey }) {
+  return (
+    <aside className="w-full lg:w-[280px] lg:flex-shrink-0">
+      <div
+        className="lg:sticky lg:top-24 rounded-2xl overflow-hidden border shadow-sm"
+        style={{ borderColor: '#E5E7EB' }}
+      >
+        <Link
+          to="/placements/placement-cell"
+          className="block font-display font-bold text-type-body px-5 py-4"
+          style={{ backgroundColor: QUICKNAV_HEADER, color: '#fff' }}
+        >
+          Placements
+        </Link>
+        <div className="flex flex-col divide-y divide-gray-100">
+          {PLACEMENTS_NAV_LINKS.map((item) => (
+            <QuickNavRow key={item.key} label={item.label} href={item.href} active={item.key === activeKey} />
+          ))}
+        </div>
+      </div>
+    </aside>
+  );
+}
+
 // ─── Page config ──────────────────────────────────────────────────────────────
 
 const sectionConfig = {
@@ -485,7 +546,10 @@ export default function PlacementsPage() {
         bgImage={college.heroBgImage}
       />
       <main className="flex-1 section-pad">
-        <div>{content}</div>
+        <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+          <PlacementsQuickNav activeKey={activeSection} />
+          <div className="min-w-0 flex-1">{content}</div>
+        </div>
       </main>
       <AdmissionsCTA college={college} />
       <Footer college={college} />

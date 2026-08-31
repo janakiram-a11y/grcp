@@ -15,6 +15,18 @@ const links = [
     ),
   },
   {
+    label: 'Student Activities',
+    href: '/student-activities',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 00-3-3.87" />
+        <path d="M16 3.13a4 4 0 010 7.75" />
+      </svg>
+    ),
+  },
+  {
     label: 'Events',
     href: '/events',
     icon: (
@@ -47,7 +59,7 @@ export default function QuickLinks() {
       style={{ backgroundColor: '#F3DAB2', borderBottom: '1px solid rgba(199,34,53,0.12)' }}
     >
       <div className="w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-3" style={{ height: 90 }}>
+        <div className="grid grid-cols-2 sm:grid-cols-4" style={{ height: 90 }}>
           {links.map(({ label, href, icon }, idx) => (
             <Link
               key={label}
