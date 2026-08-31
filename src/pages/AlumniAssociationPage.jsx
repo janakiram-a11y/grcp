@@ -69,7 +69,7 @@ function PositionBadge({ position }) {
   const color = position === 'Member' ? primary : '#fff';
   return (
     <span
-      className="font-display font-semibold text-type-cap px-3 py-1 rounded-full inline-block"
+      className="font-display font-semibold text-type-ui-sm px-3 py-1 rounded-full inline-block"
       style={{ backgroundColor: bg, color }}
     >
       {position}
@@ -86,7 +86,7 @@ function CommitteeTable({ members }) {
             {['S.No.', 'Name', 'Designation', 'Position', 'Email'].map((h) => (
               <th
                 key={h}
-                className="font-display font-semibold text-type-cap text-white text-left px-5 py-3.5 tracking-wide"
+                className="font-display font-semibold text-type-ui-sm text-white text-left px-5 py-3.5 tracking-wide"
               >
                 {h}
               </th>
@@ -99,21 +99,21 @@ function CommitteeTable({ members }) {
               key={row.sno}
               style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}
             >
-              <td className="font-body text-type-ui text-[#374151] px-5 py-3.5">{row.sno}</td>
-              <td className="font-display font-semibold text-type-ui px-5 py-3.5" style={{ color: primary }}>{row.name}</td>
-              <td className="font-body text-type-ui text-[#374151] px-5 py-3.5">{row.designation}</td>
+              <td className="font-body text-type-body-sm text-[#374151] px-5 py-3.5">{row.sno}</td>
+              <td className="font-display font-semibold text-type-body-sm px-5 py-3.5" style={{ color: primary }}>{row.name}</td>
+              <td className="font-body text-type-body-sm text-[#374151] px-5 py-3.5">{row.designation}</td>
               <td className="px-5 py-3.5"><PositionBadge position={row.position} /></td>
               <td className="px-5 py-3.5">
                 {row.email ? (
                   <a
                     href={`mailto:${row.email}`}
-                    className="font-display text-type-ui-sm underline"
+                    className="font-display text-type-ui underline"
                     style={{ color: primary }}
                   >
                     {row.email}
                   </a>
                 ) : (
-                  <span className="font-body text-type-ui-sm text-[#9CA3AF]">—</span>
+                  <span className="font-body text-type-ui text-[#9CA3AF]">—</span>
                 )}
               </td>
             </tr>

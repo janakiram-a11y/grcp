@@ -99,7 +99,7 @@ export default function Navbar({ college, scrolled = false }) {
 
           {/* ── Infinite auto-scroll logo strip ──────────────────────────── */}
           <div
-            className="min-w-0 flex-1 overflow-hidden sm:flex-none sm:w-[420px] md:w-[560px]"
+            className="min-w-0 flex-1 overflow-hidden sm:flex-none sm:w-[460px] md:w-[620px]"
             style={{
               /* Constrain right edge to align with the topbar divider (before search icon).
                  Topbar reserves ~268px on the right (260px search box + 8px gap).
@@ -124,7 +124,7 @@ export default function Navbar({ college, scrolled = false }) {
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginRight: 32,
-                    height: isDesktop ? (shrink ? 40 : 58) : 40,
+                    height: isDesktop ? (shrink ? 52 : 74) : 52,
                     transition: 'height 0.3s ease',
                   }}
                 >
@@ -134,8 +134,8 @@ export default function Navbar({ college, scrolled = false }) {
                     title={logo.name}
                     loading="lazy"
                     style={{
-                      maxWidth: 90,
-                      maxHeight: isDesktop ? (shrink ? 34 : 56) : 34,
+                      maxWidth: 120,
+                      maxHeight: isDesktop ? (shrink ? 46 : 70) : 46,
                       width: 'auto',
                       height: 'auto',
                       objectFit: 'contain',

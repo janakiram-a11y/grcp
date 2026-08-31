@@ -42,7 +42,7 @@ function SubHeading({ children }) {
 function CommitteeTable({ rows, columns }) {
   return (
     <div className="overflow-x-auto rounded-xl shadow-sm border border-gray-100">
-      <table className="w-full text-type-ui">
+      <table className="w-full text-type-body-sm">
         <thead>
           <tr style={{ backgroundColor: greenAccent }}>
             {columns.map((col) => (
@@ -70,7 +70,7 @@ function CommitteeTable({ rows, columns }) {
                     </a>
                   ) : col.key === 'position' ? (
                     <span
-                      className="font-display font-semibold text-type-cap px-2.5 py-1 rounded inline-block"
+                      className="font-display font-semibold text-type-ui-sm px-2.5 py-1 rounded inline-block"
                       style={{
                         backgroundColor:
                           row.position === 'Chairperson' ? primaryColor

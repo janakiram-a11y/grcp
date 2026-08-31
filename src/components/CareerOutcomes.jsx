@@ -1,30 +1,68 @@
 import recruiterLogos from '../data/recruiterLogos';
 
-function RecruiterLogoGrid() {
+function LogoRow({ logos, reverse }) {
   return (
     <div
-      className="w-full rounded-2xl bg-white p-6 flex flex-col gap-4"
-      style={{ border: '1px solid rgba(229,231,235,0.7)', boxShadow: '0 1px 8px rgba(45,122,80,0.07), 0 1px 3px rgba(0,0,0,0.05)' }}
+      className="w-full overflow-hidden"
+      style={{
+        maskImage: 'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
+      }}
     >
-      <p className="font-display font-bold text-type-cap uppercase tracking-[0.12em] text-[#222222] opacity-70">
-        Our Recruiting Partners
-      </p>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-        {recruiterLogos.map((logo) => (
+      <div
+        className="recruiter-scroll-track"
+        style={{ animationDirection: reverse ? 'reverse' : 'normal' }}
+      >
+        {[...logos, ...logos].map((logo, idx) => (
           <div
-            key={logo.name}
-            className="flex items-center justify-center bg-white rounded-lg border"
-            style={{ height: 64, borderColor: 'rgba(45,122,80,0.14)' }}
+            key={`${logo.name}-${idx}`}
+            className="flex items-center justify-center bg-white rounded-lg border flex-shrink-0"
+            style={{ height: 84, width: 168, marginRight: 16, borderColor: 'rgba(45,122,80,0.14)' }}
           >
             <img
               src={logo.src}
               alt={logo.name}
               title={logo.name}
               loading="lazy"
-              style={{ maxWidth: 96, maxHeight: 44, width: 'auto', height: 'auto', objectFit: 'contain' }}
+              style={{ maxWidth: 132, maxHeight: 64, width: 'auto', height: 'auto', objectFit: 'contain' }}
             />
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function RecruiterLogoGrid() {
+  const mid = Math.ceil(recruiterLogos.length / 2);
+  const row1 = recruiterLogos.slice(0, mid);
+  const row2 = recruiterLogos.slice(mid);
+
+  return (
+    <div
+      className="w-full rounded-2xl bg-white p-6 flex flex-col gap-4"
+      style={{ border: '1px solid rgba(229,231,235,0.7)', boxShadow: '0 1px 8px rgba(45,122,80,0.07), 0 1px 3px rgba(0,0,0,0.05)' }}
+    >
+      <style>{`
+        @keyframes recruiter-scroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .recruiter-scroll-track {
+          display: flex;
+          width: max-content;
+          animation: recruiter-scroll 40s linear infinite;
+        }
+        .recruiter-scroll-track:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+      <p className="font-display font-bold text-type-cap uppercase tracking-[0.12em] text-[#222222] opacity-70">
+        Our Recruiting Partners
+      </p>
+      <div className="flex flex-col gap-4">
+        <LogoRow logos={row1} />
+        <LogoRow logos={row2} reverse />
       </div>
     </div>
   );

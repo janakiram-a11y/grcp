@@ -64,13 +64,13 @@ function CategoryBlock({ cat }) {
                 className="border-b last:border-0"
                 style={{ backgroundColor: idx % 2 === 0 ? '#fff' : '#FAFAFA', borderColor: '#F3F4F6' }}
               >
-                <td className="font-display text-type-ui-sm text-[#9CA3AF] px-5 py-3.5 w-10 text-center">
+                <td className="font-display text-type-ui text-[#9CA3AF] px-5 py-3.5 w-10 text-center">
                   {idx + 1}
                 </td>
                 <td className="px-4 py-3.5">
                   <div className="flex items-center gap-2.5">
                     <FileIcon type={file.type} />
-                    <span className="font-body text-type-ui text-[#374151]">{file.name}</span>
+                    <span className="font-body text-type-body-sm text-[#374151]">{file.name}</span>
                   </div>
                 </td>
                 <td className="px-5 py-3.5 w-[130px] text-right">

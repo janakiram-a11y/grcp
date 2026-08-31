@@ -71,7 +71,7 @@ function DataTable({ rows, columns, totalRow }) {
             {columns.map((col) => (
               <th
                 key={col.key}
-                className="text-left font-display font-semibold text-type-cap text-white px-5 py-3.5 tracking-wide"
+                className="text-left font-display font-semibold text-type-ui-sm text-white px-5 py-3.5 tracking-wide"
               >
                 {col.label}
               </th>
@@ -84,7 +84,7 @@ function DataTable({ rows, columns, totalRow }) {
               {columns.map((col) => (
                 <td
                   key={col.key}
-                  className="font-body text-type-body-xs px-5 py-3.5 align-top"
+                  className="font-body text-type-body-sm px-5 py-3.5 align-top"
                   style={col.accent ? { color: primary, fontWeight: 600 } : { color: '#374151' }}
                 >
                   {row[col.key] ?? '—'}
@@ -97,7 +97,7 @@ function DataTable({ rows, columns, totalRow }) {
               {columns.map((col) => (
                 <td
                   key={col.key}
-                  className="font-body font-semibold text-type-body-xs px-5 py-3.5"
+                  className="font-body font-semibold text-type-body-sm px-5 py-3.5"
                   style={{ color: primary }}
                 >
                   {totalRow[col.key] ?? ''}
@@ -121,7 +121,7 @@ function StatusBadge({ status }) {
       : { bg: '#F3F4F6', text: '#6B7280' };
   return (
     <span
-      className="inline-block px-2.5 py-0.5 rounded-full font-display font-semibold text-type-label tracking-wide"
+      className="inline-block px-2.5 py-0.5 rounded-full font-display font-semibold text-type-cap tracking-wide"
       style={{ backgroundColor: style.bg, color: style.text }}
     >
       {status}
@@ -155,7 +155,7 @@ function RoleBadge({ role }) {
   }
   return (
     <span
-      className="inline-block font-display font-semibold text-type-ui-sm px-2.5 py-0.5 rounded-full whitespace-nowrap"
+      className="inline-block font-display font-semibold text-type-ui px-2.5 py-0.5 rounded-full whitespace-nowrap"
       style={{ backgroundColor: bg, color }}
     >
       {role}
@@ -190,20 +190,20 @@ function YearTabs({ compositions, contactHeader }) {
             <thead>
               <tr style={{ backgroundColor: accent }}>
                 {['S.No.', 'Name', 'Designation', 'Position', contactCol || 'Email'].map((h) => (
-                  <th key={h} className="font-display font-semibold text-type-ui-sm text-white text-left px-5 py-3.5">{h}</th>
+                  <th key={h} className="font-display font-semibold text-type-ui text-white text-left px-5 py-3.5">{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {active.members.map((m, i) => (
                 <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#FAFAFA' : '#FFFFFF' }}>
-                  <td className="font-body text-type-ui text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.sno || i + 1}</td>
-                  <td className="font-display font-semibold text-type-ui px-5 py-3 border-b" style={{ color: primary, borderColor: `${primary}10` }}>{m.name}</td>
-                  <td className="font-body text-type-ui text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.designation}</td>
+                  <td className="font-body text-type-body-sm text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.sno || i + 1}</td>
+                  <td className="font-display font-semibold text-type-body-sm px-5 py-3 border-b" style={{ color: primary, borderColor: `${primary}10` }}>{m.name}</td>
+                  <td className="font-body text-type-body-sm text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.designation}</td>
                   <td className="px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}><RoleBadge role={m.position || m.role} /></td>
                   <td className="px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>
                     {(m.email || m.contact || m.phone)
-                      ? <span className="font-body text-type-ui-sm text-[#374151]">{m.email || m.contact || m.phone}</span>
+                      ? <span className="font-body text-type-ui text-[#374151]">{m.email || m.contact || m.phone}</span>
                       : <span className="text-[#9CA3AF]">—</span>
                     }
                   </td>
@@ -235,15 +235,16 @@ const TOP_LEVEL_LINKS = [
   { key: 'innovation', label: 'Innovation/E-Cell@GRCP',    href: '/research/innovation-ecell' },
 ];
 
-function QuickNavButton({ label, href, active }) {
+function QuickNavButton({ label, href, active, variant = 'sub' }) {
+  const color = variant === 'top' ? accent : primary;
   return (
     <Link
       to={href}
-      className="block font-display font-semibold text-type-ui-sm px-4 py-3 rounded-lg transition-colors"
+      className="block font-display font-semibold text-type-ui px-5 py-3.5 rounded-lg transition-colors"
       style={
         active
-          ? { backgroundColor: primary, color: '#fff' }
-          : { backgroundColor: `${primary}0D`, color: primary }
+          ? { backgroundColor: color, color: '#fff' }
+          : { backgroundColor: `${color}0D`, color }
       }
     >
       {label}
@@ -257,11 +258,11 @@ function ResearchQuickNav({ branch, activeKey }) {
     <aside className="w-full lg:w-[280px] lg:flex-shrink-0">
       <div className="lg:sticky lg:top-24 flex flex-col gap-2">
         {TOP_LEVEL_LINKS.map((item) => (
-          <QuickNavButton key={item.key} label={item.label} href={item.href} active={item.key === branch} />
+          <QuickNavButton key={item.key} label={item.label} href={item.href} active={item.key === branch} variant="top" />
         ))}
         <div className="h-px my-1" style={{ backgroundColor: `${primary}18` }} />
         {branchLinks.map((item) => (
-          <QuickNavButton key={item.key} label={item.label} href={item.href} active={item.key === activeKey} />
+          <QuickNavButton key={item.key} label={item.label} href={item.href} active={item.key === activeKey} variant="sub" />
         ))}
       </div>
     </aside>
@@ -718,7 +719,7 @@ function PatentTable({ rows }) {
             {PATENT_COLS.map((col) => (
               <th
                 key={col.key}
-                className="text-left font-display font-semibold text-type-cap text-white px-4 py-3.5 tracking-wide"
+                className="text-left font-display font-semibold text-type-ui-sm text-white px-4 py-3.5 tracking-wide"
                 style={col.key === 'title' ? { minWidth: 260 } : col.key === 'inventors' ? { minWidth: 180 } : {}}
               >
                 {col.label}
@@ -732,7 +733,7 @@ function PatentTable({ rows }) {
               {PATENT_COLS.map((col) => (
                 <td
                   key={col.key}
-                  className="font-body text-type-ui-sm px-4 py-3.5 align-top"
+                  className="font-body text-type-ui px-4 py-3.5 align-top"
                   style={col.accent ? { color: primary, fontWeight: 600 } : { color: '#374151' }}
                 >
                   {col.key === 'status' ? <StatusBadge status={row[col.key]} /> : (row[col.key] ?? '—')}
@@ -963,22 +964,6 @@ function DataPoolingCenterSection() {
   );
 }
 
-function ResearchDigitalMediaSection() {
-  const d = college.administration.digitalMedia;
-  return (
-    <div className="space-y-6">
-      <SectionHeader label="Committee" title="Digital Media and Web Management Committee" />
-      <p className="font-body text-type-body text-[#474747]">{d.description}</p>
-
-      <SubHeading>Roles &amp; Responsibilities</SubHeading>
-      <BulletList items={d.responsibilities} />
-
-      <SubHeading>Committee Composition</SubHeading>
-      <YearTabs compositions={d.yearlyCompositions} />
-    </div>
-  );
-}
-
 // ── Section config ─────────────────────────────────────────────────────────────
 
 const sectionConfig = {
@@ -1036,12 +1021,6 @@ const sectionConfig = {
     subtitle: 'Centralizing institutional academic, research, and administrative data',
     breadcrumb: ['Research', 'Data Pooling Center'],
     content: <DataPoolingCenterSection />,
-  },
-  'digital-media': {
-    title: 'Digital Media and Web Management Committee',
-    subtitle: 'Shaping the institution’s online identity and digital presence',
-    breadcrumb: ['Research', 'Digital Media and Web Management Committee'],
-    content: <ResearchDigitalMediaSection />,
   },
   'phd-guideships': {
     title: 'Ph.D Guideships',

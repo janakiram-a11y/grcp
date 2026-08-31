@@ -34,7 +34,7 @@ function CommitteeTable({ members }) {
             {['S.No.', 'Name', 'Designation', 'Position', 'Email'].map((h, i) => (
               <th
                 key={h}
-                className="font-display font-semibold text-type-ui-sm text-white px-4 py-3"
+                className="font-display font-semibold text-type-ui text-white px-4 py-3"
                 style={{ textAlign: i === 0 ? 'center' : 'left', whiteSpace: 'nowrap', border: `1px solid ${college.primaryColor}30` }}
               >
                 {h}
@@ -45,18 +45,18 @@ function CommitteeTable({ members }) {
         <tbody>
           {members.map((m, i) => (
             <tr key={m.sno} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-              <td className="font-body text-type-body-xs text-[#474747] px-4 py-3" style={{ textAlign: 'center', border: `1px solid ${college.primaryColor}10` }}>
+              <td className="font-body text-type-body-sm text-[#474747] px-4 py-3" style={{ textAlign: 'center', border: `1px solid ${college.primaryColor}10` }}>
                 {m.sno}
               </td>
-              <td className="font-display font-semibold text-type-body-xs px-4 py-3" style={{ color: college.primaryColor, border: `1px solid ${college.primaryColor}10` }}>
+              <td className="font-display font-semibold text-type-body-sm px-4 py-3" style={{ color: college.primaryColor, border: `1px solid ${college.primaryColor}10` }}>
                 {m.name}
               </td>
-              <td className="font-body text-type-body-xs text-[#474747] px-4 py-3" style={{ border: `1px solid ${college.primaryColor}10` }}>
+              <td className="font-body text-type-body-sm text-[#474747] px-4 py-3" style={{ border: `1px solid ${college.primaryColor}10` }}>
                 {m.designation}
               </td>
               <td className="px-4 py-3" style={{ border: `1px solid ${college.primaryColor}10` }}>
                 <span
-                  className="font-display font-semibold text-type-cap px-2.5 py-1 rounded"
+                  className="font-display font-semibold text-type-ui-sm px-2.5 py-1 rounded"
                   style={{
                     backgroundColor:
                       (m.position === 'Chairperson' || m.position === 'Chairman') ? college.primaryColor
@@ -69,7 +69,7 @@ function CommitteeTable({ members }) {
                   {m.position}
                 </span>
               </td>
-              <td className="font-body text-type-body-xs px-4 py-3" style={{ border: `1px solid ${college.primaryColor}10` }}>
+              <td className="font-body text-type-body-sm px-4 py-3" style={{ border: `1px solid ${college.primaryColor}10` }}>
                 <a href={`mailto:${m.email}`} className="underline" style={{ color: college.primaryColor }}>
                   {m.email}
                 </a>
@@ -386,13 +386,13 @@ const QP_TABS = [
 ];
 
 function PdfBtn({ href }) {
-  if (!href) return <span className="font-display text-type-cap text-[#adb5bd]">—</span>;
+  if (!href) return <span className="font-display text-type-ui-sm text-[#adb5bd]">—</span>;
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 font-display font-semibold text-type-cap text-white px-3 py-1.5 rounded transition-opacity hover:opacity-80"
+      className="inline-flex items-center gap-1.5 font-display font-semibold text-type-ui-sm text-white px-3 py-1.5 rounded transition-opacity hover:opacity-80"
       style={{ backgroundColor: college.primaryColor }}
     >
       <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3" stroke="currentColor" strokeWidth="2">
@@ -444,11 +444,11 @@ function QuestionPapersSection() {
               <table className="w-full" style={{ borderCollapse: 'collapse', border: `1px solid ${college.primaryColor}20` }}>
                 <thead>
                   <tr style={{ backgroundColor: college.greenAccent }}>
-                    <th className="font-display font-semibold text-type-ui-sm text-white px-4 py-3 text-left" style={{ minWidth: '120px', border: `1px solid ${college.primaryColor}30` }}>
+                    <th className="font-display font-semibold text-type-ui text-white px-4 py-3 text-left" style={{ minWidth: '120px', border: `1px solid ${college.primaryColor}30` }}>
                       Semester
                     </th>
                     {bPharmQP.years.map(yr => (
-                      <th key={yr} className="font-display font-semibold text-type-ui-sm text-white px-4 py-3 text-center" style={{ whiteSpace: 'nowrap', border: `1px solid ${college.primaryColor}30` }}>
+                      <th key={yr} className="font-display font-semibold text-type-ui text-white px-4 py-3 text-center" style={{ whiteSpace: 'nowrap', border: `1px solid ${college.primaryColor}30` }}>
                         {yr}
                       </th>
                     ))}
@@ -457,7 +457,7 @@ function QuestionPapersSection() {
                 <tbody>
                   {bPharmQP.semesters.map((row, i) => (
                     <tr key={row.sem} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-                      <td className="font-display font-semibold text-type-body-xs px-4 py-3" style={{ color: college.primaryColor, border: `1px solid ${college.primaryColor}10` }}>
+                      <td className="font-display font-semibold text-type-body-sm px-4 py-3" style={{ color: college.primaryColor, border: `1px solid ${college.primaryColor}10` }}>
                         {row.sem}
                       </td>
                       {row.links.map((link, j) => (
@@ -483,10 +483,10 @@ function QuestionPapersSection() {
                   <table className="bg-white" style={{ borderCollapse: 'collapse', border: `1px solid ${college.primaryColor}20`, maxWidth: '480px' }}>
                     <thead>
                       <tr style={{ backgroundColor: college.greenAccent }}>
-                        <th className="font-display font-semibold text-type-ui-sm text-white px-4 py-3 text-left" style={{ minWidth: '140px', border: `1px solid ${college.primaryColor}30` }}>
+                        <th className="font-display font-semibold text-type-ui text-white px-4 py-3 text-left" style={{ minWidth: '140px', border: `1px solid ${college.primaryColor}30` }}>
                           Semester
                         </th>
-                        <th className="font-display font-semibold text-type-ui-sm text-white px-4 py-3 text-center" style={{ border: `1px solid ${college.primaryColor}30` }}>
+                        <th className="font-display font-semibold text-type-ui text-white px-4 py-3 text-center" style={{ border: `1px solid ${college.primaryColor}30` }}>
                           Question Paper
                         </th>
                       </tr>
@@ -494,7 +494,7 @@ function QuestionPapersSection() {
                     <tbody>
                       {spec.semesters.map((s, i) => (
                         <tr key={s.sem} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-                          <td className="font-display font-semibold text-type-body-xs px-4 py-3" style={{ color: college.primaryColor, border: `1px solid ${college.primaryColor}10` }}>
+                          <td className="font-display font-semibold text-type-body-sm px-4 py-3" style={{ color: college.primaryColor, border: `1px solid ${college.primaryColor}10` }}>
                             {s.sem}
                           </td>
                           <td className="px-4 py-3 text-center" style={{ border: `1px solid ${college.primaryColor}10` }}>

@@ -74,7 +74,7 @@ function PositionBadge({ position }) {
   }
   return (
     <span
-      className="inline-block px-3 py-1 rounded-full text-type-label font-semibold font-display"
+      className="inline-block px-3 py-1 rounded-full text-type-cap font-semibold font-display"
       style={style}
     >
       {position}
@@ -269,11 +269,11 @@ function ExecutiveMembersSection() {
         <table className="w-full border-collapse">
           <thead>
             <tr>
-              <th className="text-type-ui-sm" style={{ ...thStyle, width: '60px' }}>S.No.</th>
-              <th className="text-type-ui-sm" style={thStyle}>Name</th>
-              <th className="text-type-ui-sm" style={thStyle}>Designation</th>
-              <th className="text-type-ui-sm" style={thStyle}>Position</th>
-              <th className="text-type-ui-sm" style={{ ...thStyle, borderRight: 'none' }}>Email</th>
+              <th className="text-type-ui" style={{ ...thStyle, width: '60px' }}>S.No.</th>
+              <th className="text-type-ui" style={thStyle}>Name</th>
+              <th className="text-type-ui" style={thStyle}>Designation</th>
+              <th className="text-type-ui" style={thStyle}>Position</th>
+              <th className="text-type-ui" style={{ ...thStyle, borderRight: 'none' }}>Email</th>
             </tr>
           </thead>
           <tbody>
@@ -282,15 +282,15 @@ function ExecutiveMembersSection() {
                 key={m.sno}
                 style={{ backgroundColor: i % 2 === 0 ? '#ffffff' : '#f9fafb' }}
               >
-                <td className="text-type-ui-sm" style={{ ...tdStyle, textAlign: 'center', fontWeight: 600, color: primaryColor }}>
+                <td className="text-type-ui" style={{ ...tdStyle, textAlign: 'center', fontWeight: 600, color: primaryColor }}>
                   {m.sno}
                 </td>
-                <td className="font-body text-type-ui-sm" style={{ ...tdStyle, fontWeight: 500 }}>{m.name}</td>
-                <td className="font-body text-type-ui-sm" style={tdStyle}>{m.designation}</td>
-                <td className="text-type-ui-sm" style={tdStyle}>
+                <td className="font-body text-type-ui" style={{ ...tdStyle, fontWeight: 500 }}>{m.name}</td>
+                <td className="font-body text-type-ui" style={tdStyle}>{m.designation}</td>
+                <td className="text-type-ui" style={tdStyle}>
                   <PositionBadge position={m.position} />
                 </td>
-                <td className="font-body text-type-ui-sm" style={{ ...tdStyle, borderRight: 'none' }}>
+                <td className="font-body text-type-ui" style={{ ...tdStyle, borderRight: 'none' }}>
                   <a
                     href={`mailto:${m.email}`}
                     className="hover:underline"
@@ -375,21 +375,21 @@ function AlumniListSection() {
           <table className="w-full border-collapse">
             <thead>
               <tr>
-                <th className="text-type-ui-sm" style={{ ...thStyle, width: '40px' }}>#</th>
-                <th className="text-type-ui-sm" style={thStyle}>Name</th>
-                <th className="text-type-ui-sm" style={thStyle}>Course</th>
-                <th className="text-type-ui-sm" style={thStyle}>Batch</th>
-                <th className="text-type-ui-sm" style={{ ...thStyle, borderRight: 'none' }}>Working Details</th>
+                <th className="text-type-ui" style={{ ...thStyle, width: '40px' }}>#</th>
+                <th className="text-type-ui" style={thStyle}>Name</th>
+                <th className="text-type-ui" style={thStyle}>Course</th>
+                <th className="text-type-ui" style={thStyle}>Batch</th>
+                <th className="text-type-ui" style={{ ...thStyle, borderRight: 'none' }}>Working Details</th>
               </tr>
             </thead>
             <tbody>
               {sampleAlumni.map((a, i) => (
                 <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#ffffff' : '#f9fafb' }}>
-                  <td className="text-type-ui-sm" style={{ ...tdStyle, textAlign: 'center', fontWeight: 600, color: primaryColor }}>{i + 1}</td>
-                  <td className="font-body text-type-ui-sm" style={{ ...tdStyle, fontWeight: 500, color: primaryColor }}>{a.name}</td>
-                  <td className="font-body text-type-ui-sm" style={tdStyle}>{a.course}</td>
-                  <td className="font-body text-type-ui-sm" style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{a.batch}</td>
-                  <td className="font-body text-type-ui-sm" style={{ ...tdStyle, borderRight: 'none' }}>{a.workingDetails}</td>
+                  <td className="text-type-ui" style={{ ...tdStyle, textAlign: 'center', fontWeight: 600, color: primaryColor }}>{i + 1}</td>
+                  <td className="font-body text-type-ui" style={{ ...tdStyle, fontWeight: 500, color: primaryColor }}>{a.name}</td>
+                  <td className="font-body text-type-ui" style={tdStyle}>{a.course}</td>
+                  <td className="font-body text-type-ui" style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{a.batch}</td>
+                  <td className="font-body text-type-ui" style={{ ...tdStyle, borderRight: 'none' }}>{a.workingDetails}</td>
                 </tr>
               ))}
             </tbody>
@@ -537,10 +537,10 @@ function ContributionSection() {
             <table className="w-full border-collapse">
               <thead>
                 <tr>
-                  <th className="text-type-ui-sm" style={thStyle}>Speaker</th>
-                  <th className="text-type-ui-sm" style={thStyle}>Qualification / Current Role</th>
-                  <th className="text-type-ui-sm" style={thStyle}>Topic</th>
-                  <th className="text-type-ui-sm" style={{ ...thStyle, borderRight: 'none' }}>Date</th>
+                  <th className="text-type-ui" style={thStyle}>Speaker</th>
+                  <th className="text-type-ui" style={thStyle}>Qualification / Current Role</th>
+                  <th className="text-type-ui" style={thStyle}>Topic</th>
+                  <th className="text-type-ui" style={{ ...thStyle, borderRight: 'none' }}>Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -549,10 +549,10 @@ function ContributionSection() {
                     key={i}
                     style={{ backgroundColor: i % 2 === 0 ? '#ffffff' : '#f9fafb' }}
                   >
-                    <td className="font-body text-type-ui-sm" style={{ ...tdStyle, fontWeight: 500, color: primaryColor }}>{item.name}</td>
-                    <td className="font-body text-type-ui-sm" style={tdStyle}>{item.qualification || '—'}</td>
-                    <td className="font-body text-type-ui-sm" style={tdStyle}>{item.topic}</td>
-                    <td className="font-body text-type-ui-sm" style={{ ...tdStyle, borderRight: 'none', whiteSpace: 'nowrap' }}>{item.date}</td>
+                    <td className="font-body text-type-ui" style={{ ...tdStyle, fontWeight: 500, color: primaryColor }}>{item.name}</td>
+                    <td className="font-body text-type-ui" style={tdStyle}>{item.qualification || '—'}</td>
+                    <td className="font-body text-type-ui" style={tdStyle}>{item.topic}</td>
+                    <td className="font-body text-type-ui" style={{ ...tdStyle, borderRight: 'none', whiteSpace: 'nowrap' }}>{item.date}</td>
                   </tr>
                 ))}
               </tbody>

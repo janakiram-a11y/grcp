@@ -37,7 +37,7 @@ function StripedTable({ headers, rows }) {
             {headers.map((h) => (
               <th
                 key={h}
-                className="font-display font-semibold text-type-ui-sm text-white text-left px-5 py-3.5"
+                className="font-display font-semibold text-type-ui text-white text-left px-5 py-3.5"
               >
                 {h}
               </th>
@@ -57,7 +57,7 @@ function StripedTable({ headers, rows }) {
               {cells.map((cell, j) => (
                 <td
                   key={j}
-                  className="font-display text-type-ui px-5 py-3.5"
+                  className="font-display text-type-body-sm px-5 py-3.5"
                   style={{ color: j === 0 ? PRIMARY : '#474747' }}
                 >
                   {cell}
@@ -363,7 +363,7 @@ function IipcSection() {
   const d = college.placements.iipc;
   return (
     <div className="space-y-8">
-      <SectionHeader label="Industry Connect" title="Industry – Institute Partnership Cell (IIPC)" />
+      <SectionHeader label="Industry Connect" title="Industry – Institute Partnership Cell (IIPC)/ Industry Institute Interaction Committee (IIIC)" />
       <p className="font-body text-type-body text-[#474747]">{d.description}</p>
 
       <div>
@@ -445,7 +445,7 @@ const sectionConfig = {
     breadcrumb: ['Placements', 'Placement Status'],
   },
   iipc: {
-    title: 'Industry – Institute Partnership Cell (IIPC)',
+    title: 'Industry – Institute Partnership Cell (IIPC)/ Industry Institute Interaction Committee (IIIC)',
     subtitle: 'Bridging industry and institute for GRCP students',
     breadcrumb: ['Placements', 'Industry Connect', 'IIPC'],
   },

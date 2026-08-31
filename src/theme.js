@@ -116,7 +116,6 @@ const college = {
         { label: 'Publications',                     href: '/research/publications' },
         { label: 'Patents',                          href: '/research/patents' },
         { label: 'Data Pooling Center',               href: '/research/data-pooling-center' },
-        { label: 'Digital Media and Web Management Committee', href: '/research/digital-media' },
         { label: 'Sponsored Projects / Consultancy', href: '/research/consultancy' },
       ],
     },
@@ -146,10 +145,6 @@ const college = {
         },
       ],
     },
-    {
-      name: 'Student Activities',
-      href: '/student-activities',
-    },
   ],
 
   // Quick links shown in footer
@@ -172,13 +167,11 @@ const college = {
     { label: 'Anti-Ragging / Discipline',                      href: '/administration/anti-ragging' },
     { label: 'Anti-Sexual Harassment/ICC/Women Development',   href: '/administration/anti-harassment' },
     { label: 'Grievance Redressal Committee',                  href: '/administration/grievance' },
-    { label: 'Industry Institute Interaction Committee (IIIC)',href: '/administration/iiic' },
     { label: 'SC / ST Committee',                              href: '/administration/sc-st' },
     { label: 'IQAC',                                           href: '/administration/iqac' },
     { label: 'Mentor Mentee Committee',                        href: '/administration/mentor-mentee' },
     { label: 'Equal Opportunity Cell Committee',               href: '/administration/equal-opportunity' },
     { label: 'Digital Media and Web Management Committee',     href: '/administration/digital-media' },
-    { label: 'Student Activities',                             href: '/student-activities' },
   ],
 
   // ── Footer achievements column ────────────────────────────────────────────

@@ -53,7 +53,7 @@ function DataTable({ rows, columns }) {
             {columns.map((col) => (
               <th
                 key={col.key}
-                className="text-left font-display font-semibold text-type-cap text-white px-5 py-3.5 tracking-wide"
+                className="text-left font-display font-semibold text-type-ui-sm text-white px-5 py-3.5 tracking-wide"
               >
                 {col.label}
               </th>
@@ -66,7 +66,7 @@ function DataTable({ rows, columns }) {
               {columns.map((col) => (
                 <td
                   key={col.key}
-                  className="font-body text-type-body-xs px-5 py-3.5"
+                  className="font-body text-type-body-sm px-5 py-3.5"
                   style={col.accent ? { color: primary, fontWeight: 600 } : { color: '#374151' }}
                 >
                   {row[col.key] ?? '—'}
@@ -338,7 +338,7 @@ function TimetableRow({ row, columns }) {
         ) : (
           <td
             key={col.key}
-            className="font-body text-type-body-xs px-5 py-3.5"
+            className="font-body text-type-body-sm px-5 py-3.5"
             style={col.accent ? { color: primary, fontWeight: 600 } : { color: '#374151' }}
           >
             {row[col.key] ?? '—'}
@@ -358,7 +358,7 @@ function TTTable({ rows, columns }) {
             {columns.map((col) => (
               <th
                 key={col.key}
-                className="text-left font-display font-semibold text-type-cap text-white px-5 py-3.5 tracking-wide"
+                className="text-left font-display font-semibold text-type-ui-sm text-white px-5 py-3.5 tracking-wide"
               >
                 {col.label}
               </th>
@@ -692,7 +692,7 @@ function LibraryContent() {
                 {['Sl.No.', 'Name', 'Designation', 'Position', 'Email'].map((col) => (
                   <th
                     key={col}
-                    className="text-left font-display font-semibold text-type-cap text-white px-5 py-3.5 tracking-wide"
+                    className="text-left font-display font-semibold text-type-ui-sm text-white px-5 py-3.5 tracking-wide"
                   >
                     {col}
                   </th>
@@ -702,11 +702,11 @@ function LibraryContent() {
             <tbody>
               {activeCommittee.members.map((row, i) => (
                 <tr key={row.sno} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-                  <td className="font-body text-type-body-xs px-5 py-3.5 text-[#374151]">{row.sno}</td>
-                  <td className="font-body text-type-body-xs px-5 py-3.5 font-semibold" style={{ color: primary }}>{row.name}</td>
-                  <td className="font-body text-type-body-xs px-5 py-3.5 text-[#374151]">{row.designation}</td>
-                  <td className="font-body text-type-body-xs px-5 py-3.5 text-[#374151]">{row.position}</td>
-                  <td className="font-body text-type-ui-sm px-5 py-3.5">
+                  <td className="font-body text-type-body-sm px-5 py-3.5 text-[#374151]">{row.sno}</td>
+                  <td className="font-body text-type-body-sm px-5 py-3.5 font-semibold" style={{ color: primary }}>{row.name}</td>
+                  <td className="font-body text-type-body-sm px-5 py-3.5 text-[#374151]">{row.designation}</td>
+                  <td className="font-body text-type-body-sm px-5 py-3.5 text-[#374151]">{row.position}</td>
+                  <td className="font-body text-type-ui px-5 py-3.5">
                     <a href={`mailto:${row.email}`} className="underline" style={{ color: primary }}>{row.email}</a>
                   </td>
                 </tr>
@@ -1399,17 +1399,17 @@ function LibraryStatisticsContent() {
           <thead>
             <tr style={{ backgroundColor: accent }}>
               {['Programme', 'Volumes', 'Titles', 'Journals'].map((col) => (
-                <th key={col} className="text-left font-display font-semibold text-type-cap text-white px-5 py-3.5 tracking-wide">{col}</th>
+                <th key={col} className="text-left font-display font-semibold text-type-ui-sm text-white px-5 py-3.5 tracking-wide">{col}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {PROG_BOOK_STATS.map((row, i) => (
               <tr key={row.programme} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-                <td className="font-body text-type-body-xs px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.programme}</td>
-                <td className="font-body text-type-body-xs px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.volumes}</td>
-                <td className="font-body text-type-body-xs px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.titles}</td>
-                <td className="font-body text-type-body-xs px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.journals}</td>
+                <td className="font-body text-type-body-sm px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.programme}</td>
+                <td className="font-body text-type-body-sm px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.volumes}</td>
+                <td className="font-body text-type-body-sm px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.titles}</td>
+                <td className="font-body text-type-body-sm px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.journals}</td>
               </tr>
             ))}
           </tbody>
@@ -1422,17 +1422,17 @@ function LibraryStatisticsContent() {
         <table className="w-full min-w-[400px]">
           <thead>
             <tr style={{ backgroundColor: accent }}>
-              <th className="text-left font-display font-semibold text-type-cap text-white px-5 py-3.5 tracking-wide w-8">#</th>
-              <th className="text-left font-display font-semibold text-type-cap text-white px-5 py-3.5 tracking-wide">Name</th>
-              <th className="text-left font-display font-semibold text-type-cap text-white px-5 py-3.5 tracking-wide">Frequency</th>
+              <th className="text-left font-display font-semibold text-type-ui-sm text-white px-5 py-3.5 tracking-wide w-8">#</th>
+              <th className="text-left font-display font-semibold text-type-ui-sm text-white px-5 py-3.5 tracking-wide">Name</th>
+              <th className="text-left font-display font-semibold text-type-ui-sm text-white px-5 py-3.5 tracking-wide">Frequency</th>
             </tr>
           </thead>
           <tbody>
             {NATIONAL_JOURNALS.map((j, i) => (
               <tr key={j.name} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-                <td className="font-body text-type-ui-sm px-5 py-3 text-[#9CA3AF]">{i + 1}</td>
-                <td className="font-body text-type-body-xs px-5 py-3 text-[#374151]">{j.name}</td>
-                <td className="font-body text-type-body-xs px-5 py-3 text-[#374151]">{j.freq}</td>
+                <td className="font-body text-type-ui px-5 py-3 text-[#9CA3AF]">{i + 1}</td>
+                <td className="font-body text-type-body-sm px-5 py-3 text-[#374151]">{j.name}</td>
+                <td className="font-body text-type-body-sm px-5 py-3 text-[#374151]">{j.freq}</td>
               </tr>
             ))}
           </tbody>
@@ -1548,21 +1548,21 @@ function TitleVolumesContent() {
           <thead>
             <tr style={{ backgroundColor: accent }}>
               {['Acc. No.', 'Title', 'Author', 'Subject', 'Edition', 'Publisher', 'Year', 'Copies'].map((col) => (
-                <th key={col} className="text-left font-display font-semibold text-type-label text-white px-4 py-3 tracking-wide whitespace-nowrap">{col}</th>
+                <th key={col} className="text-left font-display font-semibold text-type-cap text-white px-4 py-3 tracking-wide whitespace-nowrap">{col}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {TITLE_VOLUMES_DATA.map((row, i) => (
               <tr key={row.acc} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-                <td className="font-body text-type-cap px-4 py-3 whitespace-nowrap" style={{ color: primary, fontWeight: 600 }}>{row.acc}</td>
-                <td className="font-body text-type-ui-sm px-4 py-3 text-[#374151] max-w-[280px]">{row.title}</td>
-                <td className="font-body text-type-ui-sm px-4 py-3 text-[#374151] whitespace-nowrap">{row.author}</td>
-                <td className="font-body text-type-cap px-4 py-3 whitespace-nowrap text-[#6B7280]">{row.subject}</td>
-                <td className="font-body text-type-ui-sm px-4 py-3 text-center text-[#374151]">{row.edition}</td>
-                <td className="font-body text-type-cap px-4 py-3 whitespace-nowrap text-[#374151]">{row.publisher}</td>
-                <td className="font-body text-type-ui-sm px-4 py-3 text-[#374151]">{row.year}</td>
-                <td className="font-body text-type-ui-sm px-4 py-3 text-center font-semibold" style={{ color: primary }}>{row.copies}</td>
+                <td className="font-body text-type-ui-sm px-4 py-3 whitespace-nowrap" style={{ color: primary, fontWeight: 600 }}>{row.acc}</td>
+                <td className="font-body text-type-ui px-4 py-3 text-[#374151] max-w-[280px]">{row.title}</td>
+                <td className="font-body text-type-ui px-4 py-3 text-[#374151] whitespace-nowrap">{row.author}</td>
+                <td className="font-body text-type-ui-sm px-4 py-3 whitespace-nowrap text-[#6B7280]">{row.subject}</td>
+                <td className="font-body text-type-ui px-4 py-3 text-center text-[#374151]">{row.edition}</td>
+                <td className="font-body text-type-ui-sm px-4 py-3 whitespace-nowrap text-[#374151]">{row.publisher}</td>
+                <td className="font-body text-type-ui px-4 py-3 text-[#374151]">{row.year}</td>
+                <td className="font-body text-type-ui px-4 py-3 text-center font-semibold" style={{ color: primary }}>{row.copies}</td>
               </tr>
             ))}
           </tbody>

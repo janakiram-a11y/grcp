@@ -298,7 +298,7 @@ function GoverningBodySection() {
               {['S.No.', 'Photo', 'Name', 'Designation', 'Category'].map((h) => (
                 <th
                   key={h}
-                  className="font-display font-semibold text-type-ui-sm text-white text-left px-5 py-3.5 first:rounded-tl-xl last:rounded-tr-xl"
+                  className="font-display font-semibold text-type-ui text-white text-left px-5 py-3.5 first:rounded-tl-xl last:rounded-tr-xl"
                 >
                   {h}
                 </th>
@@ -311,7 +311,7 @@ function GoverningBodySection() {
                 key={i}
                 style={{ backgroundColor: i % 2 === 0 ? '#FAFAFA' : '#FFFFFF' }}
               >
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-middle" style={{ borderColor: `${pc}10` }}>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b align-middle" style={{ borderColor: `${pc}10` }}>
                   {m.no}
                 </td>
                 <td className="px-5 py-3.5 border-b align-middle" style={{ borderColor: `${pc}10` }}>
@@ -325,19 +325,19 @@ function GoverningBodySection() {
                   )}
                 </td>
                 <td className="px-5 py-3.5 border-b align-middle" style={{ borderColor: `${pc}10` }}>
-                  <span className="font-display font-semibold text-type-ui" style={{ color: pc }}>
+                  <span className="font-display font-semibold text-type-body-sm" style={{ color: pc }}>
                     {m.name}
                   </span>
                   {(m.org || m.details) && (
-                    <span className="block font-body text-type-cap text-[#6A7282] mt-0.5 whitespace-pre-line">
+                    <span className="block font-body text-type-ui-sm text-[#6A7282] mt-0.5 whitespace-pre-line">
                       {m.org || m.details}
                     </span>
                   )}
                 </td>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-middle" style={{ borderColor: `${pc}10` }}>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b align-middle" style={{ borderColor: `${pc}10` }}>
                   {m.role}
                 </td>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-middle" style={{ borderColor: `${pc}10` }}>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b align-middle" style={{ borderColor: `${pc}10` }}>
                   {m.category}
                 </td>
               </tr>
@@ -423,7 +423,7 @@ function IdmcSection() {
               {['S.No.', 'Name', 'Designation', 'Position', 'Email'].map((h) => (
                 <th
                   key={h}
-                  className="font-display font-semibold text-type-ui-sm text-white text-left px-5 py-3.5 first:rounded-tl-xl last:rounded-tr-xl"
+                  className="font-display font-semibold text-type-ui text-white text-left px-5 py-3.5 first:rounded-tl-xl last:rounded-tr-xl"
                 >
                   {h}
                 </th>
@@ -436,29 +436,29 @@ function IdmcSection() {
                 key={i}
                 style={{ backgroundColor: i % 2 === 0 ? '#FAFAFA' : '#FFFFFF' }}
               >
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>
                   {i + 1}.
                 </td>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>
                   {m.name}
                 </td>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>
                   {m.designation}
                 </td>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>
                   {m.role}
                 </td>
                 <td className="px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>
                   {m.email ? (
                     <a
                       href={`mailto:${m.email}`}
-                      className="font-display text-type-ui-sm underline"
+                      className="font-display text-type-ui underline"
                       style={{ color: pc }}
                     >
                       {m.email}
                     </a>
                   ) : (
-                    <span className="font-body text-type-ui text-[#474747]">&mdash;</span>
+                    <span className="font-body text-type-body-sm text-[#474747]">&mdash;</span>
                   )}
                 </td>
               </tr>
@@ -522,7 +522,7 @@ function CommitteeMemberTable({ members, cols }) {
         <thead>
           <tr style={{ backgroundColor: ac }}>
             {columns.map((h) => (
-              <th key={h} className="font-display font-semibold text-type-ui-sm text-white text-left px-5 py-3.5 first:rounded-tl-xl last:rounded-tr-xl">
+              <th key={h} className="font-display font-semibold text-type-ui text-white text-left px-5 py-3.5 first:rounded-tl-xl last:rounded-tr-xl">
                 {h}
               </th>
             ))}
@@ -531,9 +531,9 @@ function CommitteeMemberTable({ members, cols }) {
         <tbody>
           {members.map((m, i) => (
             <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#FAFAFA' : '#FFFFFF' }}>
-              <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>{m.sno || i + 1}</td>
-              <td className="font-display font-semibold text-type-ui px-5 py-3.5 border-b" style={{ color: pc, borderColor: `${pc}10` }}>{m.name}</td>
-              <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>{m.designation}</td>
+              <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>{m.sno || i + 1}</td>
+              <td className="font-display font-semibold text-type-body-sm px-5 py-3.5 border-b" style={{ color: pc, borderColor: `${pc}10` }}>{m.name}</td>
+              <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>{m.designation}</td>
               {m.position !== undefined && (
                 <td className="px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>
                   <RoleBadge role={m.position} />
@@ -542,7 +542,7 @@ function CommitteeMemberTable({ members, cols }) {
               {m.email !== undefined && (
                 <td className="px-5 py-3.5 border-b" style={{ borderColor: `${pc}10` }}>
                   {m.email ? (
-                    <a href={`mailto:${m.email}`} className="font-display text-type-ui-sm underline" style={{ color: pc }}>{m.email}</a>
+                    <a href={`mailto:${m.email}`} className="font-display text-type-ui underline" style={{ color: pc }}>{m.email}</a>
                   ) : <span className="text-[#9CA3AF]">—</span>}
                 </td>
               )}
@@ -567,7 +567,7 @@ function RoleBadge({ role }) {
   }
   return (
     <span
-      className="inline-block font-display font-semibold text-type-ui-sm px-2.5 py-0.5 rounded-full whitespace-nowrap"
+      className="inline-block font-display font-semibold text-type-ui px-2.5 py-0.5 rounded-full whitespace-nowrap"
       style={{ backgroundColor: bg, color }}
     >
       {role}
@@ -615,20 +615,20 @@ function YearTabs({ compositions, contactHeader }) {
             <thead>
               <tr style={{ backgroundColor: ac }}>
                 {['S.No.', 'Name', 'Designation', 'Position', contactCol || 'Email'].map((h) => (
-                  <th key={h} className="font-display font-semibold text-type-ui-sm text-white text-left px-5 py-3.5">{h}</th>
+                  <th key={h} className="font-display font-semibold text-type-ui text-white text-left px-5 py-3.5">{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {active.members.map((m, i) => (
                 <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#FAFAFA' : '#FFFFFF' }}>
-                  <td className="font-body text-type-ui text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${pc}10` }}>{m.sno || i + 1}</td>
-                  <td className="font-display font-semibold text-type-ui px-5 py-3 border-b" style={{ color: pc, borderColor: `${pc}10` }}>{m.name}</td>
-                  <td className="font-body text-type-ui text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${pc}10` }}>{m.designation}</td>
+                  <td className="font-body text-type-body-sm text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${pc}10` }}>{m.sno || i + 1}</td>
+                  <td className="font-display font-semibold text-type-body-sm px-5 py-3 border-b" style={{ color: pc, borderColor: `${pc}10` }}>{m.name}</td>
+                  <td className="font-body text-type-body-sm text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${pc}10` }}>{m.designation}</td>
                   <td className="px-5 py-3 border-b" style={{ borderColor: `${pc}10` }}><RoleBadge role={m.position || m.role} /></td>
                   <td className="px-5 py-3 border-b" style={{ borderColor: `${pc}10` }}>
                     {(m.email || m.contact || m.phone)
-                      ? <span className="font-body text-type-ui-sm text-[#374151]">{m.email || m.contact || m.phone}</span>
+                      ? <span className="font-body text-type-ui text-[#374151]">{m.email || m.contact || m.phone}</span>
                       : <span className="text-[#9CA3AF]">—</span>
                     }
                   </td>
@@ -866,7 +866,7 @@ function CertLink({ href }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="font-display font-semibold text-type-ui-sm underline whitespace-nowrap"
+      className="font-display font-semibold text-type-ui underline whitespace-nowrap"
       style={{ color: pc }}
     >
       View
@@ -887,7 +887,7 @@ function FacultyAchievementsSection() {
           <thead>
             <tr style={{ backgroundColor: ac }}>
               {['S.No.', 'Faculty Name', 'Award / Recognition', 'Organization', 'Year', 'Level', 'Certificate'].map((h) => (
-                <th key={h} className="font-display font-semibold text-type-ui-sm text-white text-left px-5 py-3.5 whitespace-nowrap first:rounded-tl-xl last:rounded-tr-xl">
+                <th key={h} className="font-display font-semibold text-type-ui text-white text-left px-5 py-3.5 whitespace-nowrap first:rounded-tl-xl last:rounded-tr-xl">
                   {h}
                 </th>
               ))}
@@ -896,11 +896,11 @@ function FacultyAchievementsSection() {
           <tbody>
             {d.awards.map((m, i) => (
               <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#FAFAFA' : '#FFFFFF' }}>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{i + 1}</td>
-                <td className="font-display font-semibold text-type-ui px-5 py-3.5 border-b align-top" style={{ color: pc, borderColor: `${pc}10` }}>{m.name}</td>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.title}</td>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.org}</td>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.year}</td>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{i + 1}</td>
+                <td className="font-display font-semibold text-type-body-sm px-5 py-3.5 border-b align-top" style={{ color: pc, borderColor: `${pc}10` }}>{m.name}</td>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.title}</td>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.org}</td>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.year}</td>
                 <td className="px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}><RoleBadge role={m.level} /></td>
                 <td className="px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}><CertLink href={m.cert} /></td>
               </tr>
@@ -915,7 +915,7 @@ function FacultyAchievementsSection() {
           <thead>
             <tr style={{ backgroundColor: ac }}>
               {['S.No.', 'Faculty Name', 'Journal', 'Indexing', 'Role', 'Level', 'Year', 'Certificate'].map((h) => (
-                <th key={h} className="font-display font-semibold text-type-ui-sm text-white text-left px-5 py-3.5 whitespace-nowrap first:rounded-tl-xl last:rounded-tr-xl">
+                <th key={h} className="font-display font-semibold text-type-ui text-white text-left px-5 py-3.5 whitespace-nowrap first:rounded-tl-xl last:rounded-tr-xl">
                   {h}
                 </th>
               ))}
@@ -924,13 +924,13 @@ function FacultyAchievementsSection() {
           <tbody>
             {d.editorialRoles.map((m, i) => (
               <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#FAFAFA' : '#FFFFFF' }}>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{i + 1}</td>
-                <td className="font-display font-semibold text-type-ui px-5 py-3.5 border-b align-top" style={{ color: pc, borderColor: `${pc}10` }}>{m.name}</td>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.journal}</td>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.indexing}</td>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{i + 1}</td>
+                <td className="font-display font-semibold text-type-body-sm px-5 py-3.5 border-b align-top" style={{ color: pc, borderColor: `${pc}10` }}>{m.name}</td>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.journal}</td>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.indexing}</td>
                 <td className="px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}><RoleBadge role={m.role} /></td>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.level}</td>
-                <td className="font-body text-type-ui text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.year}</td>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.level}</td>
+                <td className="font-body text-type-body-sm text-[#474747] px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}>{m.year}</td>
                 <td className="px-5 py-3.5 border-b align-top" style={{ borderColor: `${pc}10` }}><CertLink href={m.cert} /></td>
               </tr>
             ))}
