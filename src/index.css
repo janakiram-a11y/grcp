@@ -356,6 +356,17 @@ body {
       padding-bottom: 80px;
     }
   }
+  /* Beyond ~2040px the fixed 120px side padding lets content keep stretching
+     wider than it was designed for (cards/grids built around fixed-size
+     icons end up sparse). Cap the content column at 1800px and grow the
+     side padding to absorb any extra width instead, so the section
+     background still spans full-bleed but the content re-centers. */
+  @media (min-width: 2040px) {
+    .section-pad {
+      padding-left:   calc((100% - 1800px) / 2);
+      padding-right:  calc((100% - 1800px) / 2);
+    }
+  }
 
   /* Container-only horizontal padding (no vertical) — same 3-step scale as
      .section-pad, for nav/footer bands that need horizontal alignment only. */
@@ -373,6 +384,12 @@ body {
     .container-px {
       padding-left:   120px;
       padding-right:  120px;
+    }
+  }
+  @media (min-width: 2040px) {
+    .container-px {
+      padding-left:   calc((100% - 1800px) / 2);
+      padding-right:  calc((100% - 1800px) / 2);
     }
   }
 
