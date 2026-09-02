@@ -242,7 +242,7 @@ function RegistrationSection() {
         style={{ backgroundColor: `${greenAccent}0D`, borderLeft: `4px solid ${greenAccent}` }}
       >
         <p className="font-body text-type-body" style={{ color: '#374151' }}>
-          <strong style={{ color: greenAccent }}>Alumni Coordinator:</strong> Mrs. B. Karuna Devi, Assistant Professor &mdash;{' '}
+          <strong style={{ color: greenAccent }}>Alumni Coordinator:</strong> Dr. B. Karuna Devi, Assistant Professor &mdash;{' '}
           <a href="mailto:karuna8062@grcp.ac.in" style={{ color: primaryColor, textDecoration: 'underline' }}>
             karuna8062@grcp.ac.in
           </a>

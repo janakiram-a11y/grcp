@@ -189,6 +189,7 @@ export const publicationYears = [
 
 const P24 = 'https://grcp.ac.in/downloads/patents/2024/'
 const P2123 = 'https://grcp.ac.in/downloads/patents/'
+const P25 = '/downloads/patents/2025/'
 
 export const patents2024 = [
   {
@@ -227,9 +228,9 @@ export const patents2024 = [
     title: 'Hesperidin Aquasomes',
     inventors: 'M. Ganga Raju, N.V.L. Suvarchala Reddy, K. Keerthana, M. Lakshmi Madhuri, Pavani Kandukuri, Shabnam Kumari Thakur, G. Kinnera Ratnasri',
     filed: '19-04-2024',
-    date: '26-04-2024',
-    status: 'Published',
-    proof: P24 + '4 - MGR.JPG',
+    date: '16-10-2025',
+    status: 'Granted',
+    proof: P25 + '202441031505.pdf',
   },
   {
     sno: 5,
@@ -573,6 +574,79 @@ export const patents2021_2023 = [
     date: '14-12-2023',
     status: 'Granted',
     proof: P2123 + '6330023.pdf',
+  },
+]
+
+export const patents2025 = [
+  {
+    sno: 1,
+    appNo: '202441102417A',
+    title: 'Utilising Analytical Methods in Quality Control and Drug Development Thereof',
+    inventors: 'E. Rajitha, Jahnavi B, Sandhya Rani M, Srinivas Rao, VVS Rajendra Prasad, Ashok Gorja',
+    filed: '24-12-2024',
+    date: '10-01-2025',
+    status: 'Published',
+    proof: P25 + '202441102417A.pdf',
+  },
+  {
+    sno: 2,
+    appNo: '202541010616',
+    title: 'Synthesis and Characterization of MIP Template for Spectrofluorometric of Irbesartan',
+    inventors: 'Dr. Durga Panikumar Anumolu, Syed Sara Afreen, Madhuri. G, Veera Shakar Pulusu',
+    filed: '07-02-2025',
+    date: '21-02-2025',
+    status: 'Published',
+    proof: P25 + '202541010616.pdf',
+  },
+  {
+    sno: 3,
+    appNo: '202541028510A',
+    title: 'Formulation and Evaluation of Secnidazole Solid Lipid Nanoparticles for Treating Vaginal Infections',
+    inventors: 'Dr. A. Seetha Devi, Mrs. M. Sri Rekha, Pallerla Priyanka',
+    filed: '26-03-2025',
+    date: '25-04-2025',
+    status: 'Published',
+    proof: P25 + '202541028510A.pdf',
+  },
+  {
+    sno: 4,
+    appNo: '202541003592',
+    title: 'Formulation of Liposomal Drug Delivery Systems for Topical Treatment of Dermatological Disorders',
+    inventors: 'Dr. Senthil Rajan Dharmalingam, Mandhare Shubham B, Dr. Sailaja Gunnam, Arshpreet Singh, Dhaval Patel, Sumita Singh, Nisha Rani, Basu Venkateswara Reddy, Bharti Sharma, Dr. Preeti Anand, Namrata Singh, Dr. Pragi',
+    filed: '16-01-2025',
+    date: '24-01-2025',
+    status: 'Published',
+    proof: P25 + '202541003592.jpg',
+  },
+  {
+    sno: 5,
+    appNo: '202521095559A',
+    title: 'Antioxidant-Based Cardio Protective Therapy with Oroxylin-A',
+    inventors: 'Dr. Nagaraju Bandaru',
+    filed: '05-10-2025',
+    date: '17-10-2025',
+    status: 'Published',
+    proof: P25 + '202521095559A.pdf',
+  },
+  {
+    sno: 6,
+    appNo: '202541106109A',
+    title: 'Development of Herbal Soap Formulation Containing Ethanolic Extract of Jasminum auriculatum Leaves for the Management of Psoriasis',
+    inventors: 'Sri Rekha M',
+    filed: '03-11-2025',
+    date: '28-11-2025',
+    status: 'Published',
+    proof: P25 + '202541106109A.pdf',
+  },
+  {
+    sno: 7,
+    appNo: '202541104099A',
+    title: 'Development of Liposomal Formulations for Enhanced Bioavailability of Poorly Soluble Anticancer Drugs like Paclitaxel',
+    inventors: 'Dr. Senthil Rajan Dharmalingam, Dr. A. Seetha Devi, Selvakumar Muruganantham, Dr. Basu Venkateswara Reddy',
+    filed: '29-10-2025',
+    date: '28-11-2025',
+    status: 'Published',
+    proof: '',
   },
 ]
 

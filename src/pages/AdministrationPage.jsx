@@ -980,13 +980,19 @@ const AWARD_COLUMNS = [
 
 function StudentAchievementsSection() {
   const d = college.administration.studentAchievements;
-  const latestResults = d.resultsByYear?.[0];
-  const [activeExam, setActiveExam] = useState(latestResults?.exams[0]?.key);
-  const activeExamData = latestResults?.exams.find((e) => e.key === activeExam) ?? latestResults?.exams[0];
+  const resultYears = d.resultsByYear ?? [];
+  const [activeResultYear, setActiveResultYear] = useState(resultYears[0]?.year);
+  const activeYearResults = resultYears.find((y) => y.year === activeResultYear) ?? resultYears[0];
+  const [activeExam, setActiveExam] = useState(activeYearResults?.exams[0]?.key);
+  const activeExamData = activeYearResults?.exams.find((e) => e.key === activeExam) ?? activeYearResults?.exams[0];
 
   const awardYears = d.awardsByYear ?? [];
   const [activeAwardYear, setActiveAwardYear] = useState(awardYears[0]?.year);
   const activeAwardData = awardYears.find((y) => y.year === activeAwardYear) ?? awardYears[0];
+
+  const higherStudiesYears = d.higherStudiesByYear ?? [];
+  const [activeHSYear, setActiveHSYear] = useState(higherStudiesYears[0]?.year);
+  const activeHSData = higherStudiesYears.find((y) => y.year === activeHSYear) ?? higherStudiesYears[0];
 
   return (
     <div className="space-y-6">
@@ -1013,15 +1019,16 @@ function StudentAchievementsSection() {
             {cat.examKey ? (
               <button
                 onClick={() => {
+                  setActiveResultYear(resultYears[0]?.year);
                   setActiveExam(cat.examKey);
-                  document.getElementById('achievements-2026')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  document.getElementById('achievements-exam-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}
                 className="inline-flex items-center gap-1.5 font-display font-semibold text-type-ui-sm transition-colors"
                 style={{ color: ac }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = pc)}
                 onMouseLeave={(e) => (e.currentTarget.style.color = ac)}
               >
-                View 2026 Results ↓
+                View Results ↓
               </button>
             ) : cat.awardsSection ? (
               <button
@@ -1034,6 +1041,18 @@ function StudentAchievementsSection() {
                 onMouseLeave={(e) => (e.currentTarget.style.color = ac)}
               >
                 View Awards & Prizes ↓
+              </button>
+            ) : cat.higherStudiesSection ? (
+              <button
+                onClick={() => {
+                  document.getElementById('achievements-higher-studies')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className="inline-flex items-center gap-1.5 font-display font-semibold text-type-ui-sm transition-colors"
+                style={{ color: ac }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = pc)}
+                onMouseLeave={(e) => (e.currentTarget.style.color = ac)}
+              >
+                View Records ↓
               </button>
             ) : cat.href && (
               <a
@@ -1052,11 +1071,32 @@ function StudentAchievementsSection() {
         ))}
       </div>
 
-      {latestResults && (
-        <div id="achievements-2026">
-          <SubHeading>{latestResults.year} Entrance Exam Results</SubHeading>
+      {activeYearResults && (
+        <div id="achievements-exam-results">
+          <SubHeading>Entrance Exam Results</SubHeading>
+          {resultYears.length > 1 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {resultYears.map((y) => (
+                <button
+                  key={y.year}
+                  onClick={() => {
+                    setActiveResultYear(y.year);
+                    setActiveExam(y.exams[0]?.key);
+                  }}
+                  className="font-display font-semibold text-type-ui-sm px-4 py-2 rounded-lg transition-colors"
+                  style={
+                    activeResultYear === y.year
+                      ? { backgroundColor: ac, color: '#fff' }
+                      : { backgroundColor: `${ac}0D`, color: ac }
+                  }
+                >
+                  {y.year}
+                </button>
+              ))}
+            </div>
+          )}
           <div className="flex flex-wrap gap-2 mb-5">
-            {latestResults.exams.map((ex) => (
+            {activeYearResults.exams.map((ex) => (
               <button
                 key={ex.key}
                 onClick={() => setActiveExam(ex.key)}
@@ -1076,6 +1116,48 @@ function StudentAchievementsSection() {
               <p className="font-display font-semibold text-type-body mb-3" style={{ color: ac }}>{activeExamData.title}</p>
               <ExamResultsTable columns={activeExamData.columns} rows={activeExamData.rows} />
             </>
+          )}
+        </div>
+      )}
+
+      {higherStudiesYears.length > 0 && (
+        <div id="achievements-higher-studies">
+          <SubHeading>Higher Studies</SubHeading>
+          <div className="flex flex-wrap gap-2 mb-5">
+            {higherStudiesYears.map((y) => (
+              <button
+                key={y.year}
+                onClick={() => setActiveHSYear(y.year)}
+                className="font-display font-semibold text-type-ui-sm px-4 py-2 rounded-lg transition-colors"
+                style={
+                  activeHSYear === y.year
+                    ? { backgroundColor: pc, color: '#fff' }
+                    : { backgroundColor: `${pc}0D`, color: pc }
+                }
+              >
+                {y.year}
+              </button>
+            ))}
+          </div>
+          {activeHSData && (
+            <div className="space-y-6">
+              {activeHSData.domestic?.rows?.length > 0 && (
+                <>
+                  <p className="font-display font-semibold text-type-body mb-3" style={{ color: ac }}>
+                    Admitted to Higher Studies in India — {activeHSData.year}
+                  </p>
+                  <ExamResultsTable columns={activeHSData.domestic.columns} rows={activeHSData.domestic.rows} />
+                </>
+              )}
+              {activeHSData.abroad?.rows?.length > 0 && (
+                <>
+                  <p className="font-display font-semibold text-type-body mb-3" style={{ color: ac }}>
+                    Admitted to Higher Studies Abroad — {activeHSData.year}
+                  </p>
+                  <ExamResultsTable columns={activeHSData.abroad.columns} rows={activeHSData.abroad.rows} />
+                </>
+              )}
+            </div>
           )}
         </div>
       )}

@@ -5,7 +5,7 @@ import SiteHeader from '../components/SiteHeader';
 import PageHero from '../components/PageHero';
 import AdmissionsCTA from '../components/AdmissionsCTA';
 import Footer from '../components/Footer';
-import { patents2024, patents2021_2023 } from '../data/researchData';
+import { patents2024, patents2021_2023, patents2025 } from '../data/researchData';
 
 const primary = college.primaryColor;
 const accent = college.greenAccent;
@@ -731,6 +731,13 @@ function PatentSummaryBadge({ label }) {
 function PatentsSection() {
   const patentTabs = [
     {
+      id: '2025',
+      label: '2025',
+      rows: patents2025,
+      summary: `Total: ${patents2025.length} patents in 2025 (${patents2025.filter(p => p.status === 'Granted').length} Granted + ${patents2025.filter(p => p.status === 'Published').length} Published)`,
+      count: `${patents2025.length} patents`,
+    },
+    {
       id: '2024',
       label: '2024',
       rows: patents2024,
@@ -745,7 +752,7 @@ function PatentsSection() {
       count: `${patents2021_2023.length} patents`,
     },
   ];
-  const [activePatentTab, setActivePatentTab] = useState('2024');
+  const [activePatentTab, setActivePatentTab] = useState('2025');
   const activePatentData = patentTabs.find((t) => t.id === activePatentTab) ?? patentTabs[0];
 
   return (

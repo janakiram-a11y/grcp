@@ -182,13 +182,13 @@ function SyllabusContent() {
               style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA', borderColor: '#F3F4F6' }}
             >
               <span className="font-body text-type-body text-[#374151]">Semester {sem}</span>
-              <DownloadBtn href={`https://grcp.ac.in/downloads/syllabus/${sem} SEM.pdf`} />
+              <DownloadBtn href={`/downloads/syllabus/${sem} SEM.pdf`} />
             </div>
           ))}
         </div>
 
         <a
-          href="https://grcp.ac.in/downloads/syllabus/B_Pharm_PCI_Rules.pdf"
+          href="/downloads/syllabus/B_Pharm_PCI_Rules.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="font-display text-type-ui-sm font-semibold underline"
@@ -232,7 +232,7 @@ function SyllabusContent() {
                 {spec.semesters.map((sem) => (
                   <DownloadBtn
                     key={sem}
-                    href={`https://grcp.ac.in/downloads/syllabus/M_Pharma/${spec.slug}_${sem}_SEM.pdf`}
+                    href={`/downloads/syllabus/M_Pharma/${spec.slug}_${sem}_SEM.pdf`}
                     label={`Sem ${sem}`}
                   />
                 ))}
@@ -256,11 +256,11 @@ function CalendarContent() {
   const downloads = [
     {
       title: 'B Pharmacy Almanac 2025–2026',
-      href: 'https://grcp.ac.in/downloads/B_Pharmacy_almanac_2025-2026.pdf',
+      href: '/downloads/B_Pharmacy_almanac_2025-2026.pdf',
     },
     {
       title: 'M Pharmacy Almanac 2025–2026',
-      href: 'https://grcp.ac.in/downloads/M_Pharmacy_almanac_2025-2026.pdf',
+      href: '/downloads/M_Pharmacy_almanac_2025-2026.pdf',
     },
   ];
 
@@ -311,20 +311,21 @@ function CalendarContent() {
 // ── Section: Time Tables ──────────────────────────────────────────────────────
 
 const BPHARM_TT = [
-  { sno: '1', semester: 'II Sem', section: 'A', href: 'https://grcp.ac.in/downloads/timetable/B_Pharma_II_Sem_A_2025-26.pdf' },
-  { sno: '2', semester: 'II Sem', section: 'B', href: 'https://grcp.ac.in/downloads/timetable/B_Pharma_II_Sem_B_2025-26.pdf' },
-  { sno: '3', semester: 'III Sem', section: 'A', href: 'https://grcp.ac.in/downloads/timetable/B_Pharma_III_Sem_A_2025-26.pdf' },
-  { sno: '4', semester: 'III Sem', section: 'B', href: 'https://grcp.ac.in/downloads/timetable/B_Pharma_III_Sem_B_2025-26.pdf' },
-  { sno: '5', semester: 'V Sem', section: 'A', href: 'https://grcp.ac.in/downloads/timetable/B_Pharma_V_Sem_A_2025-26.pdf' },
-  { sno: '6', semester: 'V Sem', section: 'B', href: 'https://grcp.ac.in/downloads/timetable/B_Pharma_V_Sem_B_2025-26.pdf' },
-  { sno: '7', semester: 'VII Sem', section: 'A', href: 'https://grcp.ac.in/downloads/timetable/B_Pharma_VII_Sem_A_2025-26.pdf' },
-  { sno: '8', semester: 'VII Sem', section: 'B', href: 'https://grcp.ac.in/downloads/timetable/B_Pharma_VII_Sem_B_2025-26.pdf' },
+  { sno: '1', semester: 'II Sem', section: 'A', href: '/downloads/timetable/B_Pharma_II_Sem_A_2025-26.pdf' },
+  { sno: '2', semester: 'II Sem', section: 'B', href: '/downloads/timetable/B_Pharma_II_Sem_B_2025-26.pdf' },
+  { sno: '3', semester: 'III Sem', section: 'A', href: '/downloads/timetable/B_Pharma_III_Sem_A_2025-26.pdf' },
+  { sno: '4', semester: 'III Sem', section: 'B', href: '/downloads/timetable/B_Pharma_III_Sem_B_2025-26.pdf' },
+  { sno: '5', semester: 'V Sem', section: 'A', href: '/downloads/timetable/B_Pharma_V_Sem_A_2025-26.pdf' },
+  { sno: '6', semester: 'V Sem', section: 'B', href: '/downloads/timetable/B_Pharma_V_Sem_B_2025-26.pdf' },
+  { sno: '7', semester: 'VII Sem', section: 'A', href: '/downloads/timetable/B_Pharma_VII_Sem_A_2025-26.pdf' },
+  { sno: '8', semester: 'VII Sem', section: 'B', href: '/downloads/timetable/B_Pharma_VII_Sem_B_2025-26.pdf' },
 ];
 
 const MPHARM_TT = [
-  { sno: '1', specialisation: 'Pharmaceutical Analysis', semester: 'I Sem', href: 'https://grcp.ac.in/downloads/timetable/M_Pharma_Pharmaceutical_Analysis_I_Sem_2025-27.pdf' },
-  { sno: '2', specialisation: 'Pharmacology', semester: 'I Sem', href: 'https://grcp.ac.in/downloads/timetable/M_Pharma_Pharmacology_I_Sem_2025-27.pdf' },
-  { sno: '3', specialisation: 'Pharmaceutics', semester: 'I Sem', href: 'https://grcp.ac.in/downloads/timetable/M_Pharma_Pharmaceutics_I_Sem_2025-27.pdf' },
+  { sno: '1', specialisation: 'Pharmaceutical Analysis', semester: 'I Sem', href: '/downloads/timetable/M_Pharma_Pharmaceutical_Analysis_I_Sem_2025-27.pdf' },
+  { sno: '2', specialisation: 'Pharmacology', semester: 'I Sem', href: '/downloads/timetable/M_Pharma_Pharmacology_I_Sem_2025-27.pdf' },
+  { sno: '3', specialisation: 'Pharmaceutics', semester: 'I Sem', href: '/downloads/timetable/M_Pharma_Pharmaceutics_I_Sem_2025-27.pdf' },
+  { sno: '4', specialisation: 'Research Methodology & Biostatistics', semester: 'III Sem', href: '/downloads/timetable/M_Pharma_RMB_III_Sem_2025-26.pdf' },
 ];
 
 function TimetableRow({ row, columns }) {
@@ -747,8 +748,8 @@ const FACULTY_DATA = [
   { sno: '16', name: 'Dr. Venna R Surya Anusha',        designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '10.3 years', email: 'vrsanusha8088@grcp.ac.in',             photo: `${GRCP_MEDIA}6623fe57313d7Dr Rajeshwari anusha pic.jpg` },
   { sno: '17', name: 'Dr. K. Mamatha',                  designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '16.3 years', email: 'kolamamatha8074@grcp.ac.in',            photo: `${GRCP_MEDIA}635be7e094ce08074.jpg` },
   { sno: '18', name: 'Mr. Vivek Kumar Tiwari',          designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., (Ph.D)',       exp: '11 years',   email: 'vivek8033@grcp.ac.in',                 photo: `${GRCP_MEDIA}635be68a7e15b8033.jpg` },
-  { sno: '19', name: 'Mrs. Ch. Soujanya',               designation: 'Assistant Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., (Ph.D)',       exp: '11 years',   email: 'soujanya8056@grcp.ac.in',              photo: `${GRCP_MEDIA}635be170a123a8056.jpg` },
-  { sno: '20', name: 'Mrs. B. Karuna Devi',             designation: 'Assistant Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., (Ph.D)',       exp: '15.1 years', email: 'karuna8062@grcp.ac.in',                photo: `${GRCP_MEDIA}635abdb818147Karuna.jpg` },
+  { sno: '19', name: 'Dr. Ch. Soujanya',                designation: 'Assistant Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., (Ph.D)',       exp: '11 years',   email: 'soujanya8056@grcp.ac.in',              photo: `${GRCP_MEDIA}635be170a123a8056.jpg` },
+  { sno: '20', name: 'Dr. B. Karuna Devi',              designation: 'Assistant Professor In charge HOD', dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., (Ph.D)',       exp: '15.1 years', email: 'karuna8062@grcp.ac.in',                photo: `${GRCP_MEDIA}635abdb818147Karuna.jpg` },
   { sno: '21', name: 'Mrs. M. Mamatha',                 designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '5.1 years',  email: 'mamatha8069@grcp.ac.in',               photo: `${GRCP_MEDIA}635abb417a18a8069.jpg` },
   { sno: '22', name: 'Mrs. G. Kinnera Ratna Sri',       designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '3.7 years',  email: 'kinnera8077@grcp.ac.in',               photo: `${GRCP_MEDIA}635a9d3bed53f8077.jpg` },
   { sno: '23', name: 'Mrs. Shabnam Kumari Thakur',      designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '3.8 years',  email: 'shabnam8079@grcp.ac.in',               photo: `${GRCP_MEDIA}635a96d7cb2568079.jpg` },
@@ -768,6 +769,7 @@ const FACULTY_DATA = [
   { sno: '37', name: 'Mrs. K. Aruna',                  designation: 'Assistant Professor',              dept: 'General Studies',          qual: 'M.A English Literature',  exp: '24 years',   email: 'arunakavuru5@gmail.com',               photo: `${GRCP_MEDIA}662e76f2c4368aruna pic.jpg` },
   { sno: '38', name: 'Dr. Venkata Krishna Sarma. S',   designation: 'Asst. Professor (part-time)',      dept: 'General Studies',          qual: 'M.Sc., Ph.D.',            exp: '18 years',   email: 'sarma.krishna1@gmail.com',             photo: `${GRCP_MEDIA}679a496c1601f63788802-6d67-42b8-908a-54cdf4842487.jpg` },
   { sno: '39', name: 'Mr. Ravikrishna Bursu',          designation: 'Asst. Professor (part-time)',      dept: 'General Studies',          qual: 'M. Tech',                 exp: '10 years',   email: 'ravikrishnab@griet.ac.in',             photo: `${GRCP_MEDIA}69eb090bb61b0ravi krishna .jpeg` },
+  { sno: '40', name: 'Mr. P. Devan Raju',              designation: 'Assistant Professor',              dept: 'Computer Science',         qual: '—',                        exp: '—',          email: 'devanraju8101@grcp.ac.in',             photo: null },
 ];
 
 const DEPT_COLORS = {
@@ -777,6 +779,7 @@ const DEPT_COLORS = {
   'Pharmaceutical Chemistry': { bg: '#FDF4FF', border: '#E9D5FF', text: '#7E22CE' },
   'Pharmacognosy':            { bg: '#FFFBEB', border: '#FDE68A', text: '#92400E' },
   'General Studies':          { bg: '#F1F5F9', border: '#CBD5E1', text: '#475569' },
+  'Computer Science':         { bg: '#EEF2FF', border: '#C7D2FE', text: '#4338CA' },
 };
 
 function getInitials(name) {
@@ -922,7 +925,7 @@ function FacultyContent() {
     <>
       <SectionHeader label="Academic Staff" title="Faculty List" />
       <p className="font-body text-type-body text-[#474747] mb-6">
-        GRCP has a team of 39 highly qualified and experienced faculty members across all departments.
+        GRCP has a team of {FACULTY_DATA.length} highly qualified and experienced faculty members across all departments.
         The listing below reflects the teaching staff as maintained by the administration.
       </p>
 
@@ -955,12 +958,6 @@ function FacultyContent() {
           <FacultyCard key={member.sno} member={member} />
         ))}
       </div>
-
-      <InfoCallout>
-        The complete faculty list with photographs and detailed profiles is available at the college office
-        and on the NAAC / NBA submission portal. For specific faculty contact details, please call{' '}
-        <strong>{college.phone}</strong>.
-      </InfoCallout>
     </>
   );
 }

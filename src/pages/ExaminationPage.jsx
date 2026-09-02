@@ -211,7 +211,7 @@ function ExaminationBranchSection() {
           <span style={{ color: '#dee2e6' }}>|</span>
           <span><strong style={{ color: college.primaryColor }}>Phone:</strong> {contact.phone}</span>
           <span style={{ color: '#dee2e6' }}>|</span>
-          <span><strong style={{ color: college.primaryColor }}>UG Coordinators:</strong> Mrs. Ch. Soujanya, Mrs. K. Lalitha</span>
+          <span><strong style={{ color: college.primaryColor }}>UG Coordinators:</strong> Dr. Ch. Soujanya, Dr. K. Lalitha</span>
           <span style={{ color: '#dee2e6' }}>|</span>
           <span><strong style={{ color: college.primaryColor }}>PG Coordinator:</strong> Dr. M. Lakshmi Madhuri</span>
         </div>
