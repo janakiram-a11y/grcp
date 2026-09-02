@@ -263,7 +263,7 @@ export default function NavStrip({ college, scrolled = false }) {
         borderBottom: `1px solid ${withAlpha('#000000', 0.1)}`,
       }}
     >
-      <div className="flex justify-between items-center gap-x-[38px] gap-y-2 overflow-visible flex-wrap container-px">
+      <div className="flex justify-between items-center gap-x-[26px] gap-y-2 overflow-visible flex-wrap container-px">
         {college.navLinks.map((link) => (
           <NavItem key={link.name} {...link} college={college} />
         ))}
