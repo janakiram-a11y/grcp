@@ -94,18 +94,18 @@ function DataTable({ headers, rows }) {
         <thead>
           <tr>
             {headers.map((h) => (
-              <th key={h} className="text-type-ui" style={thStyle}>{h}</th>
+              <th key={h} className="text-type-body" style={thStyle}>{h}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((row, i) => (
             <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#ffffff' : '#f9fafb' }}>
-              <td className="text-type-ui" style={{ ...tdStyle, fontWeight: 600, color: college.primaryColor }}>
+              <td className="text-type-body" style={{ ...tdStyle, fontWeight: 600, color: college.primaryColor }}>
                 {row.label}
               </td>
               {row.values.map((val, j) => (
-                <td key={j} className="text-type-ui" style={tdStyle}>{val}</td>
+                <td key={j} className="text-type-body" style={tdStyle}>{val}</td>
               ))}
             </tr>
           ))}
@@ -268,24 +268,24 @@ function EamcetRankContent() {
               <thead>
                 <tr>
                   {eamcetCols.map((col) => (
-                    <th key={col} className="text-type-ui" style={thStyle}>{col}</th>
+                    <th key={col} className="text-type-body" style={thStyle}>{col}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {yearData.rows.map((row, i) => (
                   <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#ffffff' : '#f9fafb' }}>
-                    <td className="text-type-ui" style={{ ...tdStyle, fontWeight: 600, color: college.primaryColor, whiteSpace: 'nowrap' }}>
+                    <td className="text-type-body" style={{ ...tdStyle, fontWeight: 600, color: college.primaryColor, whiteSpace: 'nowrap' }}>
                       {row.stream}
                     </td>
-                    <td className="text-type-ui" style={tdStyle}>{row.OC}</td>
-                    <td className="text-type-ui" style={tdStyle}>{row.BCA}</td>
-                    <td className="text-type-ui" style={tdStyle}>{row.BCB}</td>
-                    <td className="text-type-ui" style={tdStyle}>{row.BCC}</td>
-                    <td className="text-type-ui" style={tdStyle}>{row.BCD}</td>
-                    <td className="text-type-ui" style={tdStyle}>{row.BCE}</td>
-                    <td className="text-type-ui" style={tdStyle}>{row.SC}</td>
-                    <td className="text-type-ui" style={tdStyle}>{row.ST}</td>
+                    <td className="text-type-body" style={tdStyle}>{row.OC}</td>
+                    <td className="text-type-body" style={tdStyle}>{row.BCA}</td>
+                    <td className="text-type-body" style={tdStyle}>{row.BCB}</td>
+                    <td className="text-type-body" style={tdStyle}>{row.BCC}</td>
+                    <td className="text-type-body" style={tdStyle}>{row.BCD}</td>
+                    <td className="text-type-body" style={tdStyle}>{row.BCE}</td>
+                    <td className="text-type-body" style={tdStyle}>{row.SC}</td>
+                    <td className="text-type-body" style={tdStyle}>{row.ST}</td>
                   </tr>
                 ))}
               </tbody>
@@ -305,7 +305,7 @@ const PGECET_COL_ORDER = ['OC', 'BC', 'SC', 'ST', 'GPAT', 'GPAT-A', 'GPAT-B', 'G
 function PgecetPivotTable({ entries }) {
   if (!entries || entries.length === 0) {
     return (
-      <p className="font-body text-type-body-xs text-[#6b7280] italic py-3">
+      <p className="font-body text-type-body text-[#6b7280] italic py-3">
         No data available for this year.
       </p>
     );
@@ -352,7 +352,7 @@ function PgecetPivotTable({ entries }) {
           {genders.map((gender, i) => (
             <tr key={gender} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
               <td
-                className="font-display font-semibold text-type-body-sm px-4 py-3"
+                className="font-display font-semibold text-type-body px-4 py-3"
                 style={{ color: college.primaryColor, borderRight: `1px solid ${college.primaryColor}10`, borderBottom: `1px solid ${college.primaryColor}10` }}
               >
                 {gender}
@@ -360,7 +360,7 @@ function PgecetPivotTable({ entries }) {
               {cols.map((cat) => (
                 <td
                   key={cat}
-                  className="font-body text-type-body-sm text-center px-4 py-3"
+                  className="font-body text-type-body text-center px-4 py-3"
                   style={{ color: '#374151', borderRight: `1px solid ${college.primaryColor}10`, borderBottom: `1px solid ${college.primaryColor}10` }}
                 >
                   {pivot[`${gender}__${cat}`] ?? '—'}

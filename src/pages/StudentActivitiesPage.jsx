@@ -109,13 +109,13 @@ function YearTabs({ compositions }) {
             <tbody>
               {active.members.map((m, i) => (
                 <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#FAFAFA' : '#FFFFFF' }}>
-                  <td className="font-body text-type-body-sm text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.sno || i + 1}</td>
-                  <td className="font-display font-semibold text-type-body-sm px-5 py-3 border-b" style={{ color: primary, borderColor: `${primary}10` }}>{m.name}</td>
-                  <td className="font-body text-type-body-sm text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.designation}</td>
+                  <td className="font-body text-type-body text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.sno || i + 1}</td>
+                  <td className="font-display font-semibold text-type-body px-5 py-3 border-b" style={{ color: primary, borderColor: `${primary}10` }}>{m.name}</td>
+                  <td className="font-body text-type-body text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.designation}</td>
                   <td className="px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}><RoleBadge role={m.position || m.role} /></td>
                   <td className="px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>
                     {m.email
-                      ? <a href={`mailto:${m.email}`} className="font-body text-type-ui underline" style={{ color: primary }}>{m.email}</a>
+                      ? <a href={`mailto:${m.email}`} className="font-body text-type-body underline" style={{ color: primary }}>{m.email}</a>
                       : <span className="text-[#9CA3AF]">—</span>
                     }
                   </td>

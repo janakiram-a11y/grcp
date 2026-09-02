@@ -70,7 +70,7 @@ function ContactInfoCards() {
         <div className="space-y-1.5">
           <a
             href={`tel:${college.phone}`}
-            className="font-display text-type-body-xs block underline"
+            className="font-display text-type-body block underline"
             style={{ color: college.primaryColor }}
           >
             {college.phone}
@@ -78,12 +78,12 @@ function ContactInfoCards() {
           <p className="font-display text-type-ui-sm text-[#6B7280]">Admissions:</p>
           <a
             href={`tel:${college.admissionsPhone}`}
-            className="font-display text-type-body-xs block underline"
+            className="font-display text-type-body block underline"
             style={{ color: college.primaryColor }}
           >
             {college.admissionsPhone}
           </a>
-          <p className="font-body text-type-cap text-[#6B7280]">{college.admissionsLabel}</p>
+          <p className="font-body text-type-body text-[#6B7280]">{college.admissionsLabel}</p>
         </div>
       ),
     },
@@ -93,7 +93,7 @@ function ContactInfoCards() {
       content: (
         <a
           href={`mailto:${college.email}`}
-          className="font-display text-type-body-xs underline break-all"
+          className="font-display text-type-body underline break-all"
           style={{ color: college.primaryColor }}
         >
           {college.email}
@@ -108,7 +108,7 @@ function ContactInfoCards() {
           href="https://www.instagram.com/grcp_offic"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-display text-type-body-xs underline break-all"
+          className="font-display text-type-body underline break-all"
           style={{ color: college.primaryColor }}
         >
           @grcp_offic
@@ -166,15 +166,15 @@ function WorkingHoursCard() {
               Working Hours
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2 mb-4">
-              <div className="flex justify-between font-display text-type-body-xs">
+              <div className="flex justify-between font-display text-type-body">
                 <span className="text-[#6B7280]">Monday – Saturday</span>
                 <span className="font-semibold text-[#474747]">9:00 AM – 4:00 PM</span>
               </div>
-              <div className="flex justify-between font-display text-type-body-xs">
+              <div className="flex justify-between font-display text-type-body">
                 <span className="text-[#6B7280]">2nd Saturday</span>
                 <span className="font-semibold text-[#474747]">Holiday</span>
               </div>
-              <div className="flex justify-between font-display text-type-body-xs">
+              <div className="flex justify-between font-display text-type-body">
                 <span className="text-[#6B7280]">Sunday</span>
                 <span className="font-semibold text-[#474747]">Closed</span>
               </div>
@@ -204,7 +204,7 @@ function WorkingHoursCard() {
 
 function ContactForm() {
   const inputClass =
-    'w-full font-display text-type-body-xs text-[#474747] border rounded-lg px-4 py-2.5 outline-none bg-white focus:ring-2 transition-shadow';
+    'w-full font-display text-type-body text-[#474747] border rounded-lg px-4 py-2.5 outline-none bg-white focus:ring-2 transition-shadow';
   const borderStyle = { borderColor: `${college.primaryColor}28` };
 
   return (

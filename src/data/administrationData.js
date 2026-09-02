@@ -88,11 +88,11 @@ export const governingBodyMembers = [
   },
   {
     sno: 6,
-    name: 'Dr. B. Manohar, M. Sc., Ph. D',
-    org: 'Professor of Physical Chemistry, Osmania University, Hyderabad',
+    name: 'Dr. B. Sireesha',
+    org: 'Professor of Inorganic Chemistry, University College of Science, Osmania University',
     designation: 'Member',
     category: 'Osmania University Nominee',
-    photo: 'https://grcp.ac.in/images/ob_17.jpg',
+    photo: '/governing-body/dr-b-sireesha.png',
   },
   {
     sno: 7,

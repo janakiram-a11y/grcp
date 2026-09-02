@@ -91,7 +91,7 @@ function OUAdminCard({ person }) {
 
         {/* Qualification */}
         {person.qualification && (
-          <p className="font-body text-type-ui-sm" style={{ color: '#6B7280' }}>
+          <p className="font-body text-type-body" style={{ color: '#6B7280' }}>
             {person.qualification}
           </p>
         )}
@@ -257,7 +257,7 @@ function AboutSection() {
                   className="bg-white rounded-xl p-5"
                   style={{ border: '1px solid rgba(0,90,40,0.10)', borderLeftWidth: '4px', borderLeftColor: college.primaryColor }}
                 >
-                  <h4 className="font-display font-medium text-type-body-xs mb-1.5" style={{ color: college.primaryColor }}>{value.name}</h4>
+                  <h4 className="font-display font-medium text-type-body mb-1.5" style={{ color: college.primaryColor }}>{value.name}</h4>
                   <p className="font-body text-type-body text-[#474747]">{value.desc}</p>
                 </div>
               ))}

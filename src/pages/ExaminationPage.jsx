@@ -45,13 +45,13 @@ function CommitteeTable({ members }) {
         <tbody>
           {members.map((m, i) => (
             <tr key={m.sno} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-              <td className="font-body text-type-body-sm text-[#474747] px-4 py-3" style={{ textAlign: 'center', border: `1px solid ${college.primaryColor}10` }}>
+              <td className="font-body text-type-body text-[#474747] px-4 py-3" style={{ textAlign: 'center', border: `1px solid ${college.primaryColor}10` }}>
                 {m.sno}
               </td>
-              <td className="font-display font-semibold text-type-body-sm px-4 py-3" style={{ color: college.primaryColor, border: `1px solid ${college.primaryColor}10` }}>
+              <td className="font-display font-semibold text-type-body px-4 py-3" style={{ color: college.primaryColor, border: `1px solid ${college.primaryColor}10` }}>
                 {m.name}
               </td>
-              <td className="font-body text-type-body-sm text-[#474747] px-4 py-3" style={{ border: `1px solid ${college.primaryColor}10` }}>
+              <td className="font-body text-type-body text-[#474747] px-4 py-3" style={{ border: `1px solid ${college.primaryColor}10` }}>
                 {m.designation}
               </td>
               <td className="px-4 py-3" style={{ border: `1px solid ${college.primaryColor}10` }}>
@@ -69,7 +69,7 @@ function CommitteeTable({ members }) {
                   {m.position}
                 </span>
               </td>
-              <td className="font-body text-type-body-sm px-4 py-3" style={{ border: `1px solid ${college.primaryColor}10` }}>
+              <td className="font-body text-type-body px-4 py-3" style={{ border: `1px solid ${college.primaryColor}10` }}>
                 <a href={`mailto:${m.email}`} className="underline" style={{ color: college.primaryColor }}>
                   {m.email}
                 </a>
@@ -201,7 +201,7 @@ function ExaminationBranchSection() {
           Contact
         </h3>
         <div
-          className="rounded-xl px-6 py-4 flex flex-wrap gap-4 text-type-body-xs font-body font-medium text-[#383838]"
+          className="rounded-xl px-6 py-4 flex flex-wrap gap-4 text-type-body font-body font-medium text-[#383838]"
           style={{ backgroundColor: '#f8f9fa', border: `1px solid ${college.primaryColor}20`, borderLeft: `4px solid ${college.primaryColor}` }}
         >
           <span>
@@ -313,7 +313,7 @@ function OuNotificationsSection() {
           <button
             key={tab.id}
             onClick={() => setActive(tab.id)}
-            className="font-display font-semibold text-type-body-xs px-6 py-2 rounded-t"
+            className="font-display font-semibold text-type-body px-6 py-2 rounded-t"
             style={{
               border: 'none',
               cursor: 'pointer',
@@ -355,7 +355,7 @@ function ResultsSection() {
           <button
             key={tab.id}
             onClick={() => setActive(tab.id)}
-            className="font-display font-semibold text-type-body-xs px-6 py-2 rounded-t"
+            className="font-display font-semibold text-type-body px-6 py-2 rounded-t"
             style={{
               border: 'none',
               cursor: 'pointer',
@@ -416,7 +416,7 @@ function QuestionPapersSection() {
           <button
             key={tab.id}
             onClick={() => setActive(tab.id)}
-            className="font-display font-semibold text-type-body-xs px-6 py-2 rounded-t"
+            className="font-display font-semibold text-type-body px-6 py-2 rounded-t"
             style={{
               border: 'none',
               cursor: 'pointer',
@@ -457,7 +457,7 @@ function QuestionPapersSection() {
                 <tbody>
                   {bPharmQP.semesters.map((row, i) => (
                     <tr key={row.sem} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-                      <td className="font-display font-semibold text-type-body-sm px-4 py-3" style={{ color: college.primaryColor, border: `1px solid ${college.primaryColor}10` }}>
+                      <td className="font-display font-semibold text-type-body px-4 py-3" style={{ color: college.primaryColor, border: `1px solid ${college.primaryColor}10` }}>
                         {row.sem}
                       </td>
                       {row.links.map((link, j) => (
@@ -494,7 +494,7 @@ function QuestionPapersSection() {
                     <tbody>
                       {spec.semesters.map((s, i) => (
                         <tr key={s.sem} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-                          <td className="font-display font-semibold text-type-body-sm px-4 py-3" style={{ color: college.primaryColor, border: `1px solid ${college.primaryColor}10` }}>
+                          <td className="font-display font-semibold text-type-body px-4 py-3" style={{ color: college.primaryColor, border: `1px solid ${college.primaryColor}10` }}>
                             {s.sem}
                           </td>
                           <td className="px-4 py-3 text-center" style={{ border: `1px solid ${college.primaryColor}10` }}>

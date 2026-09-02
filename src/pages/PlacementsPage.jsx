@@ -5,6 +5,7 @@ import SiteHeader from '../components/SiteHeader';
 import PageHero from '../components/PageHero';
 import AdmissionsCTA from '../components/AdmissionsCTA';
 import Footer from '../components/Footer';
+import { RecruiterLogoGrid } from '../components/CareerOutcomes';
 
 const PRIMARY = college.primaryColor; // #2D7A50
 const ACCENT  = college.greenAccent;  // #C72235
@@ -57,7 +58,7 @@ function StripedTable({ headers, rows }) {
               {cells.map((cell, j) => (
                 <td
                   key={j}
-                  className="font-display text-type-body-sm px-5 py-3.5"
+                  className="font-display text-type-body px-5 py-3.5"
                   style={{ color: j === 0 ? PRIMARY : '#474747' }}
                 >
                   {cell}
@@ -122,7 +123,7 @@ function CommitteeYearTabs({ compositions }) {
 // ─── Placement Cell Overview ──────────────────────────────────────────────────
 
 function OverviewSection() {
-  const { overview, stats, functions: fns, committee, recruiters, careerGuidance } = college.placements;
+  const { overview, stats, functions: fns, committee, careerGuidance } = college.placements;
 
   return (
     <div className="space-y-14">
@@ -226,21 +227,7 @@ function OverviewSection() {
         >
           Key Recruiters
         </h3>
-        <div className="flex flex-wrap gap-3">
-          {recruiters.map((r, i) => (
-            <span
-              key={i}
-              className="font-display text-type-ui-sm font-semibold px-4 py-2 rounded-full border"
-              style={{
-                color: PRIMARY,
-                borderColor: `${PRIMARY}40`,
-                backgroundColor: `${PRIMARY}08`,
-              }}
-            >
-              {r.name}
-            </span>
-          ))}
-        </div>
+        <RecruiterLogoGrid />
       </section>
 
     </div>
@@ -348,7 +335,7 @@ function PlacementStatusSection() {
           <p className="font-display font-semibold text-type-body-lg mb-2" style={{ color: PRIMARY }}>
             {activeYear} Placement Data
           </p>
-          <p className="font-body text-type-ui text-[#6B7280]">
+          <p className="font-body text-type-body text-[#6B7280]">
             Data will be available shortly.
           </p>
         </div>

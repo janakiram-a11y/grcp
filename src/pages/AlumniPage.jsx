@@ -51,7 +51,7 @@ function SectionHeader({ label, title }) {
 function InfoBox({ children }) {
   return (
     <div
-      className="font-body text-type-ui px-5 py-4 rounded mb-6"
+      className="font-body text-type-body px-5 py-4 rounded mb-6"
       style={{
         backgroundColor: `${primaryColor}0D`,
         borderLeft: `4px solid ${primaryColor}`,
@@ -269,11 +269,11 @@ function ExecutiveMembersSection() {
         <table className="w-full border-collapse">
           <thead>
             <tr>
-              <th className="text-type-ui" style={{ ...thStyle, width: '60px' }}>S.No.</th>
-              <th className="text-type-ui" style={thStyle}>Name</th>
-              <th className="text-type-ui" style={thStyle}>Designation</th>
-              <th className="text-type-ui" style={thStyle}>Position</th>
-              <th className="text-type-ui" style={{ ...thStyle, borderRight: 'none' }}>Email</th>
+              <th className="text-type-body" style={{ ...thStyle, width: '60px' }}>S.No.</th>
+              <th className="text-type-body" style={thStyle}>Name</th>
+              <th className="text-type-body" style={thStyle}>Designation</th>
+              <th className="text-type-body" style={thStyle}>Position</th>
+              <th className="text-type-body" style={{ ...thStyle, borderRight: 'none' }}>Email</th>
             </tr>
           </thead>
           <tbody>
@@ -282,15 +282,15 @@ function ExecutiveMembersSection() {
                 key={m.sno}
                 style={{ backgroundColor: i % 2 === 0 ? '#ffffff' : '#f9fafb' }}
               >
-                <td className="text-type-ui" style={{ ...tdStyle, textAlign: 'center', fontWeight: 600, color: primaryColor }}>
+                <td className="text-type-body" style={{ ...tdStyle, textAlign: 'center', fontWeight: 600, color: primaryColor }}>
                   {m.sno}
                 </td>
-                <td className="font-body text-type-ui" style={{ ...tdStyle, fontWeight: 500 }}>{m.name}</td>
-                <td className="font-body text-type-ui" style={tdStyle}>{m.designation}</td>
-                <td className="text-type-ui" style={tdStyle}>
+                <td className="font-body text-type-body" style={{ ...tdStyle, fontWeight: 500 }}>{m.name}</td>
+                <td className="font-body text-type-body" style={tdStyle}>{m.designation}</td>
+                <td className="text-type-body" style={tdStyle}>
                   <PositionBadge position={m.position} />
                 </td>
-                <td className="font-body text-type-ui" style={{ ...tdStyle, borderRight: 'none' }}>
+                <td className="font-body text-type-body" style={{ ...tdStyle, borderRight: 'none' }}>
                   <a
                     href={`mailto:${m.email}`}
                     className="hover:underline"
@@ -375,27 +375,27 @@ function AlumniListSection() {
           <table className="w-full border-collapse">
             <thead>
               <tr>
-                <th className="text-type-ui" style={{ ...thStyle, width: '40px' }}>#</th>
-                <th className="text-type-ui" style={thStyle}>Name</th>
-                <th className="text-type-ui" style={thStyle}>Course</th>
-                <th className="text-type-ui" style={thStyle}>Batch</th>
-                <th className="text-type-ui" style={{ ...thStyle, borderRight: 'none' }}>Working Details</th>
+                <th className="text-type-body" style={{ ...thStyle, width: '40px' }}>#</th>
+                <th className="text-type-body" style={thStyle}>Name</th>
+                <th className="text-type-body" style={thStyle}>Course</th>
+                <th className="text-type-body" style={thStyle}>Batch</th>
+                <th className="text-type-body" style={{ ...thStyle, borderRight: 'none' }}>Working Details</th>
               </tr>
             </thead>
             <tbody>
               {sampleAlumni.map((a, i) => (
                 <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#ffffff' : '#f9fafb' }}>
-                  <td className="text-type-ui" style={{ ...tdStyle, textAlign: 'center', fontWeight: 600, color: primaryColor }}>{i + 1}</td>
-                  <td className="font-body text-type-ui" style={{ ...tdStyle, fontWeight: 500, color: primaryColor }}>{a.name}</td>
-                  <td className="font-body text-type-ui" style={tdStyle}>{a.course}</td>
-                  <td className="font-body text-type-ui" style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{a.batch}</td>
-                  <td className="font-body text-type-ui" style={{ ...tdStyle, borderRight: 'none' }}>{a.workingDetails}</td>
+                  <td className="text-type-body" style={{ ...tdStyle, textAlign: 'center', fontWeight: 600, color: primaryColor }}>{i + 1}</td>
+                  <td className="font-body text-type-body" style={{ ...tdStyle, fontWeight: 500, color: primaryColor }}>{a.name}</td>
+                  <td className="font-body text-type-body" style={tdStyle}>{a.course}</td>
+                  <td className="font-body text-type-body" style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{a.batch}</td>
+                  <td className="font-body text-type-body" style={{ ...tdStyle, borderRight: 'none' }}>{a.workingDetails}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <p className="font-body text-type-cap text-gray-400 mt-2 italic">
+        <p className="font-body text-type-body text-gray-400 mt-2 italic">
           Showing 5 sample entries. The full database contains 272+ alumni records.
         </p>
       </div>
@@ -492,8 +492,8 @@ function DistinguishedSection() {
             </div>
 
             <div>
-              <p className="font-body text-type-ui-sm font-semibold text-gray-700 mb-1">{a.currentRole}</p>
-              <p className="font-body text-type-ui-sm text-gray-500">{a.achievement}</p>
+              <p className="font-body text-type-body font-semibold text-gray-700 mb-1">{a.currentRole}</p>
+              <p className="font-body text-type-body text-gray-500">{a.achievement}</p>
             </div>
           </div>
         ))}
@@ -537,10 +537,10 @@ function ContributionSection() {
             <table className="w-full border-collapse">
               <thead>
                 <tr>
-                  <th className="text-type-ui" style={thStyle}>Speaker</th>
-                  <th className="text-type-ui" style={thStyle}>Qualification / Current Role</th>
-                  <th className="text-type-ui" style={thStyle}>Topic</th>
-                  <th className="text-type-ui" style={{ ...thStyle, borderRight: 'none' }}>Date</th>
+                  <th className="text-type-body" style={thStyle}>Speaker</th>
+                  <th className="text-type-body" style={thStyle}>Qualification / Current Role</th>
+                  <th className="text-type-body" style={thStyle}>Topic</th>
+                  <th className="text-type-body" style={{ ...thStyle, borderRight: 'none' }}>Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -549,10 +549,10 @@ function ContributionSection() {
                     key={i}
                     style={{ backgroundColor: i % 2 === 0 ? '#ffffff' : '#f9fafb' }}
                   >
-                    <td className="font-body text-type-ui" style={{ ...tdStyle, fontWeight: 500, color: primaryColor }}>{item.name}</td>
-                    <td className="font-body text-type-ui" style={tdStyle}>{item.qualification || '—'}</td>
-                    <td className="font-body text-type-ui" style={tdStyle}>{item.topic}</td>
-                    <td className="font-body text-type-ui" style={{ ...tdStyle, borderRight: 'none', whiteSpace: 'nowrap' }}>{item.date}</td>
+                    <td className="font-body text-type-body" style={{ ...tdStyle, fontWeight: 500, color: primaryColor }}>{item.name}</td>
+                    <td className="font-body text-type-body" style={tdStyle}>{item.qualification || '—'}</td>
+                    <td className="font-body text-type-body" style={tdStyle}>{item.topic}</td>
+                    <td className="font-body text-type-body" style={{ ...tdStyle, borderRight: 'none', whiteSpace: 'nowrap' }}>{item.date}</td>
                   </tr>
                 ))}
               </tbody>

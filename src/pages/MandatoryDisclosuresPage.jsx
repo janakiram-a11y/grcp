@@ -237,6 +237,7 @@ export default function MandatoryDisclosuresPage() {
             title="PCI Disclosures"
             columns={2}
             links={[
+              { label: 'Decision Letter — PCI for Academic Session 2026-2027', href: '/downloads/decision-letter-pci-2026-2027.pdf' },
               { label: 'Decision Letter — PCI for Academic Session 2025-2026', href: 'https://grcp.ac.in/downloads/Decision%20Letter_PCI_%20for%20Academic%20Session%282025-2026%29.pdf' },
               { label: 'Decision Letter — PCI for Academic Session 2021-2022', href: 'https://grcp.ac.in/downloads/Decision%20Letter_PCI_%20for%20Academic%20Session%282021-2022%29.pdf' },
               { label: 'Final SIF Report 2021-22', href: 'https://grcp.ac.in/downloads/Final%20SIF%20Report%2021-22.pdf' },

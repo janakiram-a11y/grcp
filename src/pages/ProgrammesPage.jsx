@@ -42,7 +42,7 @@ function SubHeading({ children }) {
 function CommitteeTable({ rows, columns }) {
   return (
     <div className="overflow-x-auto rounded-xl shadow-sm border border-gray-100">
-      <table className="w-full text-type-body-sm">
+      <table className="w-full text-type-body">
         <thead>
           <tr style={{ backgroundColor: greenAccent }}>
             {columns.map((col) => (
@@ -187,7 +187,7 @@ function BPharmacyContent() {
           {bp.careerPaths.map((path, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
-                className="font-display font-bold text-type-body-xs w-6 flex-shrink-0"
+                className="font-display font-bold text-type-body w-6 flex-shrink-0"
                 style={{ color: greenAccent }}
               >
                 {i + 1}.
@@ -199,18 +199,9 @@ function BPharmacyContent() {
       </section>
 
       <section>
-        <SectionHeader label="Committee" title="UG Program Committee (2025-26)" />
+        <SectionHeader label="Committee" title="UG Program Committee" />
         <div className="mt-4">
-          <CommitteeTable
-            rows={bp.ugCommittee}
-            columns={[
-              { key: 'sno', label: 'S.No.' },
-              { key: 'name', label: 'Name' },
-              { key: 'designation', label: 'Designation' },
-              { key: 'position', label: 'Position' },
-              { key: 'email', label: 'Email' },
-            ]}
-          />
+          <YearTabs compositions={bp.ugCommittee.yearlyCompositions} />
         </div>
       </section>
     </div>

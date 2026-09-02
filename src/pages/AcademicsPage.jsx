@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import college from '../theme';
 import AdminSidebarLayout from '../components/AdminSidebarLayout';
-import { facultyList as facultyListWithCV } from '../data/academicsData';
+import { facultyList as facultyListWithCV, dailyNewsPapers } from '../data/academicsData';
 
 const CV_MAP = Object.fromEntries(facultyListWithCV.map(f => [f.name.trim(), f.cv]));
 
@@ -66,7 +66,7 @@ function DataTable({ rows, columns }) {
               {columns.map((col) => (
                 <td
                   key={col.key}
-                  className="font-body text-type-body-sm px-5 py-3.5"
+                  className="font-body text-type-body px-5 py-3.5"
                   style={col.accent ? { color: primary, fontWeight: 600 } : { color: '#374151' }}
                 >
                   {row[col.key] ?? '—'}
@@ -181,7 +181,7 @@ function SyllabusContent() {
               className="flex items-center justify-between gap-4 px-5 py-3 border-b last:border-0"
               style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA', borderColor: '#F3F4F6' }}
             >
-              <span className="font-body text-type-body-xs text-[#374151]">Semester {sem}</span>
+              <span className="font-body text-type-body text-[#374151]">Semester {sem}</span>
               <DownloadBtn href={`https://grcp.ac.in/downloads/syllabus/${sem} SEM.pdf`} />
             </div>
           ))}
@@ -292,7 +292,7 @@ function CalendarContent() {
                 <h3 className="font-display font-bold text-type-body leading-snug" style={{ color: primary }}>
                   {d.title}
                 </h3>
-                <p className="font-body text-type-cap text-[#6B7280] mt-1">Official Academic Almanac — PDF</p>
+                <p className="font-body text-type-body text-[#6B7280] mt-1">Official Academic Almanac — PDF</p>
               </div>
             </div>
             <DownloadBtn href={d.href} label="Download PDF" />
@@ -338,7 +338,7 @@ function TimetableRow({ row, columns }) {
         ) : (
           <td
             key={col.key}
-            className="font-body text-type-body-sm px-5 py-3.5"
+            className="font-body text-type-body px-5 py-3.5"
             style={col.accent ? { color: primary, fontWeight: 600 } : { color: '#374151' }}
           >
             {row[col.key] ?? '—'}
@@ -647,7 +647,7 @@ function LibraryContent() {
         <SectionHeader label="Usage Policy" title="Library Rules" />
         <ol className="list-decimal list-outside ml-5 space-y-3">
           {LIBRARY_RULES.map((rule, i) => (
-            <li key={i} className="font-body text-type-body-xs text-[#374151] pl-1">
+            <li key={i} className="font-body text-type-body text-[#374151] pl-1">
               {rule}
             </li>
           ))}
@@ -659,7 +659,7 @@ function LibraryContent() {
         <SectionHeader label="Mission & Goals" title="Library Objectives" />
         <ol className="list-decimal list-outside ml-5 space-y-3">
           {LIBRARY_OBJECTIVES.map((obj, i) => (
-            <li key={i} className="font-body text-type-body-xs text-[#374151] pl-1">
+            <li key={i} className="font-body text-type-body text-[#374151] pl-1">
               {obj}
             </li>
           ))}
@@ -702,11 +702,11 @@ function LibraryContent() {
             <tbody>
               {activeCommittee.members.map((row, i) => (
                 <tr key={row.sno} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-                  <td className="font-body text-type-body-sm px-5 py-3.5 text-[#374151]">{row.sno}</td>
-                  <td className="font-body text-type-body-sm px-5 py-3.5 font-semibold" style={{ color: primary }}>{row.name}</td>
-                  <td className="font-body text-type-body-sm px-5 py-3.5 text-[#374151]">{row.designation}</td>
-                  <td className="font-body text-type-body-sm px-5 py-3.5 text-[#374151]">{row.position}</td>
-                  <td className="font-body text-type-ui px-5 py-3.5">
+                  <td className="font-body text-type-body px-5 py-3.5 text-[#374151]">{row.sno}</td>
+                  <td className="font-body text-type-body px-5 py-3.5 font-semibold" style={{ color: primary }}>{row.name}</td>
+                  <td className="font-body text-type-body px-5 py-3.5 text-[#374151]">{row.designation}</td>
+                  <td className="font-body text-type-body px-5 py-3.5 text-[#374151]">{row.position}</td>
+                  <td className="font-body text-type-body px-5 py-3.5">
                     <a href={`mailto:${row.email}`} className="underline" style={{ color: primary }}>{row.email}</a>
                   </td>
                 </tr>
@@ -865,11 +865,11 @@ function FacultyCard({ member }) {
         <div className="flex flex-col gap-1.5 flex-1">
           <div className="flex items-start gap-2">
             <span className="font-display text-type-label font-semibold uppercase tracking-wide text-[#9CA3AF] w-14 flex-shrink-0 pt-0.5">Qual.</span>
-            <span className="font-body text-type-ui-sm text-[#374151] leading-snug">{member.qual}</span>
+            <span className="font-body text-type-body text-[#374151] leading-snug">{member.qual}</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="font-display text-type-label font-semibold uppercase tracking-wide text-[#9CA3AF] w-14 flex-shrink-0">Exp.</span>
-            <span className="font-body text-type-ui-sm text-[#374151]">{member.exp}</span>
+            <span className="font-body text-type-body text-[#374151]">{member.exp}</span>
           </div>
         </div>
 
@@ -1054,13 +1054,13 @@ function InformationCenterContent() {
       <div className="space-y-8">
         <div className="rounded-xl p-6 border" style={{ borderColor: `${primary}18`, backgroundColor: '#FAFAFA' }}>
           <h3 className="font-display font-semibold text-type-body-lg mb-3" style={{ color: primary }}>Librarian Contact</h3>
-          <p className="font-body text-type-body-xs text-[#474747]">Lakshmana Rao Indurthi</p>
-          <p className="font-body text-type-body-xs text-[#474747]">Phone: 9441080112</p>
-          <a href="mailto:grcplibrary@gmail.com" className="font-body text-type-body-xs" style={{ color: primary }}>grcplibrary@gmail.com</a>
+          <p className="font-body text-type-body text-[#474747]">Lakshmana Rao Indurthi</p>
+          <p className="font-body text-type-body text-[#474747]">Phone: 9441080112</p>
+          <a href="mailto:grcplibrary@gmail.com" className="font-body text-type-body" style={{ color: primary }}>grcplibrary@gmail.com</a>
         </div>
         <div>
           <h3 className="font-display font-semibold text-type-body-lg mb-3" style={{ color: primary }}>OPAC (Online Public Access Catalogue)</h3>
-          <a href="http://grcph.bestbookbuddies.com" target="_blank" rel="noopener noreferrer" className="font-body text-type-body-xs underline" style={{ color: primary }}>http://grcph.bestbookbuddies.com</a>
+          <a href="http://grcph.bestbookbuddies.com" target="_blank" rel="noopener noreferrer" className="font-body text-type-body underline" style={{ color: primary }}>http://grcph.bestbookbuddies.com</a>
         </div>
         <div>
           <h3 className="font-display font-semibold text-type-body-lg mb-3" style={{ color: primary }}>Subscribed Databases</h3>
@@ -1068,14 +1068,14 @@ function InformationCenterContent() {
             {[{ name: 'DELNET eJournals', url: 'https://discovery.delnet.in' }, { name: 'Science Direct', url: 'https://www.sciencedirect.com' }].map((db) => (
               <li key={db.name} className="flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: accent }} />
-                <a href={db.url} target="_blank" rel="noopener noreferrer" className="font-body text-type-ui" style={linkStyle}>{db.name}</a>
+                <a href={db.url} target="_blank" rel="noopener noreferrer" className="font-body text-type-body" style={linkStyle}>{db.name}</a>
               </li>
             ))}
           </ul>
         </div>
         <div>
           <h3 className="font-display font-semibold text-type-body-lg mb-3" style={{ color: primary }}>Open Access Resources</h3>
-          <ul className="space-y-2">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
             {[
               { name: 'National Digital Library',           url: 'https://ndl.iitkgp.ac.in' },
               { name: 'National Digital Repository',        url: 'http://www.egyankosh.ac.in' },
@@ -1097,7 +1097,7 @@ function InformationCenterContent() {
             ].map((r) => (
               <li key={r.name} className="flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: accent }} />
-                <a href={r.url} target="_blank" rel="noopener noreferrer" className="font-body text-type-ui" style={linkStyle}>{r.name}</a>
+                <a href={r.url} target="_blank" rel="noopener noreferrer" className="font-body text-type-body" style={linkStyle}>{r.name}</a>
               </li>
             ))}
           </ul>
@@ -1112,7 +1112,7 @@ function InformationCenterContent() {
             ].map((r) => (
               <li key={r.name} className="flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: accent }} />
-                <a href={r.url} target="_blank" rel="noopener noreferrer" className="font-body text-type-ui" style={linkStyle}>{r.name}</a>
+                <a href={r.url} target="_blank" rel="noopener noreferrer" className="font-body text-type-body" style={linkStyle}>{r.name}</a>
               </li>
             ))}
           </ul>
@@ -1306,7 +1306,7 @@ function EJournalsContent() {
           {EJOURNALS_LIST.map((journal, idx) => (
             <div key={idx} className="flex items-start gap-1.5 py-1 border-b" style={{ borderColor: `${primary}10` }}>
               <span className="font-display text-type-ui-sm font-semibold flex-shrink-0 w-7 text-right" style={{ color: primary }}>{idx + 1}.</span>
-              <span className="font-body text-type-ui-sm text-[#333333] leading-snug">{journal}</span>
+              <span className="font-body text-type-body text-[#333333] leading-snug">{journal}</span>
             </div>
           ))}
         </div>
@@ -1323,7 +1323,7 @@ function DailyNewsPapersContent() {
         The GRCP Library subscribes to the following newspapers. Physical copies are available in the library reading room.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {NEWSPAPERS.map((p) => (
+        {dailyNewsPapers.map((p) => (
           <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer" className="rounded-xl p-5 border flex items-center gap-3 hover:shadow-sm transition-shadow" style={{ borderColor: `${primary}18`, backgroundColor: '#FAFAFA' }}>
             <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${primary}10` }}>
               <svg className="w-5 h-5" style={{ color: primary }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" /></svg>
@@ -1406,10 +1406,10 @@ function LibraryStatisticsContent() {
           <tbody>
             {PROG_BOOK_STATS.map((row, i) => (
               <tr key={row.programme} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-                <td className="font-body text-type-body-sm px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.programme}</td>
-                <td className="font-body text-type-body-sm px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.volumes}</td>
-                <td className="font-body text-type-body-sm px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.titles}</td>
-                <td className="font-body text-type-body-sm px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.journals}</td>
+                <td className="font-body text-type-body px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.programme}</td>
+                <td className="font-body text-type-body px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.volumes}</td>
+                <td className="font-body text-type-body px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.titles}</td>
+                <td className="font-body text-type-body px-5 py-3.5" style={{ color: row.programme === 'Total' ? primary : '#374151', fontWeight: row.programme === 'Total' ? 700 : 400 }}>{row.journals}</td>
               </tr>
             ))}
           </tbody>
@@ -1430,9 +1430,9 @@ function LibraryStatisticsContent() {
           <tbody>
             {NATIONAL_JOURNALS.map((j, i) => (
               <tr key={j.name} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-                <td className="font-body text-type-ui px-5 py-3 text-[#9CA3AF]">{i + 1}</td>
-                <td className="font-body text-type-body-sm px-5 py-3 text-[#374151]">{j.name}</td>
-                <td className="font-body text-type-body-sm px-5 py-3 text-[#374151]">{j.freq}</td>
+                <td className="font-body text-type-body px-5 py-3 text-[#9CA3AF]">{i + 1}</td>
+                <td className="font-body text-type-body px-5 py-3 text-[#374151]">{j.name}</td>
+                <td className="font-body text-type-body px-5 py-3 text-[#374151]">{j.freq}</td>
               </tr>
             ))}
           </tbody>
@@ -1540,7 +1540,7 @@ function TitleVolumesContent() {
       <p className="font-body text-type-body text-[#474747] mb-2">
         New books added to the GRCP Library collection in 2025-26.
       </p>
-      <p className="font-body text-type-ui-sm text-[#6B7280] mb-6">
+      <p className="font-body text-type-body text-[#6B7280] mb-6">
         Total: 83 new titles added in 2025-26 (539 total volumes)
       </p>
       <div className="overflow-x-auto rounded-xl border border-[#E5E7EB]">
@@ -1555,14 +1555,14 @@ function TitleVolumesContent() {
           <tbody>
             {TITLE_VOLUMES_DATA.map((row, i) => (
               <tr key={row.acc} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
-                <td className="font-body text-type-ui-sm px-4 py-3 whitespace-nowrap" style={{ color: primary, fontWeight: 600 }}>{row.acc}</td>
-                <td className="font-body text-type-ui px-4 py-3 text-[#374151] max-w-[280px]">{row.title}</td>
-                <td className="font-body text-type-ui px-4 py-3 text-[#374151] whitespace-nowrap">{row.author}</td>
-                <td className="font-body text-type-ui-sm px-4 py-3 whitespace-nowrap text-[#6B7280]">{row.subject}</td>
-                <td className="font-body text-type-ui px-4 py-3 text-center text-[#374151]">{row.edition}</td>
-                <td className="font-body text-type-ui-sm px-4 py-3 whitespace-nowrap text-[#374151]">{row.publisher}</td>
-                <td className="font-body text-type-ui px-4 py-3 text-[#374151]">{row.year}</td>
-                <td className="font-body text-type-ui px-4 py-3 text-center font-semibold" style={{ color: primary }}>{row.copies}</td>
+                <td className="font-body text-type-body px-4 py-3 whitespace-nowrap" style={{ color: primary, fontWeight: 600 }}>{row.acc}</td>
+                <td className="font-body text-type-body px-4 py-3 text-[#374151] max-w-[280px]">{row.title}</td>
+                <td className="font-body text-type-body px-4 py-3 text-[#374151] whitespace-nowrap">{row.author}</td>
+                <td className="font-body text-type-body px-4 py-3 whitespace-nowrap text-[#6B7280]">{row.subject}</td>
+                <td className="font-body text-type-body px-4 py-3 text-center text-[#374151]">{row.edition}</td>
+                <td className="font-body text-type-body px-4 py-3 whitespace-nowrap text-[#374151]">{row.publisher}</td>
+                <td className="font-body text-type-body px-4 py-3 text-[#374151]">{row.year}</td>
+                <td className="font-body text-type-body px-4 py-3 text-center font-semibold" style={{ color: primary }}>{row.copies}</td>
               </tr>
             ))}
           </tbody>

@@ -33,7 +33,7 @@ function LogoRow({ logos, reverse }) {
   );
 }
 
-function RecruiterLogoGrid() {
+export function RecruiterLogoGrid() {
   const mid = Math.ceil(recruiterLogos.length / 2);
   const row1 = recruiterLogos.slice(0, mid);
   const row2 = recruiterLogos.slice(mid);

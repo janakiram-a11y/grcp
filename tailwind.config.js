@@ -55,8 +55,8 @@ export default {
 
         // UI / Chrome scale (DM Sans)
         'type-card-title':   ['1.375rem', { lineHeight: '1.8rem'   }], // 22 / 28.8 — card titles
-        'type-nav':          ['1rem',     { lineHeight: '1.5rem'   }], // 16 / 24 — nav links
-        'type-nav-dropdown': ['0.9375rem',{ lineHeight: '1.375rem' }], // 15 / 22 — nav dropdown items
+        'type-nav':          ['1.125rem',{ lineHeight: '1.75rem'  }], // 18 / 28 — nav links
+        'type-nav-dropdown': ['1rem',     { lineHeight: '1.5rem'   }], // 16 / 24 — nav dropdown items
         'type-btn':          ['1rem',     { lineHeight: '1.5rem'   }], // 16 / 24 — buttons
         'type-footer-link':  ['0.9375rem',{ lineHeight: '1.375rem' }], // 15 / 22 — footer links
         'type-sub':          ['1.25rem',  { lineHeight: '1.75rem'  }], // 20 / 28 — subheading

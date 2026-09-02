@@ -20,7 +20,7 @@ export default function ResearchSection({ college }) {
             >
               <span className="font-display font-semibold text-type-card-title leading-snug" style={{ color: 'var(--gold, #F3DAB2)' }}>{count}</span>
               <span className="font-body font-normal text-type-body" style={{ color: 'var(--ink, #ffffff)' }}>{label}</span>
-              <span className="font-body font-normal text-type-body-sm" style={{ color: 'var(--ink-soft, rgba(205,240,220,0.80))' }}>{desc}</span>
+              <span className="font-body font-normal text-type-body" style={{ color: 'var(--ink-soft, rgba(205,240,220,0.80))' }}>{desc}</span>
             </div>
           ))}
         </div>

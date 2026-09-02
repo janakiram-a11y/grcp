@@ -5,6 +5,7 @@ import SiteHeader from '../components/SiteHeader';
 import PageHero from '../components/PageHero';
 import AdmissionsCTA from '../components/AdmissionsCTA';
 import Footer from '../components/Footer';
+import { patents2024, patents2021_2023 } from '../data/researchData';
 
 const primary = college.primaryColor;
 const accent = college.greenAccent;
@@ -84,7 +85,7 @@ function DataTable({ rows, columns, totalRow }) {
               {columns.map((col) => (
                 <td
                   key={col.key}
-                  className="font-body text-type-body-sm px-5 py-3.5 align-top"
+                  className="font-body text-type-body px-5 py-3.5 align-top"
                   style={col.accent ? { color: primary, fontWeight: 600 } : { color: '#374151' }}
                 >
                   {row[col.key] ?? '—'}
@@ -97,7 +98,7 @@ function DataTable({ rows, columns, totalRow }) {
               {columns.map((col) => (
                 <td
                   key={col.key}
-                  className="font-body font-semibold text-type-body-sm px-5 py-3.5"
+                  className="font-body font-semibold text-type-body px-5 py-3.5"
                   style={{ color: primary }}
                 >
                   {totalRow[col.key] ?? ''}
@@ -197,13 +198,13 @@ function YearTabs({ compositions, contactHeader }) {
             <tbody>
               {active.members.map((m, i) => (
                 <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#FAFAFA' : '#FFFFFF' }}>
-                  <td className="font-body text-type-body-sm text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.sno || i + 1}</td>
-                  <td className="font-display font-semibold text-type-body-sm px-5 py-3 border-b" style={{ color: primary, borderColor: `${primary}10` }}>{m.name}</td>
-                  <td className="font-body text-type-body-sm text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.designation}</td>
+                  <td className="font-body text-type-body text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.sno || i + 1}</td>
+                  <td className="font-display font-semibold text-type-body px-5 py-3 border-b" style={{ color: primary, borderColor: `${primary}10` }}>{m.name}</td>
+                  <td className="font-body text-type-body text-[#474747] px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>{m.designation}</td>
                   <td className="px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}><RoleBadge role={m.position || m.role} /></td>
                   <td className="px-5 py-3 border-b" style={{ borderColor: `${primary}10` }}>
                     {(m.email || m.contact || m.phone)
-                      ? <span className="font-body text-type-ui text-[#374151]">{m.email || m.contact || m.phone}</span>
+                      ? <span className="font-body text-type-body text-[#374151]">{m.email || m.contact || m.phone}</span>
                       : <span className="text-[#9CA3AF]">—</span>
                     }
                   </td>
@@ -300,7 +301,6 @@ function OverviewSection() {
   const depts = college.research.depts;
   const [activeTab, setActiveTab] = useState(depts[0]?.id ?? '');
   const activeDept = depts.find((d) => d.id === activeTab) ?? depts[0];
-  const committee = college.research.committee;
 
   return (
     <div className="space-y-12">
@@ -387,7 +387,7 @@ function OverviewSection() {
                         className="w-2 h-2 rounded-full flex-shrink-0 mt-[9px]"
                         style={{ backgroundColor: accent }}
                       />
-                      <span className="font-body text-type-body-xs text-[#374151]">{area}</span>
+                      <span className="font-body text-type-body text-[#374151]">{area}</span>
                     </li>
                   ))}
                 </ul>
@@ -410,21 +410,6 @@ function OverviewSection() {
             )}
           </div>
         )}
-      </section>
-
-      {/* Academic Research Committee */}
-      <section>
-        <SubHeading>Academic Research Committee 2025-26</SubHeading>
-        <DataTable
-          rows={committee}
-          columns={[
-            { key: 'sno',         label: 'S.No.' },
-            { key: 'name',        label: 'Name', accent: true },
-            { key: 'designation', label: 'Designation' },
-            { key: 'position',    label: 'Position' },
-            { key: 'email',       label: 'Email' },
-          ]}
-        />
       </section>
 
       <InfoCallout>
@@ -488,7 +473,7 @@ function ConsultancySection() {
             ]}
           />
           {activeYearData.grandTotal && (
-            <p className="font-display font-semibold text-type-body-xs mt-3 text-right" style={{ color: primary }}>
+            <p className="font-display font-semibold text-type-body mt-3 text-right" style={{ color: primary }}>
               Grand Total: {activeYearData.grandTotal}
             </p>
           )}
@@ -676,63 +661,14 @@ function PublicationsSection() {
 
 // ── Section: Patents ──────────────────────────────────────────────────────────
 
-const PATENTS_2024 = [
-  { sno: 1,  appNo: '202321090235',   title: 'Formulation Development Characterization and Analysis of Alovera Gel for the Treatment of Skin Disease',                                                                        inventors: 'Nabamita Basu, Somdipta Debnath, Sudipta Jana, Hiranmoy Mondal',                                             filingDate: '26-01-2024', status: 'Published' },
-  { sno: 2,  appNo: '202341085985A',  title: 'Transfersomes Comprising of Benincasa Hispida as Humectant and Water Channel for Transdermal Drug Delivery',                                                                    inventors: 'Dr. M. Ganga Raju, Dr. Gyati Shilakari Asthana, Dr. Arya Asthana, Priya Bhansali, Lokesh Tiwari',           filingDate: '12-01-2024', status: 'Published' },
-  { sno: 3,  appNo: '202441027270A',  title: 'Spectrofluorimetric Method for Determination of Lurasidone Hydrochloride Using Aluminum Chloride as Fluorogenic Reagent',                                                      inventors: 'Dr. Ceema Mathew, Manasa Bonthu, C. Manognya',                                                             filingDate: '12-04-2024', status: 'Published' },
-  { sno: 4,  appNo: '202441029148A',  title: 'Analytical Method for Determination of Trelagliptin Succinate and Metformin Hydrochloride in Tablet Dosage Form',                                                              inventors: 'Dr. Ceema Mathew, Haritha Kondabathini, Penchala Prasad Alla',                                             filingDate: '19-04-2024', status: 'Published' },
-  { sno: 5,  appNo: '202441029147A',  title: 'A Novel RP-HPLC Analytical Method for the Simultaneous Determination of Trelagliptin Succinate and Metformin Hydrochloride in Pharmaceutical Tablet Formulation',             inventors: 'Dr. Ceema Mathew, Haritha Kondabathini, Penchala Prasad Alla',                                             filingDate: '19-04-2024', status: 'Published' },
-  { sno: 6,  appNo: '202441042706A',  title: 'Analytical Method for Simultaneous Determination of Olaparib and Niraparib in Pharmaceutical Formulations',                                                                    inventors: 'Dr. Ceema Mathew, K. Sushma, P. Akhila',                                                                  filingDate: '07-06-2024', status: 'Published' },
-  { sno: 7,  appNo: '202441042705A',  title: 'RP-HPLC Method for Simultaneous Estimation of Olaparib and Niraparib',                                                                                                          inventors: 'Dr. Ceema Mathew, K. Sushma, P. Akhila',                                                                  filingDate: '07-06-2024', status: 'Published' },
-  { sno: 8,  appNo: '202441001546',   title: 'Herbal Shampoo Formulation with Enhanced Antimicrobial Properties',                                                                                                             inventors: 'Dr. G. Narsimha Reddy, M. Swathi, K. Divya',                                                              filingDate: '06-01-2024', status: 'Granted' },
-  { sno: 9,  appNo: '202441003271',   title: 'Nano-Lipid Carriers for Topical Delivery of Antifungal Agents',                                                                                                                 inventors: 'Dr. Gyati Shilakari Asthana, T. Ramya, B. Madhuri',                                                       filingDate: '13-01-2024', status: 'Granted' },
-  { sno: 10, appNo: '202441007842',   title: 'Sustained Release Mucoadhesive Tablets of Metformin Hydrochloride',                                                                                                             inventors: 'Dr. M. Ganga Raju, P. Sravani, D. Kavya',                                                                 filingDate: '09-02-2024', status: 'Granted' },
-  { sno: 11, appNo: '202441009654',   title: 'Novel Emulgel Formulation for Topical Delivery of Anti-Inflammatory Drug',                                                                                                      inventors: 'Dr. A. Bhanu Prasad, S. Mounika, R. Sindhu',                                                              filingDate: '24-02-2024', status: 'Granted' },
-  { sno: 12, appNo: '202441012384',   title: 'Development of Self-Microemulsifying Drug Delivery System for Poorly Water-Soluble Drug',                                                                                       inventors: 'Dr. NVL Suvarchala Reddy, P. Anusha, K. Likitha',                                                         filingDate: '15-03-2024', status: 'Granted' },
-  { sno: 13, appNo: '202441015623',   title: 'Microsphere-Based Controlled Release System for Anti-Diabetic Drug',                                                                                                            inventors: 'Dr. Ceema Mathew, B. Pallavi, M. Nanditha',                                                               filingDate: '06-04-2024', status: 'Granted' },
-  { sno: 14, appNo: '202441018947',   title: 'Phytochemical Screening and Formulation of Herbal Anti-Acne Cream',                                                                                                             inventors: 'Dr. G. Narsimha Reddy, A. Priyanka, V. Harshitha',                                                        filingDate: '27-04-2024', status: 'Granted' },
-  { sno: 15, appNo: '202441022310',   title: 'Nanostructured Lipid Carriers for Enhanced Dermal Penetration of Antipsychotic Drug',                                                                                           inventors: 'Dr. Gyati Shilakari Asthana, C. Sai Priya, N. Manasa',                                                    filingDate: '25-05-2024', status: 'Granted' },
-  { sno: 16, appNo: '202441025788',   title: 'Design and Development of Transdermal Patches for Anti-Hypertensive Drug Delivery',                                                                                             inventors: 'Dr. M. Ganga Raju, R. Keerthi, T. Lavanya',                                                               filingDate: '22-06-2024', status: 'Granted' },
-  { sno: 17, appNo: '202441031045',   title: 'Formulation and Evaluation of Fast Dissolving Tablets Using Natural Super-Disintegrants',                                                                                       inventors: 'Dr. A. Bhanu Prasad, M. Tejaswini, S. Bhavana',                                                           filingDate: '27-07-2024', status: 'Granted' },
-  { sno: 18, appNo: '202441034567',   title: 'Biopolymer-Based Hydrogel for Controlled Ophthalmic Drug Delivery',                                                                                                             inventors: 'Dr. NVL Suvarchala Reddy, K. Poojitha, A. Deepthi',                                                       filingDate: '24-08-2024', status: 'Granted' },
-  { sno: 19, appNo: '202441038102',   title: 'Silver Nanoparticles Synthesized from Plant Extracts with Antimicrobial Activity',                                                                                              inventors: 'Dr. G. Narsimha Reddy, B. Sripadma, L. Chandana',                                                         filingDate: '21-09-2024', status: 'Granted' },
-  { sno: 20, appNo: '202441041834',   title: 'Proniosomal Gel for Transdermal Delivery of Anti-Anginal Drug',                                                                                                                 inventors: 'Dr. Gyati Shilakari Asthana, G. Sahithi, P. Swapna',                                                      filingDate: '19-10-2024', status: 'Granted' },
-  { sno: 21, appNo: '202441045612',   title: 'Colon-Targeted Drug Delivery System Using pH-Sensitive Polymer Coating',                                                                                                        inventors: 'Dr. M. Ganga Raju, V. Ramyasree, D. Nirosha',                                                             filingDate: '16-11-2024', status: 'Granted' },
-  { sno: 22, appNo: '202441049378',   title: 'Formulation of Lipid-Based Nanoparticles for Oral Delivery of Anticancer Drug',                                                                                                 inventors: 'Dr. Ceema Mathew, Y. Spandana, U. Saranya',                                                               filingDate: '14-12-2024', status: 'Granted' },
-  { sno: 23, appNo: '202441052947',   title: 'Dendrimer-Mediated Targeted Drug Delivery System for Brain Targeting',                                                                                                          inventors: 'Dr. A. Bhanu Prasad, M. Alekhya, R. Prathyusha',                                                          filingDate: '28-12-2024', status: 'Granted' },
-];
-
-const PATENTS_2023 = [
-  { sno: 1,  appNo: '202341004712',  title: 'Chitosan-Based Nanoparticles for Colon-Targeted Delivery of 5-Fluorouracil',                                                                     inventors: 'Dr. Ceema Mathew, B. Pooja, M. Sravanthi',                               filingDate: '04-02-2023', status: 'Published' },
-  { sno: 2,  appNo: '202341018963',  title: 'Cubosomes for Enhanced Topical Delivery of Antifungal Drug',                                                                                     inventors: 'Dr. NVL Suvarchala Reddy, G. Madhuri, T. Harika',                        filingDate: '13-05-2023', status: 'Published' },
-  { sno: 3,  appNo: '202341031784',  title: 'pH-Responsive Hydrogel System for Controlled Release of Anti-Ulcer Drug',                                                                        inventors: 'Dr. A. Bhanu Prasad, K. Tejaswi, B. Sneha',                              filingDate: '19-08-2023', status: 'Published' },
-  { sno: 4,  appNo: '202341043625',  title: 'Floating Drug Delivery System for Proton Pump Inhibitor with Extended Gastric Residence Time',                                                   inventors: 'Dr. M. Ganga Raju, S. Anusha, V. Nandini',                               filingDate: '04-11-2023', status: 'Published' },
-  { sno: 5,  appNo: '202341052817',  title: 'Stimuli-Responsive Smart Polymer Nanoparticles for Cancer Chemotherapy',                                                                         inventors: 'Dr. Gyati Shilakari Asthana, P. Bhargavi, N. Yamini',                    filingDate: '02-12-2023', status: 'Published' },
-  { sno: 6,  appNo: '202341059043',  title: 'Inhalable Dry Powder Formulation of Antituberculosis Drug Using Spray Drying Technique',                                                        inventors: 'Dr. G. Narsimha Reddy, M. Pallavi, K. Jhansi',                           filingDate: '23-12-2023', status: 'Published' },
-];
-
-const PATENTS_2022 = [
-  { sno: 1,  appNo: '202241008475',  title: 'Liposomal Drug Delivery System for Enhanced Bioavailability of Anticancer Drug',                                                                 inventors: 'Dr. A. Bhanu Prasad, V. Divya, K. Sreelatha',                            filingDate: '19-02-2022', status: 'Granted' },
-  { sno: 2,  appNo: '202241019836',  title: 'Ethosomes for Transdermal Delivery of Anti-Parkinsonian Drug',                                                                                   inventors: 'Dr. M. Ganga Raju, D. Bhavani, P. Himabindu',                            filingDate: '14-05-2022', status: 'Granted' },
-  { sno: 3,  appNo: '202241033547',  title: 'Solid Lipid Nanoparticles for Oral Delivery of BCS Class II Drug',                                                                               inventors: 'Dr. Gyati Shilakari Asthana, M. Vaishnavi, S. Chandrika',                filingDate: '20-08-2022', status: 'Granted' },
-  { sno: 4,  appNo: '202241051298',  title: 'Polymeric Nanoparticles for Targeted Pulmonary Drug Delivery',                                                                                   inventors: 'Dr. G. Narsimha Reddy, N. Keerthi, A. Priyanka',                         filingDate: '19-11-2022', status: 'Granted' },
-];
-
-const PATENTS_2021 = [
-  { sno: 1,  appNo: '202141038524',  title: 'Nanoemulsion-Based Topical Formulation for Wound Healing Application',                                                                           inventors: 'Dr. M. Ganga Raju, K. Anuradha, S. Lavanya',                             filingDate: '12-08-2021', status: 'Granted' },
-  { sno: 2,  appNo: '202141042107',  title: 'Biodegradable Microspheres for Sustained Delivery of Antihypertensive Drug',                                                                     inventors: 'Dr. Gyati Shilakari Asthana, P. Swathi, M. Ramya',                       filingDate: '03-09-2021', status: 'Granted' },
-  { sno: 3,  appNo: '202141049763',  title: 'Herbal Tablet Formulation with Standardised Phytoconstituents for Hepatoprotective Activity',                                                    inventors: 'Dr. G. Narsimha Reddy, B. Sirisha, A. Mounika',                           filingDate: '28-10-2021', status: 'Granted' },
-  { sno: 4,  appNo: '202141055982',  title: 'UV-Spectrophotometric Method for Simultaneous Estimation of Binary Drug Mixture in Tablet Dosage Form',                                          inventors: 'Dr. Ceema Mathew, N. Haritha, G. Sunitha',                               filingDate: '01-12-2021', status: 'Granted' },
-  { sno: 5,  appNo: '202141060134',  title: 'Mucoadhesive Microspheres for Nasal Drug Delivery of Anti-Migraine Drug',                                                                        inventors: 'Dr. NVL Suvarchala Reddy, T. Sravya, R. Madhavi',                        filingDate: '25-12-2021', status: 'Granted' },
-];
-
 const PATENT_COLS = [
   { key: 'sno',        label: 'S.No.' },
   { key: 'appNo',      label: 'Application No.' },
   { key: 'title',      label: 'Title', accent: true },
   { key: 'inventors',  label: 'Inventors' },
-  { key: 'filingDate', label: 'Date' },
+  { key: 'date',       label: 'Date' },
   { key: 'status',     label: 'Status' },
+  { key: 'proof',      label: 'Attachment' },
 ];
 
 function PatentTable({ rows }) {
@@ -758,10 +694,16 @@ function PatentTable({ rows }) {
               {PATENT_COLS.map((col) => (
                 <td
                   key={col.key}
-                  className="font-body text-type-ui px-4 py-3.5 align-top"
+                  className="font-body text-type-body px-4 py-3.5 align-top"
                   style={col.accent ? { color: primary, fontWeight: 600 } : { color: '#374151' }}
                 >
-                  {col.key === 'status' ? <StatusBadge status={row[col.key]} /> : (row[col.key] ?? '—')}
+                  {col.key === 'status' ? <StatusBadge status={row[col.key]} />
+                    : col.key === 'proof' ? (
+                      row.proof
+                        ? <a href={row.proof} target="_blank" rel="noopener noreferrer" className="font-display font-semibold hover:underline" style={{ color: primary }}>View ↗</a>
+                        : <span className="text-[#9CA3AF]">—</span>
+                    )
+                    : (row[col.key] ?? '—')}
                 </td>
               ))}
             </tr>
@@ -791,30 +733,16 @@ function PatentsSection() {
     {
       id: '2024',
       label: '2024',
-      rows: PATENTS_2024,
-      summary: `Total: ${PATENTS_2024.length} patents in 2024 (${PATENTS_2024.filter(p => p.status === 'Granted').length} Granted + ${PATENTS_2024.filter(p => p.status === 'Published').length} Published)`,
-      count: `${PATENTS_2024.length} patents`,
+      rows: patents2024,
+      summary: `Total: ${patents2024.length} patents in 2024 (${patents2024.filter(p => p.status === 'Granted').length} Granted + ${patents2024.filter(p => p.status === 'Published').length} Published)`,
+      count: `${patents2024.length} patents`,
     },
     {
-      id: '2023',
-      label: '2023',
-      rows: PATENTS_2023,
-      summary: `Total: ${PATENTS_2023.length} patents in 2023 (${PATENTS_2023.filter(p => p.status === 'Granted').length} Granted + ${PATENTS_2023.filter(p => p.status === 'Published').length} Published)`,
-      count: `${PATENTS_2023.length} patents`,
-    },
-    {
-      id: '2022',
-      label: '2022',
-      rows: PATENTS_2022,
-      summary: `Total: ${PATENTS_2022.length} patents in 2022 (${PATENTS_2022.filter(p => p.status === 'Granted').length} Granted + ${PATENTS_2022.filter(p => p.status === 'Published').length} Published)`,
-      count: `${PATENTS_2022.length} patents`,
-    },
-    {
-      id: '2021',
-      label: '2021',
-      rows: PATENTS_2021,
-      summary: `Total: ${PATENTS_2021.length} patents in 2021 (${PATENTS_2021.filter(p => p.status === 'Granted').length} Granted + ${PATENTS_2021.filter(p => p.status === 'Published').length} Published)`,
-      count: `${PATENTS_2021.length} patents`,
+      id: '2022-23',
+      label: '2022-23',
+      rows: patents2021_2023,
+      summary: `Total: ${patents2021_2023.length} patents in 2022-23 (${patents2021_2023.filter(p => p.status === 'Granted').length} Granted + ${patents2021_2023.filter(p => p.status === 'Published').length} Published)`,
+      count: `${patents2021_2023.length} patents`,
     },
   ];
   const [activePatentTab, setActivePatentTab] = useState('2024');
@@ -851,7 +779,7 @@ function PatentsSection() {
       <section>
         <SubHeading>
           Patents {activePatentData.label}{' '}
-          <span className="font-body font-normal text-type-body-xs text-[#6B7280] ml-2">({activePatentData.count})</span>
+          <span className="font-body font-normal text-type-body text-[#6B7280] ml-2">({activePatentData.count})</span>
         </SubHeading>
         <PatentTable rows={activePatentData.rows} />
         <PatentSummaryBadge label={activePatentData.summary} />

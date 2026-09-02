@@ -99,9 +99,9 @@ function CommitteeTable({ members }) {
               key={row.sno}
               style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#FAFAFA' }}
             >
-              <td className="font-body text-type-body-sm text-[#374151] px-5 py-3.5">{row.sno}</td>
-              <td className="font-display font-semibold text-type-body-sm px-5 py-3.5" style={{ color: primary }}>{row.name}</td>
-              <td className="font-body text-type-body-sm text-[#374151] px-5 py-3.5">{row.designation}</td>
+              <td className="font-body text-type-body text-[#374151] px-5 py-3.5">{row.sno}</td>
+              <td className="font-display font-semibold text-type-body px-5 py-3.5" style={{ color: primary }}>{row.name}</td>
+              <td className="font-body text-type-body text-[#374151] px-5 py-3.5">{row.designation}</td>
               <td className="px-5 py-3.5"><PositionBadge position={row.position} /></td>
               <td className="px-5 py-3.5">
                 {row.email ? (
@@ -113,7 +113,7 @@ function CommitteeTable({ members }) {
                     {row.email}
                   </a>
                 ) : (
-                  <span className="font-body text-type-ui text-[#9CA3AF]">—</span>
+                  <span className="font-body text-type-body text-[#9CA3AF]">—</span>
                 )}
               </td>
             </tr>
@@ -244,7 +244,7 @@ export default function AlumniAssociationPage() {
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M22 6l-10 7L2 6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <p className="font-body text-type-ui text-[#474747]">
+            <p className="font-body text-type-body text-[#474747]">
               For alumni related queries, contact us at{' '}
               <a href="mailto:alumni@grcp.ac.in" className="font-semibold underline" style={{ color: accent }}>
                 alumni@grcp.ac.in

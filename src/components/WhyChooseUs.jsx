@@ -52,8 +52,8 @@ export default function WhyChooseUs({ college }) {
                     <Icon />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className="font-display font-semibold text-type-ui text-[#333333]">{title}</span>
-                    <span className="font-body font-normal text-type-cap text-[#666666]">{sub}</span>
+                    <span className="font-display font-semibold text-type-body text-[#333333]">{title}</span>
+                    <span className="font-body font-normal text-type-body-sm text-[#666666]">{sub}</span>
                   </div>
                 </div>
               )
@@ -86,7 +86,7 @@ export default function WhyChooseUs({ college }) {
                 >
                   {college.aboutYears}
                 </span>
-                <span className="font-display font-medium text-type-body-sm leading-snug text-[#555555] mt-1.5 block">
+                <span className="font-display font-medium text-type-body leading-snug text-[#555555] mt-1.5 block">
                   {college.aboutYearsLabel}
                 </span>
               </div>

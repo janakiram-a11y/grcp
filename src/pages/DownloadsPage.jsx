@@ -70,7 +70,7 @@ function CategoryBlock({ cat }) {
                 <td className="px-4 py-3.5">
                   <div className="flex items-center gap-2.5">
                     <FileIcon type={file.type} />
-                    <span className="font-body text-type-body-sm text-[#374151]">{file.name}</span>
+                    <span className="font-body text-type-body text-[#374151]">{file.name}</span>
                   </div>
                 </td>
                 <td className="px-5 py-3.5 w-[130px] text-right">
