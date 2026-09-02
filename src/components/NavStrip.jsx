@@ -259,7 +259,7 @@ export default function NavStrip({ college, scrolled = false }) {
     <div
       className={`w-full transition-all duration-300 ${scrolled ? 'py-1.5' : 'py-3'}`}
       style={{
-        backgroundColor: college.primaryColor,
+        backgroundColor: '#a31424',
         borderBottom: `1px solid ${withAlpha('#000000', 0.1)}`,
       }}
     >
