@@ -749,7 +749,7 @@ const FACULTY_DATA = [
   { sno: '17', name: 'Dr. K. Mamatha',                  designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharm., Ph.D',         exp: '16.3 years', email: 'kolamamatha8074@grcp.ac.in',            photo: `${GRCP_MEDIA}635be7e094ce08074.jpg` },
   { sno: '18', name: 'Mr. Vivek Kumar Tiwari',          designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., (Ph.D)',       exp: '11 years',   email: 'vivek8033@grcp.ac.in',                 photo: `${GRCP_MEDIA}635be68a7e15b8033.jpg` },
   { sno: '19', name: 'Dr. Ch. Soujanya',                designation: 'Assistant Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., (Ph.D)',       exp: '11 years',   email: 'soujanya8056@grcp.ac.in',              photo: `${GRCP_MEDIA}635be170a123a8056.jpg` },
-  { sno: '20', name: 'Dr. B. Karuna Devi',              designation: 'Assistant Professor In charge HOD', dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., (Ph.D)',       exp: '15.1 years', email: 'karuna8062@grcp.ac.in',                photo: `${GRCP_MEDIA}635abdb818147Karuna.jpg` },
+  { sno: '20', name: 'Dr. B. Karuna Devi',              designation: 'Assistant Professor and In-charge HOD', dept: 'Pharmaceutical Chemistry', qual: 'M. Pharm., (Ph.D)',       exp: '15.1 years', email: 'karuna8062@grcp.ac.in',                photo: `${GRCP_MEDIA}635abdb818147Karuna.jpg` },
   { sno: '21', name: 'Mrs. M. Mamatha',                 designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '5.1 years',  email: 'mamatha8069@grcp.ac.in',               photo: `${GRCP_MEDIA}635abb417a18a8069.jpg` },
   { sno: '22', name: 'Mrs. G. Kinnera Ratna Sri',       designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '3.7 years',  email: 'kinnera8077@grcp.ac.in',               photo: `${GRCP_MEDIA}635a9d3bed53f8077.jpg` },
   { sno: '23', name: 'Mrs. Shabnam Kumari Thakur',      designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '3.8 years',  email: 'shabnam8079@grcp.ac.in',               photo: `${GRCP_MEDIA}635a96d7cb2568079.jpg` },
@@ -758,7 +758,6 @@ const FACULTY_DATA = [
   { sno: '26', name: 'Mrs. Syed Sara Afreen',           designation: 'Assistant Professor',              dept: 'Pharmaceutical Analysis',  qual: 'M. Pharmacy',             exp: '4.3 years',  email: 'sara8073@grcp.ac.in',                  photo: `${GRCP_MEDIA}635abeb2b84098073.JPG` },
   { sno: '27', name: 'Mrs. D. Vijaya Durga',            designation: 'Assistant Professor',              dept: 'Pharmaceutical Analysis',  qual: 'M. Pharmacy',             exp: '15.5 years', email: 'vijayadurga8076@grcp.ac.in',           photo: `${GRCP_MEDIA}635aa055673508076.jpg` },
   { sno: '28', name: 'Mrs. Rupali Rupasmita Rout',      designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharm., (Ph.D)',       exp: '5.5 years',  email: 'rupali8096@grcp.ac.in',                photo: `${GRCP_MEDIA}68c7e56eb326eRupali_pic.png` },
-  { sno: '29', name: 'Mrs. B. Prathyusha',              designation: 'Assistant Professor',              dept: 'Pharmaceutics',            qual: 'M. Pharmacy',             exp: '3 years',    email: 'prathyusha8083@grcp.ac.in',            photo: `${GRCP_MEDIA}64df24c93b92aprathyusha.jpeg` },
   { sno: '30', name: 'Mrs. P. A D G Lakshmi',          designation: 'Assistant Professor',              dept: 'Pharmacology',             qual: 'M. Pharmacy',             exp: '2 years',    email: 'ahalyapati8087@grcp.ac.in',            photo: `${GRCP_MEDIA}66222d789b8b4ahalya pic.jpg` },
   { sno: '31', name: 'Mrs. S.L.S. Mounica Pratyusha',  designation: 'Assistant Professor',              dept: 'Pharmaceutical Analysis',  qual: 'M. Pharm., (Ph.D)',       exp: '3.7 years',  email: 'slsmounicapratyusha8093@grcp.ac.in',   photo: `${GRCP_MEDIA}67fb8290e0f47monica prathyusha.jpg` },
   { sno: '32', name: 'Mrs. K. Sudha Rani',             designation: 'Assistant Professor',              dept: 'Pharmaceutical Chemistry', qual: 'M. Pharmacy',             exp: '10.9 years', email: 'sudharani8095@grcp.ac.in',             photo: `${GRCP_MEDIA}6899b0c588789k sudharani pic.jpg` },
@@ -769,7 +768,7 @@ const FACULTY_DATA = [
   { sno: '37', name: 'Mrs. K. Aruna',                  designation: 'Assistant Professor',              dept: 'General Studies',          qual: 'M.A English Literature',  exp: '24 years',   email: 'arunakavuru5@gmail.com',               photo: `${GRCP_MEDIA}662e76f2c4368aruna pic.jpg` },
   { sno: '38', name: 'Dr. Venkata Krishna Sarma. S',   designation: 'Asst. Professor (part-time)',      dept: 'General Studies',          qual: 'M.Sc., Ph.D.',            exp: '18 years',   email: 'sarma.krishna1@gmail.com',             photo: `${GRCP_MEDIA}679a496c1601f63788802-6d67-42b8-908a-54cdf4842487.jpg` },
   { sno: '39', name: 'Mr. Ravikrishna Bursu',          designation: 'Asst. Professor (part-time)',      dept: 'General Studies',          qual: 'M. Tech',                 exp: '10 years',   email: 'ravikrishnab@griet.ac.in',             photo: `${GRCP_MEDIA}69eb090bb61b0ravi krishna .jpeg` },
-  { sno: '40', name: 'Mr. P. Devan Raju',              designation: 'Assistant Professor',              dept: 'Computer Science',         qual: '—',                        exp: '—',          email: 'devanraju8101@grcp.ac.in',             photo: null },
+  { sno: '40', name: 'Mr. P. Devan Raju',              designation: 'Assistant Professor',              dept: 'Computer Science',         qual: 'M.Tech., M.Sc. Computer Science', exp: '23 years',   email: 'devanraju8101@grcp.ac.in',             photo: '/faculty/devan-raju.jpg' },
 ];
 
 const DEPT_COLORS = {
@@ -806,6 +805,7 @@ function FacultyCard({ member }) {
   const deptStyle = DEPT_COLORS[member.dept] ?? DEPT_COLORS['General Studies'];
   const tier = getDesignationTier(member.designation);
   const cv = CV_MAP[member.name?.trim()] || '';
+  const cvHref = cv.startsWith('http') || cv.startsWith('/') ? cv : `https://grcp.ac.in/${cv}`;
 
   return (
     <div
@@ -814,14 +814,6 @@ function FacultyCard({ member }) {
     >
       {/* Top accent bar */}
       <div className="h-1 w-full flex-shrink-0" style={{ backgroundColor: tier.color }} />
-
-      {/* Sequential number badge */}
-      <div
-        className="absolute top-3 left-3 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 z-10"
-        style={{ backgroundColor: primary }}
-      >
-        <span className="font-display font-bold text-white text-type-label" style={{ lineHeight: 1 }}>{member.sno}</span>
-      </div>
 
       <div className="flex flex-col flex-1 p-5 gap-4">
         {/* Avatar + name */}
@@ -849,7 +841,7 @@ function FacultyCard({ member }) {
             </div>
           </div>
           <div className="min-w-0 flex-1">
-            <h3 className="font-display font-bold text-type-body leading-snug" style={{ color: primary }}>
+            <h3 className="font-display font-bold text-type-body leading-snug" style={{ color: '#000000' }}>
               {member.name}
             </h3>
             <p className="font-display text-type-cap text-[#6B7280] mt-0.5">
@@ -882,7 +874,7 @@ function FacultyCard({ member }) {
             <a
               href={`mailto:${member.email}`}
               className="flex items-center gap-1.5 font-display text-type-cap truncate transition-opacity hover:opacity-70 min-w-0"
-              style={{ color: primary }}
+              style={{ color: accent }}
             >
               <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -894,11 +886,11 @@ function FacultyCard({ member }) {
           )}
           {cv && (
             <a
-              href={`https://grcp.ac.in/${cv}`}
+              href={cvHref}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1 font-display text-type-cap font-semibold flex-shrink-0 transition-opacity hover:opacity-70"
-              style={{ color: primary }}
+              style={{ color: accent }}
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M3 17v2a2 2 0 002 2h14a2 2 0 002-2v-2" />
@@ -916,10 +908,20 @@ const ALL_DEPTS = ['All', ...Array.from(new Set(FACULTY_DATA.map((f) => f.dept))
 
 function FacultyContent() {
   const [activeDept, setActiveDept] = React.useState('All');
+  const [query, setQuery] = React.useState('');
 
-  const filtered = activeDept === 'All'
+  const byDept = activeDept === 'All'
     ? FACULTY_DATA
     : FACULTY_DATA.filter((f) => f.dept === activeDept);
+
+  const q = query.trim().toLowerCase();
+  const filtered = q
+    ? byDept.filter((f) =>
+        f.name.toLowerCase().includes(q) ||
+        f.designation.toLowerCase().includes(q) ||
+        f.dept.toLowerCase().includes(q)
+      )
+    : byDept;
 
   return (
     <>
@@ -928,6 +930,40 @@ function FacultyContent() {
         GRCP has a team of {FACULTY_DATA.length} highly qualified and experienced faculty members across all departments.
         The listing below reflects the teaching staff as maintained by the administration.
       </p>
+
+      {/* Search box */}
+      <div className="relative mb-5 max-w-md">
+        <svg
+          className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+          fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"
+        >
+          <circle cx="11" cy="11" r="7" strokeLinecap="round" strokeLinejoin="round" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35" />
+        </svg>
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search faculty by name, designation, or department…"
+          aria-label="Search faculty"
+          autoComplete="off"
+          className="w-full font-display text-type-ui-sm outline-none bg-white pl-10 pr-9 py-2.5 rounded-lg border transition-colors duration-150 placeholder:text-gray-400"
+          style={{ borderColor: '#E2E4E3', color: '#222' }}
+          onFocus={(e) => { e.target.style.borderColor = primary; e.target.style.boxShadow = `0 0 0 3px ${primary}1A`; }}
+          onBlur={(e) => { e.target.style.borderColor = '#E2E4E3'; e.target.style.boxShadow = 'none'; }}
+        />
+        {query && (
+          <button
+            onClick={() => setQuery('')}
+            aria-label="Clear search"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        )}
+      </div>
 
       {/* Department filter tabs */}
       <div className="flex flex-wrap gap-2 mb-8">
@@ -941,7 +977,7 @@ function FacultyContent() {
               className="px-3.5 py-1.5 rounded-full font-display text-type-cap font-semibold border transition-all duration-150"
               style={
                 isActive
-                  ? { backgroundColor: primary, borderColor: primary, color: '#fff' }
+                  ? { backgroundColor: accent, borderColor: accent, color: '#fff' }
                   : { backgroundColor: '#fff', borderColor: `${primary}25`, color: '#6B7280' }
               }
             >
@@ -953,11 +989,17 @@ function FacultyContent() {
       </div>
 
       {/* Faculty card grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
-        {filtered.map((member) => (
-          <FacultyCard key={member.sno} member={member} />
-        ))}
-      </div>
+      {filtered.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+          {filtered.map((member) => (
+            <FacultyCard key={member.sno} member={member} />
+          ))}
+        </div>
+      ) : (
+        <p className="font-body text-type-body text-[#6B7280] mb-10">
+          No faculty found matching "{query}".
+        </p>
+      )}
     </>
   );
 }

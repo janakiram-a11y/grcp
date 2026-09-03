@@ -31,11 +31,11 @@ function FlyoutSubMenu({ items, college, visible }) {
             rel="noopener noreferrer"
             className="flex items-center px-4 py-3 text-type-nav-dropdown font-display font-medium transition-colors whitespace-nowrap"
             style={{
-              color: college.primaryColor,
+              color: '#000000',
               borderBottom: `1px solid ${withAlpha(college.primaryColor, 0.08)}`,
             }}
             onMouseEnter={(e) => (e.currentTarget.style.color = college.greenAccent)}
-            onMouseLeave={(e) => (e.currentTarget.style.color = college.primaryColor)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#000000')}
           >
             {sub.label} ↗
           </a>
@@ -45,11 +45,11 @@ function FlyoutSubMenu({ items, college, visible }) {
             to={sub.href}
             className="flex items-center px-4 py-3 text-type-nav-dropdown font-display font-medium transition-colors whitespace-nowrap"
             style={{
-              color: college.primaryColor,
+              color: '#000000',
               borderBottom: `1px solid ${withAlpha(college.primaryColor, 0.08)}`,
             }}
             onMouseEnter={(e) => (e.currentTarget.style.color = college.greenAccent)}
-            onMouseLeave={(e) => (e.currentTarget.style.color = college.primaryColor)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#000000')}
           >
             {sub.label}
           </Link>
@@ -86,11 +86,11 @@ function DropdownItem({ item, college }) {
           to={item.href}
           className="flex items-center gap-1 px-4 py-3 text-type-nav-dropdown font-display font-medium transition-colors whitespace-nowrap"
           style={{
-            color: college.primaryColor,
+            color: '#000000',
             borderBottom: `1px solid ${withAlpha(college.primaryColor, 0.1)}`,
           }}
           onMouseEnter={(e) => (e.currentTarget.style.color = college.greenAccent)}
-          onMouseLeave={(e) => (e.currentTarget.style.color = college.primaryColor)}
+          onMouseLeave={(e) => (e.currentTarget.style.color = '#000000')}
         >
           {item.label}
           <ChevronRight />
@@ -108,11 +108,11 @@ function DropdownItem({ item, college }) {
         rel="noopener noreferrer"
         className="block px-4 py-3 text-type-nav-dropdown font-display font-medium transition-colors whitespace-nowrap"
         style={{
-          color: college.primaryColor,
+          color: '#000000',
           borderBottom: `1px solid ${withAlpha(college.primaryColor, 0.1)}`,
         }}
         onMouseEnter={(e) => (e.currentTarget.style.color = college.greenAccent)}
-        onMouseLeave={(e) => (e.currentTarget.style.color = college.primaryColor)}
+        onMouseLeave={(e) => (e.currentTarget.style.color = '#000000')}
       >
         {item.label} ↗
       </a>
@@ -124,11 +124,11 @@ function DropdownItem({ item, college }) {
       to={item.href}
       className="block px-4 py-3 text-type-nav-dropdown font-display font-medium transition-colors whitespace-nowrap"
       style={{
-        color: college.primaryColor,
+        color: '#000000',
         borderBottom: `1px solid ${withAlpha(college.primaryColor, 0.1)}`,
       }}
       onMouseEnter={(e) => (e.currentTarget.style.color = college.greenAccent)}
-      onMouseLeave={(e) => (e.currentTarget.style.color = college.primaryColor)}
+      onMouseLeave={(e) => (e.currentTarget.style.color = '#000000')}
     >
       {item.label}
     </Link>
